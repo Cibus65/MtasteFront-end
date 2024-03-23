@@ -75,7 +75,7 @@
                  <span class="visually-hidden">Next</span>
              </button>
              </div>
-             <div class="qw"></div>
+             <div class="border__qw"></div>
  
              <div class="meal__time">
               <div class=" meal__text" >
@@ -147,7 +147,77 @@
                   </div>
                 </div>
              </div>
-
+             <div class="border__qw"></div>
+             <div class="meal__time">
+              <div class=" meal__text" >
+                <strong>Обед</strong>
+              </div>
+              
+             </div>
+             <div class="meal__breakfast">
+              <div class="row row-cols-1 row-cols-md-2 g-4">
+                  <div class="col">
+                    <div class="card">
+                      <img :src="img__error" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <img :src="img__error" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <img :src="img__error" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <img :src="img__error" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <img :src="img__error" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <img :src="img__error" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+             </div>
 
          </div>
      </div>
@@ -171,6 +241,7 @@
  import breakfast4 from  '@/assets/img/breakfast4.jpg';
  import breakfast5 from  '@/assets/img/breakfast5.jpg';
  import breakfast6 from  '@/assets/img/breakfast6.jpg';
+ import img__error from  '@/assets/img/img_error.jpg';
  
  
  export default {
@@ -186,6 +257,7 @@
        breakfast4: breakfast4,
        breakfast5: breakfast5,
        breakfast6: breakfast6,
+       img__error: img__error,
      }
    }
  }
@@ -331,11 +403,7 @@
   border-top: 1px solid;
   border-color: rgb(194, 194, 194);
  }
-.carousel__border{
- 
-  
 
-}
  
 .meal__text{
     
@@ -361,7 +429,7 @@
   left: 75%;
   width: 120px;
 }
-.qw{
+.border__qw{
   border-bottom: 2px solid;
   margin-top: 90px;
   color:rgb(1, 76, 59);
