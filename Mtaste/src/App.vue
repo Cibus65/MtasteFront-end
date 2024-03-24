@@ -47,7 +47,7 @@
                  <div class="carousel-item active">
                  <img :src="img1" class="d-block w-100 heig" alt="...">
                  <div class="carousel-caption d-none d-md-block">
-                     <h5>Завтрак</h5>
+                     <a class="btn btn-primary btn-sm " href="#" role="button"><h5>Завтрак</h5></a>
                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum, leo ac vestibulum lobortis, diam arcu ornare magna, eu lobortis orci tortor nec tellus. Etiam convallis dapibus dui, sit amet gravida turpis vulputate eget. </p>
                  </div>
                  </div>
@@ -78,29 +78,33 @@
              <div class="border__qw"></div>
  
              <div class="meal__time">
-              <div class=" meal__text" >
+              <div class="meal__text" id="anchor" >
                 <strong>Завтрак</strong>
+                
               </div>
               
+                      
              </div>
              <div class="meal__breakfast">
               <div class="row row-cols-1 row-cols-md-2 g-4">
-                  <div class="col">
-                    <div class="card">
+                
+                  <div class="col" >
+                    <div class="card card1">
                       <img :src="breakfast1" class="card-img-top" alt="...">
                       <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">Яичница с беконом и помидорами</h5>
+                        <p class="card-text">Быстрый и сытный завтрак.</p>
                         <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
                       </div>
                     </div>
                   </div>
-                  <div class="col">
+                  
+                  <div class="col" >
                     <div class="card">
                       <img :src="breakfast2" class="card-img-top" alt="...">
                       <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">Заварные блины на молоке</h5>
+                        <p class="card-text">Быстрый и сытный завтрак.</p>
                         <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
                       </div>
                     </div>
@@ -109,8 +113,8 @@
                     <div class="card">
                       <img :src="breakfast3" class="card-img-top" alt="...">
                       <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                        <h5 class="card-title">Овсяная каша на молоке</h5>
+                        <p class="card-text">Быстрый и сытный завтрак.</p>
                         <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
                       </div>
                     </div>
@@ -118,6 +122,48 @@
                   <div class="col">
                     <div class="card">
                       <img :src="breakfast4" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Классические сырники из творога</h5>
+                        <p class="card-text">Быстрый и сытный завтрак.</p>
+                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <img :src="breakfast5" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Сэндвич с ветчиной и сыром</h5>
+                        <p class="card-text">Быстрый и сытный завтрак.</p>
+                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <img :src="breakfast6" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Манная каша на воде</h5>
+                        <p class="card-text">Быстрый и сытный завтрак.</p>
+                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                      </div>
+                    </div>
+                  </div>
+                
+                </div>
+             </div>
+             <div class="border__qw"></div>
+             <div class="meal__time">
+              <div class=" meal__text" >
+                <strong>Обед</strong>
+              </div>
+          
+             </div>
+             <div class="meal__breakfast">
+              <div class="row row-cols-1 row-cols-md-2 g-4">
+                  <div class="col">
+                    <div class="card">
+                      <img :src="img__error" class="card-img-top" alt="...">
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -127,7 +173,17 @@
                   </div>
                   <div class="col">
                     <div class="card">
-                      <img :src="breakfast5" class="card-img-top" alt="...">
+                      <img :src="img__error" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <img :src="img__error" class="card-img-top" alt="...">
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
@@ -137,7 +193,27 @@
                   </div>
                   <div class="col">
                     <div class="card">
-                      <img :src="breakfast6" class="card-img-top" alt="...">
+                      <img :src="img__error" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <img :src="img__error" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <img :src="img__error" class="card-img-top" alt="...">
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -150,8 +226,10 @@
              <div class="border__qw"></div>
              <div class="meal__time">
               <div class=" meal__text" >
-                <strong>Обед</strong>
+                <strong>Ужин</strong>
+                
               </div>
+              
               
              </div>
              <div class="meal__breakfast">
@@ -214,23 +292,34 @@
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                         <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
                       </div>
+                      
+                    </div>
+                    <div>
+                      <div>
+                        
+                      </div>
                     </div>
                   </div>
                 </div>
              </div>
-
+             
          </div>
      </div>
              
-             
+     
  
          
      
      </header>
      
  </template>
+
+
  
- <script>
+<script>
+ 
+ import anim from './animation'
+
  import image from '@/assets/img/logo.jpg';
  import img1 from  '@/assets/img/img1.jpg';
  import img2 from  '@/assets/img/img2.jpg';
@@ -242,12 +331,17 @@
  import breakfast5 from  '@/assets/img/breakfast5.jpg';
  import breakfast6 from  '@/assets/img/breakfast6.jpg';
  import img__error from  '@/assets/img/img_error.jpg';
+
+
+
  
+anim()  
  
+
  export default {
-   data() {
-     return {
-       imagePath: image,
+  data() {
+    return {
+      imagePath: image,
        img1: img1,
        img2: img2,
        img3: img3,
@@ -258,13 +352,22 @@
        breakfast5: breakfast5,
        breakfast6: breakfast6,
        img__error: img__error,
-     }
-   }
- }
- </script>
+       
+       
+    };
+  },
+
+ 
+  
+ 
+ };
+ 
+
+
+</script>
  
  
- <style scoped>
+<style scoped>
  
  body{
      margin: 0;
@@ -395,10 +498,12 @@
      box-shadow: 0 0 10px rgb(3, 97, 75);
  }
  .main__text{
+  
      margin-top: 10px;
      background-color: rgba(1, 76, 58, 0.146);
      
  }
+ 
  .card-text{
   border-top: 1px solid;
   border-color: rgb(194, 194, 194);
@@ -406,6 +511,8 @@
 
  
 .meal__text{
+
+    opacity: 0;
     
     max-width: 200px;
     position: absolute;
@@ -418,7 +525,12 @@
     color:  rgb(1, 76, 59); 
 
   
- }
+}
+.meal__text.visible{
+  opacity: 1;
+  transition: all 1s;
+
+}
 .meal__breakfast{
   margin-top: 200px;
 }
@@ -430,8 +542,37 @@
   width: 120px;
 }
 .border__qw{
+  opacity: 0;
   border-bottom: 2px solid;
   margin-top: 90px;
   color:rgb(1, 76, 59);
 }
+.border__qw.visible{
+  opacity: 1;
+  transition: all 1.5s;
+}
+
+.col{
+  opacity: 0;
+  -webkit-transform: translateX(-50px);
+  -ms-transform: translateX(-50px);
+  transform: translateX(-20px);
+  
+  
+}
+
+.col.visible{
+  opacity: 1;
+  
+  
+  -webkit-transform: translateX(0px);
+  -ms-transform: translateX(0px);
+  transform: translateX(0px);
+  -webkit-transition: all 1.5s;
+  -o-transition: all 1.5s;
+  transition: all 1.5s;
+}
+
+
+
  </style>
