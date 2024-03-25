@@ -94,7 +94,35 @@
                       <div class="card-body">
                         <h5 class="card-title">Яичница с беконом и помидорами</h5>
                         <p class="card-text">Быстрый и сытный завтрак.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        
+                        <div>
+                          
+                          <!-- Button trigger modal -->
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
+                            Launch static backdrop modal
+                          </button>
+
+                          <!-- Modal -->
+                          <div class="modal fade"  id="staticBackdrop" data-bs-backdrop="false"  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+                            <div class="modal-dialog">
+                              <div class="modal-content ">
+                                <div class="modal-header">
+                                  <h5 class="modal-title " id="staticBackdropLabel">Modal title</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore cupiditate iusto ipsa ea ex illo provident fugit quisquam, est pariatur fugiat officia eos repudiandae dolor dolorum vitae velit, mollitia temporibus!
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+                                  <button type="button" class="btn btn-primary">Understood</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                        
                       </div>
                     </div>
                   </div>
@@ -240,7 +268,7 @@
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        
                       </div>
                     </div>
                   </div>
@@ -331,7 +359,7 @@
  import breakfast5 from  '@/assets/img/breakfast5.jpg';
  import breakfast6 from  '@/assets/img/breakfast6.jpg';
  import img__error from  '@/assets/img/img_error.jpg';
-
+ 
  
 
  
@@ -352,6 +380,8 @@ anim()
        breakfast5: breakfast5,
        breakfast6: breakfast6,
        img__error: img__error,
+
+       showModal: false
        
        
     };
@@ -368,8 +398,19 @@ anim()
       const elementId = '#elementToScrollTo';
       // Прокрутка к элементу с заданным id
       this.$scrollTo.scrollTo(elementId, 1500); // 1500 - это длительность анимации скролла в миллисекундах
+    },
+    openModal() {
+      this.showModal = true;
+      this.$nextTick(() => {
+        this.$refs.modal.focus();
+      });
+    },
+    closeModal() {
+      this.showModal = false;
     }
+    
   }
+  
   
  
  };
@@ -389,6 +430,8 @@ anim()
      color: #fff;
      width: 100%;
      height: 100%;
+     
+     
  }
  
  *, *:before, *:after{
@@ -408,7 +451,7 @@ anim()
      top: 0;
      left: 0;
      right: 0;
-     z-index: 1000;
+     z-index: 100;
  }
  
  .containder{
@@ -515,6 +558,9 @@ anim()
      background-color: rgba(1, 76, 58, 0.146);
      
  }
+ .card{
+  
+ }
  
  .card-text{
   border-top: 1px solid;
@@ -607,4 +653,16 @@ anim()
   background-color:rgba(2, 96, 74, 0.188); 
   border-radius: 10px;
 }
+
+
+
+.modal{
+  --bs-modal-zindex: 0;
+  z-index: var(--bs-modal-zindex);
+  
+  
+}
+
+
+
  </style>
