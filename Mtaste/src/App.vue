@@ -47,22 +47,22 @@
                  <div class="carousel-item active">
                  <img :src="img1" class="d-block w-100 heig" alt="...">
                  <div class="carousel-caption d-none d-md-block">
-                     <a class="btn btn-primary btn-sm " href="#" role="button"><h5>Завтрак</h5></a>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum, leo ac vestibulum lobortis, diam arcu ornare magna, eu lobortis orci tortor nec tellus. Etiam convallis dapibus dui, sit amet gravida turpis vulputate eget. </p>
+                     <a class="btn btn-primary btn-sm carousel_btn " href="#elementToScrollTo1" role="button" @click="scrollToElement"><h5 class="Inform">Завтрак</h5></a>
+                     <p class="Inform_main">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum, leo ac vestibulum lobortis, diam arcu ornare magna, eu lobortis orci tortor nec tellus. Etiam convallis dapibus dui, sit amet gravida turpis vulputate eget. </p>
                  </div>
                  </div>
                  <div class="carousel-item">
                  <img :src="img2" class="d-block w-100 heig" alt="...">
                  <div class="carousel-caption d-none d-md-block">
-                     <h5>Обед</h5>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum, leo ac vestibulum lobortis, diam arcu ornare magna, eu lobortis orci tortor nec tellus. Etiam convallis dapibus dui, sit amet gravida turpis vulputate eget. </p>
+                  <a class="btn btn-primary btn-sm carousel_btn " href="#elementToScrollTo2" role="button" @click="scrollToElement"><h5 class="Inform">Обед</h5></a>
+                     <p class="Inform_main">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum, leo ac vestibulum lobortis, diam arcu ornare magna, eu lobortis orci tortor nec tellus. Etiam convallis dapibus dui, sit amet gravida turpis vulputate eget. </p>
                  </div>
                  </div>
                  <div class="carousel-item">
                  <img :src="img3" class="d-block w-100" alt="...">
                  <div class="carousel-caption d-none d-md-block">
-                     <h5>Ужин</h5>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum, leo ac vestibulum lobortis, diam arcu ornare magna, eu lobortis orci tortor nec tellus. Etiam convallis dapibus dui, sit amet gravida turpis vulputate eget. </p>
+                  <a class="btn btn-primary btn-sm carousel_btn " href="#elementToScrollTo3" role="button" @click="scrollToElement"><h5 class="Inform">Ужин</h5></a>
+                     <p class="Inform_main">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum, leo ac vestibulum lobortis, diam arcu ornare magna, eu lobortis orci tortor nec tellus. Etiam convallis dapibus dui, sit amet gravida turpis vulputate eget. </p>
                  </div>
                  </div>
              </div>
@@ -78,7 +78,7 @@
              <div class="border__qw"></div>
  
              <div class="meal__time">
-              <div class="meal__text" id="anchor" >
+              <div class="meal__text" id="elementToScrollTo1">
                 <strong>Завтрак</strong>
                 
               </div>
@@ -154,7 +154,7 @@
              </div>
              <div class="border__qw"></div>
              <div class="meal__time">
-              <div class=" meal__text" >
+              <div class=" meal__text" id="elementToScrollTo2">
                 <strong>Обед</strong>
               </div>
           
@@ -225,7 +225,7 @@
              </div>
              <div class="border__qw"></div>
              <div class="meal__time">
-              <div class=" meal__text" >
+              <div class=" meal__text" id="elementToScrollTo3">
                 <strong>Ужин</strong>
                 
               </div>
@@ -318,8 +318,8 @@
  
 <script>
  
- import anim from './animation'
-
+ import anim from './animation';
+ import VueScrollTo from 'vue-scrollto';
  import image from '@/assets/img/logo.jpg';
  import img1 from  '@/assets/img/img1.jpg';
  import img2 from  '@/assets/img/img2.jpg';
@@ -332,7 +332,7 @@
  import breakfast6 from  '@/assets/img/breakfast6.jpg';
  import img__error from  '@/assets/img/img_error.jpg';
 
-
+ 
 
  
 anim()  
@@ -355,9 +355,21 @@ anim()
        
        
     };
+    
   },
-
- 
+  name: 'App',
+  directives: {
+    scrollTo: VueScrollTo.directive
+    
+  },
+  methods: {
+    scrollToElement() {
+      // id элемента, к которому нужно перейти
+      const elementId = '#elementToScrollTo';
+      // Прокрутка к элементу с заданным id
+      this.$scrollTo.scrollTo(elementId, 1500); // 1500 - это длительность анимации скролла в миллисекундах
+    }
+  }
   
  
  };
@@ -573,6 +585,26 @@ anim()
   transition: all 1.5s;
 }
 
-
-
+.carousel_btn{
+  height: 35px;
+  background-color: rgba(2, 96, 74, 0);
+  border: none;
+  padding-bottom: 5px;
+  
+  font-family: "Gilda Display", serif;
+}
+.carousel_btn:hover{
+  background-color: rgb(2, 96, 74); 
+  
+}
+.Inform{
+  font-size: 25px;
+  font-weight: bold;
+}
+.Inform_main{
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  background-color:rgba(2, 96, 74, 0.188); 
+  border-radius: 10px;
+}
  </style>
