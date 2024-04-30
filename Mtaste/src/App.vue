@@ -38,14 +38,16 @@
           </nav>
         </div>
 
-        <div>
-          <!-- Разметка с карточками -->
-          <div class="card-container">
-            <div v-for="(card, index) in cards" :key="index" class="card">
-              <img :src="card.img" alt="Изображение блюда">
-              <h3>{{ card.name }}</h3>
-              <button>Готовить</button>
-            </div>
+        <div class="card-container">
+          <div v-for="(card, index) in cards" :key="index" class="card">
+            <img :src="img__error" alt="Изображение блюда">
+            <h3>{{ card.name }}</h3>
+            <button @click="openRecipeModal(card)">Готовить</button>
+            <recipe-modal :show="showRecipeModal" :card="selectedCard" @close="closeRecipeModal"></recipe-modal>
+          </div>
+          <!-- Добавление контейнера для центрирования кнопки -->
+          <div class="load-more-container">
+            <button v-if="cards.length < totalCards" @click="loadMoreCards" class="load-more-button">Показать еще</button>
           </div>
         </div>
 
@@ -67,47 +69,32 @@
 import anim from './animation';
 import VueScrollTo from 'vue-scrollto';
 import image from '@/assets/img/logo.jpg';
-import img1 from  '@/assets/img/img1.jpg';
-import img2 from  '@/assets/img/img2.jpg';
-import img3 from  '@/assets/img/img3.jpg';
-import breakfast1 from  '@/assets/img/breakfast1.jpg';
-import breakfast2 from  '@/assets/img/breakfast2.jpg';
-import breakfast3 from  '@/assets/img/breakfast3.jpg';
-import breakfast4 from  '@/assets/img/breakfast4.jpg';
-import breakfast5 from  '@/assets/img/breakfast5.jpg';
-import breakfast6 from  '@/assets/img/breakfast6.jpg';
 import img__error from  '@/assets/img/img_error.jpg';
 import AuthModal from './components/AuthModal.vue';
 import axios from 'axios';
-
+import RecipeModal from './components/RecipeModal.vue';
 
 anim()
 
 
 export default {
   components: {
-    AuthModal
+    AuthModal,
+    RecipeModal,
   },
   data() {
     return {
       imagePath: image,
-      img1: img1,
-      img2: img2,
-      img3: img3,
-      breakfast1: breakfast1,
-      breakfast2: breakfast2,
-      breakfast3: breakfast3,
-      breakfast4: breakfast4,
-      breakfast5: breakfast5,
-      breakfast6: breakfast6,
       img__error: img__error,
 
       isAuthenticated: false,
       showModal: false,
       cards: [],
-      batchCount: 5,
-      currentPage: 1
-
+      totalCards: 0, // Новое свойство для хранения общего количества карточек
+      batchCount: 10, // Количество карточек, которые будут загружаться при каждом нажатии на "Показать еще"
+      currentPage: 1,
+      showRecipeModal: false,
+      selectedCard: null,
     };
 
   },
@@ -124,6 +111,24 @@ export default {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
+    openRecipeModal(card) {
+      // Делаем запрос к серверу для получения описания рецепта
+      axios.get(`http://0.0.0.0:8080/Mtaste/API/getRecipeDescription/${card.id}`)
+          .then(response => {
+            // Обновляем текущую карточку с описанием
+            this.selectedCard = {
+              ...card,
+              description: response.data.description
+            };
+            this.showRecipeModal = true;
+          })
+          .catch(error => {
+            console.error('Ошибка при загрузке описания рецепта:', error);
+          });
+    },
+    closeRecipeModal() {
+      this.showRecipeModal = false;
+    },
     openModal() {
       this.showModal = false; // Сбрасываем состояние модального окна
       this.$nextTick(() => {
@@ -143,25 +148,21 @@ export default {
     },
     handleScroll() {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        this.currentPage+=1
+        this.currentPage += 1
         this.loadMoreCards();
       }
     },
     loadMoreCards() {
       axios.get(`http://0.0.0.0:8080/Mtaste/API/getRecipeByPage/${this.currentPage}`)
           .then(response => {
-            const additionalCardsData = response.data; // Получаем массив данных карточек из ответа
-            additionalCardsData.forEach(cardData => {
-              // Создаем объект карточки из данных
-              const card = {
-                name: cardData.name,
-                img: cardData.img,
-                // Добавляем другие данные, если они есть
-              };
-              // Добавляем карточку к массиву cards
-              this.cards.push(card);
-            });
+            const additionalCardsData = response.data;
+            const newCards = additionalCardsData.map(cardData => ({
+              name: cardData.name,
+              img: cardData.img
+            }));
+            this.cards.push(...newCards);
             this.currentPage += 1;
+            this.totalCards = response.headers['x-total-count']; // Обновление общего количества карточек из заголовка ответа
           })
           .catch(error => {
             console.error('Ошибка при загрузке карточек:', error);
@@ -207,14 +208,6 @@ body{
   z-index: 100;
 }
 
-.containder{
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  display: flex;
-  border: 1px solid;
-
-}
 .logo{
   display: flex;
   font-size: 40px;
@@ -305,107 +298,11 @@ input:focus {
 .btn:focus{
   box-shadow: 0 0 10px rgb(3, 97, 75);
 }
-.main__text{
 
-  margin-top: 10px;
-  background-color: rgba(1, 76, 58, 0.146);
-
-}
 .card{
 
 }
 
-.card-text{
-  border-top: 1px solid;
-  border-color: rgb(194, 194, 194);
-}
-
-
-.meal__text{
-
-  opacity: 0;
-
-  max-width: 200px;
-  position: absolute;
-  left: 49%;
-  font-size: 65px;
-  transform: translate(-50%, -50%);
-  margin-top: 100px;
-
-  font-family: "Gilda Display", serif;
-  color:  rgb(1, 76, 59);
-
-
-}
-.meal__text.visible{
-  opacity: 1;
-  transition: all 1s;
-
-}
-.meal__breakfast{
-  margin-top: 200px;
-}
-.meal_btn{
-
-  position: relative;
-
-  left: 75%;
-  width: 120px;
-}
-.border__qw{
-  opacity: 0;
-  border-bottom: 2px solid;
-  margin-top: 90px;
-  color:rgb(1, 76, 59);
-}
-.border__qw.visible{
-  opacity: 1;
-  transition: all 1.5s;
-}
-
-.col{
-  opacity: 0;
-  -webkit-transform: translateX(-50px);
-  -ms-transform: translateX(-50px);
-  transform: translateX(-20px);
-
-
-}
-
-.col.visible{
-  opacity: 1;
-
-
-  -webkit-transform: translateX(0px);
-  -ms-transform: translateX(0px);
-  transform: translateX(0px);
-  -webkit-transition: all 1.5s;
-  -o-transition: all 1.5s;
-  transition: all 1.5s;
-}
-
-.carousel_btn{
-  height: 35px;
-  background-color: rgba(2, 96, 74, 0);
-  border: none;
-  padding-bottom: 5px;
-
-  font-family: "Gilda Display", serif;
-}
-.carousel_btn:hover{
-  background-color: rgb(2, 96, 74);
-
-}
-.Inform{
-  font-size: 25px;
-  font-weight: bold;
-}
-.Inform_main{
-  font-weight: bold;
-  color: rgb(255, 255, 255);
-  background-color:rgba(2, 96, 74, 0.188);
-  border-radius: 10px;
-}
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -429,4 +326,25 @@ input:focus {
   margin-top: 10px;
 }
 
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.load-more-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.load-more-button:hover {
+  background-color: #0056b3;
+}
 </style>
