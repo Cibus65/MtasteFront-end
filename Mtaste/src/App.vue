@@ -78,258 +78,14 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-        <div class="border__qw"></div>
 
-        <div class="meal__time">
-          <div class="meal__text" id="elementToScrollTo1">
-            <strong>Завтрак</strong>
-
-          </div>
-
-
-        </div>
-        <div class="meal__breakfast">
-          <div class="row row-cols-1 row-cols-md-2 g-4">
-
-            <div class="col" >
-              <div class="card card1">
-                <img :src="breakfast1" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Яичница с беконом и помидорами</h5>
-                  <p class="card-text">Быстрый и сытный завтрак.</p>
-
-                  <div>
-
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
-                      Launch static backdrop modal
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade"  id="staticBackdrop" data-bs-backdrop="false"  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
-                      <div class="modal-dialog">
-                        <div class="modal-content ">
-                          <div class="modal-header">
-                            <h5 class="modal-title " id="staticBackdropLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore cupiditate iusto ipsa ea ex illo provident fugit quisquam, est pariatur fugiat officia eos repudiandae dolor dolorum vitae velit, mollitia temporibus!
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="col" >
-              <div class="card">
-                <img :src="breakfast2" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Заварные блины на молоке</h5>
-                  <p class="card-text">Быстрый и сытный завтрак.</p>
-                  <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img :src="breakfast3" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Овсяная каша на молоке</h5>
-                  <p class="card-text">Быстрый и сытный завтрак.</p>
-                  <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img :src="breakfast4" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Классические сырники из творога</h5>
-                  <p class="card-text">Быстрый и сытный завтрак.</p>
-                  <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img :src="breakfast5" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Сэндвич с ветчиной и сыром</h5>
-                  <p class="card-text">Быстрый и сытный завтрак.</p>
-                  <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img :src="breakfast6" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Манная каша на воде</h5>
-                  <p class="card-text">Быстрый и сытный завтрак.</p>
-                  <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <div class="border__qw"></div>
-        <div class="meal__time">
-          <div class=" meal__text" id="elementToScrollTo2">
-            <strong>Обед</strong>
-          </div>
-
-        </div>
-        <div class="meal__breakfast">
-          <div class="row row-cols-1 row-cols-md-2 g-4">
-            <div class="col">
-              <div class="card">
-                <img :src="img__error" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img :src="img__error" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img :src="img__error" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                  <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img :src="img__error" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img :src="img__error" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                  <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img :src="img__error" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="border__qw"></div>
-        <div class="meal__time">
-          <div class=" meal__text" id="elementToScrollTo3">
-            <strong>Ужин</strong>
-
-          </div>
-
-
-        </div>
-        <div class="meal__breakfast">
-          <div class="row row-cols-1 row-cols-md-2 g-4">
-            <div class="col">
-              <div class="card">
-                <img :src="img__error" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img :src="img__error" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img :src="img__error" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                  <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img :src="img__error" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img :src="img__error" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                  <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img :src="img__error" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
-                </div>
-
-              </div>
-              <div>
-                <div>
-
-                </div>
-              </div>
+        <div>
+          <!-- Ваша разметка с карточками -->
+          <div class="card-container">
+            <div v-for="(card, index) in cards" :key="index" class="card">
+              <img :src="card.img" alt="Изображение блюда">
+              <h3>{{ card.name }}</h3>
+              <button>Готовить</button>
             </div>
           </div>
         </div>
@@ -363,7 +119,7 @@ import breakfast5 from  '@/assets/img/breakfast5.jpg';
 import breakfast6 from  '@/assets/img/breakfast6.jpg';
 import img__error from  '@/assets/img/img_error.jpg';
 import AuthModal from './components/AuthModal.vue';
-
+import axios from 'axios';
 
 
 anim()
@@ -388,8 +144,10 @@ export default {
       img__error: img__error,
 
       isAuthenticated: false,
-      showModal: false
-
+      showModal: false,
+      cards: [],
+      batchCount: 5,
+      currentPage: 1
 
     };
 
@@ -398,6 +156,13 @@ export default {
   directives: {
     scrollTo: VueScrollTo.directive
 
+  },
+  mounted() {
+    this.loadMoreCards();
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
     openModal() {
@@ -416,6 +181,32 @@ export default {
       const elementId = '#elementToScrollTo';
       // Прокрутка к элементу с заданным id
       this.$scrollTo.scrollTo(elementId, 1500); // 1500 - это длительность анимации скролла в миллисекундах
+    },
+    handleScroll() {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        this.currentPage+=1
+        this.loadMoreCards();
+      }
+    },
+    loadMoreCards() {
+      axios.get(`http://0.0.0.0:8080/Mtaste/API/getRecipeByPage/${this.currentPage}`)
+          .then(response => {
+            const additionalCardsData = response.data; // Получаем массив данных карточек из ответа
+            additionalCardsData.forEach(cardData => {
+              // Создаем объект карточки из данных
+              const card = {
+                name: cardData.name,
+                img: cardData.img,
+                // Добавляем другие данные, если они есть
+              };
+              // Добавляем карточку к массиву cards
+              this.cards.push(card);
+            });
+            this.currentPage += 1;
+          })
+          .catch(error => {
+            console.error('Ошибка при загрузке карточек:', error);
+          });
     }
   }
 }
@@ -656,6 +447,27 @@ input:focus {
   background-color:rgba(2, 96, 74, 0.188);
   border-radius: 10px;
 }
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
 
+.card {
+  width: 300px;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.card button {
+  margin-top: 10px;
+}
 
 </style>
