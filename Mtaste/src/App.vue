@@ -37,50 +37,9 @@
             </nav>
           </nav>
         </div>
-        <div class="alert alert-secondary main__text" role="alert">
-          <strong>Рецепты блюд основного меню: </strong>  Мы собрали подробные рецепты с фото для блюд от шефа на все случаи жизни. Для любого блюда вы можете заказать набор со всеми ингредиентами, чтобы приготовить его за 15 минут.
-        </div>
-        <div id="carouselExampleCaptions" class="carousel slide carousel__border">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img :src="img1" class="d-block w-100 heig" alt="...">
-              <div class="carousel-caption d-none d-md-block">
-                <a class="btn btn-primary btn-sm carousel_btn " href="#elementToScrollTo1" role="button" @click="scrollToElement"><h5 class="Inform">Завтрак</h5></a>
-                <p class="Inform_main">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum, leo ac vestibulum lobortis, diam arcu ornare magna, eu lobortis orci tortor nec tellus. Etiam convallis dapibus dui, sit amet gravida turpis vulputate eget. </p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img :src="img2" class="d-block w-100 heig" alt="...">
-              <div class="carousel-caption d-none d-md-block">
-                <a class="btn btn-primary btn-sm carousel_btn " href="#elementToScrollTo2" role="button" @click="scrollToElement"><h5 class="Inform">Обед</h5></a>
-                <p class="Inform_main">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum, leo ac vestibulum lobortis, diam arcu ornare magna, eu lobortis orci tortor nec tellus. Etiam convallis dapibus dui, sit amet gravida turpis vulputate eget. </p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img :src="img3" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-none d-md-block">
-                <a class="btn btn-primary btn-sm carousel_btn " href="#elementToScrollTo3" role="button" @click="scrollToElement"><h5 class="Inform">Ужин</h5></a>
-                <p class="Inform_main">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum, leo ac vestibulum lobortis, diam arcu ornare magna, eu lobortis orci tortor nec tellus. Etiam convallis dapibus dui, sit amet gravida turpis vulputate eget. </p>
-              </div>
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
 
         <div>
-          <!-- Ваша разметка с карточками -->
+          <!-- Разметка с карточками -->
           <div class="card-container">
             <div v-for="(card, index) in cards" :key="index" class="card">
               <img :src="card.img" alt="Изображение блюда">
