@@ -1,3 +1,4 @@
+
 // import './assets/main.css'
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,7 +16,4 @@ const app = createApp(App)
 app.use(VueSweetalert2);
 
 
-
-createApp(App).mount('#app');
-
-
+app.mount('#app');

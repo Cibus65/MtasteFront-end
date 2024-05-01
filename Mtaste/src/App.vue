@@ -1,6 +1,6 @@
-
 <template>
   <!DOCTYPE html>
+
  <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -365,8 +365,69 @@
      
  </template>
 
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap" rel="stylesheet">
+    <title>Mtaste</title>
 
- 
+  </head>
+  <header class="header">
+    <div class="intro">
+      <div class="container">
+        <div class="header__inner">
+          <div class="logo"><img :src="imagePath">
+            <div class="name">Mtaste</div>
+            <div class="button-top">
+
+              <button class="btn btn-outline-secondary enter__button" v-if="!isAuthenticated" @click="openModal">Войти</button>
+              <auth-modal :show="showModal" @close="closeModal"></auth-modal>
+
+
+            </div>
+          </div>
+
+          <nav class="navigation">
+            <a class="nav-link"  aria-disabled="false" href="#">Основное меню</a>
+            <a class="nav-link"  aria-disabled="false" href="#">Ингредиенты</a>
+            <a class="nav-link"  aria-disabled="false" href="#">Праздничное меню</a>
+            <nav class="navbar navbar-light bg-light">
+              <form class="form-inline">
+                <input class="form-control mr-sm-2 search__engin" type="text" placeholder="Найти рецепт...">
+                <button type="button" class="btn btn-outline-secondary search__button">Найти</button>
+              </form>
+
+            </nav>
+          </nav>
+        </div>
+
+        <div>
+          <!-- Разметка с карточками -->
+          <div class="card-container">
+            <div v-for="(card, index) in cards" :key="index" class="card">
+              <img :src="card.img" alt="Изображение блюда">
+              <h3>{{ card.name }}</h3>
+              <button>Готовить</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+  </header>
+
+</template>
+
+>>>>>>> dccefc7c64756361f7aadb8d640ee9b72fa2db3f
+
+
 <script>
  import modal from './components/modal.vue';
  import anim from './animation';
@@ -386,9 +447,21 @@
  
 
 
- 
-anim()  
- 
+import anim from './animation';
+import VueScrollTo from 'vue-scrollto';
+import image from '@/assets/img/logo.jpg';
+import img1 from  '@/assets/img/img1.jpg';
+import img2 from  '@/assets/img/img2.jpg';
+import img3 from  '@/assets/img/img3.jpg';
+import breakfast1 from  '@/assets/img/breakfast1.jpg';
+import breakfast2 from  '@/assets/img/breakfast2.jpg';
+import breakfast3 from  '@/assets/img/breakfast3.jpg';
+import breakfast4 from  '@/assets/img/breakfast4.jpg';
+import breakfast5 from  '@/assets/img/breakfast5.jpg';
+import breakfast6 from  '@/assets/img/breakfast6.jpg';
+import img__error from  '@/assets/img/img_error.jpg';
+import AuthModal from './components/AuthModal.vue';
+import axios from 'axios';
 
  export default {
   
@@ -397,22 +470,25 @@ anim()
   data() {
     return {
       imagePath: image,
-       img1: img1,
-       img2: img2,
-       img3: img3,
-       breakfast1: breakfast1,
-       breakfast2: breakfast2,
-       breakfast3: breakfast3,
-       breakfast4: breakfast4,
-       breakfast5: breakfast5,
-       breakfast6: breakfast6,
-       img__error: img__error,
+      img1: img1,
+      img2: img2,
+      img3: img3,
+      breakfast1: breakfast1,
+      breakfast2: breakfast2,
+      breakfast3: breakfast3,
+      breakfast4: breakfast4,
+      breakfast5: breakfast5,
+      breakfast6: breakfast6,
+      img__error: img__error,
 
-       showModal: false
-       
-       
+      isAuthenticated: false,
+      showModal: false,
+      cards: [],
+      batchCount: 5,
+      currentPage: 1
+
     };
-    
+
   },
   mounted(){
     focusInput();
@@ -421,7 +497,14 @@ anim()
   name: 'App',
   directives: {
     scrollTo: VueScrollTo.directive
-    
+
+  },
+  mounted() {
+    this.loadMoreCards();
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
     openModal() {
@@ -436,27 +519,38 @@ anim()
       // Прокрутка к элементу с заданным id
       this.$scrollTo.scrollTo(elementId, 1500); // 1500 - это длительность анимации скролла в миллисекундах
     },
-    openModal() {
-      this.showModal = true;
-      this.$nextTick(() => {
-        this.$refs.modal.focus();
-      });
+    handleScroll() {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        this.currentPage+=1
+        this.loadMoreCards();
+      }
     },
-    closeModal() {
-      this.showModal = false;
+    loadMoreCards() {
+      axios.get(`http://0.0.0.0:8080/Mtaste/API/getRecipeByPage/${this.currentPage}`)
+          .then(response => {
+            const additionalCardsData = response.data; // Получаем массив данных карточек из ответа
+            additionalCardsData.forEach(cardData => {
+              // Создаем объект карточки из данных
+              const card = {
+                name: cardData.name,
+                img: cardData.img,
+                // Добавляем другие данные, если они есть
+              };
+              // Добавляем карточку к массиву cards
+              this.cards.push(card);
+            });
+            this.currentPage += 1;
+          })
+          .catch(error => {
+            console.error('Ошибка при загрузке карточек:', error);
+          });
     }
-    
   }
-  
-  
- 
- };
- 
-
+}
 
 </script>
- 
- 
+
+
 <style scoped>
  
  body{
@@ -602,24 +696,24 @@ anim()
  .card-text{
   border-top: 1px solid;
   border-color: rgb(194, 194, 194);
- }
+}
 
- 
+
 .meal__text{
 
-    opacity: 0;
-    
-    max-width: 200px;
-    position: absolute;
-    left: 49%;
-    font-size: 65px;
-    transform: translate(-50%, -50%);
-    margin-top: 100px;
-    
-    font-family: "Gilda Display", serif;
-    color:  rgb(1, 76, 59); 
+  opacity: 0;
 
-  
+  max-width: 200px;
+  position: absolute;
+  left: 49%;
+  font-size: 65px;
+  transform: translate(-50%, -50%);
+  margin-top: 100px;
+
+  font-family: "Gilda Display", serif;
+  color:  rgb(1, 76, 59);
+
+
 }
 .meal__text.visible{
   opacity: 1;
@@ -630,9 +724,9 @@ anim()
   margin-top: 200px;
 }
 .meal_btn{
-  
+
   position: relative;
-  
+
   left: 75%;
   width: 120px;
 }
@@ -659,8 +753,8 @@ anim()
 
 .col.visible{
   opacity: 1;
-  
-  
+
+
   -webkit-transform: translateX(0px);
   -ms-transform: translateX(0px);
   transform: translateX(0px);
@@ -674,12 +768,12 @@ anim()
   background-color: rgba(2, 96, 74, 0);
   border: none;
   padding-bottom: 5px;
-  
+
   font-family: "Gilda Display", serif;
 }
 .carousel_btn:hover{
-  background-color: rgb(2, 96, 74); 
-  
+  background-color: rgb(2, 96, 74);
+
 }
 .Inform{
   font-size: 25px;
@@ -688,13 +782,29 @@ anim()
 .Inform_main{
   font-weight: bold;
   color: rgb(255, 255, 255);
-  background-color:rgba(2, 96, 74, 0.188); 
+  background-color:rgba(2, 96, 74, 0.188);
   border-radius: 10px;
 }
 
 
 
 
+.card {
+  width: 300px;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
 
+.card img {
+  max-width: 100%;
+  height: auto;
+}
 
- </style>
+.card button {
+  margin-top: 10px;
+}
+
+</style>
