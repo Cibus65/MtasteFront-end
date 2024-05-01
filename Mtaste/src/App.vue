@@ -113,7 +113,7 @@ export default {
   methods: {
     openRecipeModal(card) {
       // Делаем запрос к серверу для получения описания рецепта
-      axios.get(`http://0.0.0.0:8080/Mtaste/API/getRecipeDescription/${card.id}`)
+      axios.get(`http://0.0.0.0:8080/Mtaste/API/getRecipeByPage/${card.id}`)
           .then(response => {
             // Обновляем текущую карточку с описанием
             this.selectedCard = {
@@ -158,7 +158,8 @@ export default {
             const additionalCardsData = response.data;
             const newCards = additionalCardsData.map(cardData => ({
               name: cardData.name,
-              img: cardData.img
+              img: cardData.img,
+              id: cardData.id,
             }));
             this.cards.push(...newCards);
             this.currentPage += 1;
