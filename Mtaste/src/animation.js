@@ -56,6 +56,7 @@ function handleScroll() {
     
   }
   
+  
   // Добавляем обработчик события скролла на окно
   window.addEventListener('scroll', handleScroll);
   

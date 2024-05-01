@@ -7,6 +7,7 @@
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap" rel="stylesheet">
+     
      <title>Mtaste</title>
  
  </head>
@@ -55,6 +56,7 @@
                  <img :src="img2" class="d-block w-100 heig" alt="...">
                  <div class="carousel-caption d-none d-md-block">
                   <a class="btn btn-primary btn-sm carousel_btn " href="#elementToScrollTo2" role="button" @click="scrollToElement"><h5 class="Inform">Обед</h5></a>
+                  
                      <p class="Inform_main">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum, leo ac vestibulum lobortis, diam arcu ornare magna, eu lobortis orci tortor nec tellus. Etiam convallis dapibus dui, sit amet gravida turpis vulputate eget. </p>
                  </div>
                  </div>
@@ -76,10 +78,11 @@
              </button>
              </div>
              <div class="border__qw"></div>
- 
+            
              <div class="meal__time">
               <div class="meal__text" id="elementToScrollTo1">
                 <strong>Завтрак</strong>
+                
                 
               </div>
               
@@ -87,41 +90,23 @@
              </div>
              <div class="meal__breakfast">
               <div class="row row-cols-1 row-cols-md-2 g-4">
-                
+                <modal  />
                   <div class="col" >
-                    <div class="card card1">
+                   
+                    <div class="card ">
                       <img :src="breakfast1" class="card-img-top" alt="...">
                       <div class="card-body">
                         <h5 class="card-title">Яичница с беконом и помидорами</h5>
                         <p class="card-text">Быстрый и сытный завтрак.</p>
                         
-                        <div>
-                          
-                          <!-- Button trigger modal -->
-                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
-                            Launch static backdrop modal
-                          </button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
+                        
 
-                          <!-- Modal -->
-                          <div class="modal fade"  id="staticBackdrop" data-bs-backdrop="false"  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
-                            <div class="modal-dialog">
-                              <div class="modal-content ">
-                                <div class="modal-header">
-                                  <h5 class="modal-title " id="staticBackdropLabel">Modal title</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore cupiditate iusto ipsa ea ex illo provident fugit quisquam, est pariatur fugiat officia eos repudiandae dolor dolorum vitae velit, mollitia temporibus!
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
-                                  <button type="button" class="btn btn-primary">Understood</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
 
-                        </div>
+
+                        
                         
                       </div>
                     </div>
@@ -131,9 +116,14 @@
                     <div class="card">
                       <img :src="breakfast2" class="card-img-top" alt="...">
                       <div class="card-body">
+                        
+                              
                         <h5 class="card-title">Заварные блины на молоке</h5>
                         <p class="card-text">Быстрый и сытный завтрак.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
+                        
                       </div>
                     </div>
                   </div>
@@ -143,7 +133,10 @@
                       <div class="card-body">
                         <h5 class="card-title">Овсяная каша на молоке</h5>
                         <p class="card-text">Быстрый и сытный завтрак.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
+                        
                       </div>
                     </div>
                   </div>
@@ -153,7 +146,9 @@
                       <div class="card-body">
                         <h5 class="card-title">Классические сырники из творога</h5>
                         <p class="card-text">Быстрый и сытный завтрак.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -163,7 +158,9 @@
                       <div class="card-body">
                         <h5 class="card-title">Сэндвич с ветчиной и сыром</h5>
                         <p class="card-text">Быстрый и сытный завтрак.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -173,7 +170,9 @@
                       <div class="card-body">
                         <h5 class="card-title">Манная каша на воде</h5>
                         <p class="card-text">Быстрый и сытный завтрак.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -195,7 +194,9 @@
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -205,7 +206,9 @@
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -215,7 +218,9 @@
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -225,7 +230,9 @@
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -235,7 +242,9 @@
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -245,7 +254,9 @@
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -268,7 +279,9 @@
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -278,7 +291,9 @@
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -288,7 +303,9 @@
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -298,7 +315,9 @@
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -308,7 +327,9 @@
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -318,7 +339,9 @@
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <a class="btn btn-primary btn-sm meal_btn " href="#" role="button">Готовить </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Готовить
+                        </button>
                       </div>
                       
                     </div>
@@ -330,9 +353,9 @@
                   </div>
                 </div>
              </div>
-             
+          </div>   
          </div>
-     </div>
+     
              
      
  
@@ -345,8 +368,9 @@
 
  
 <script>
- 
+ import modal from './components/modal.vue';
  import anim from './animation';
+ import { focusInput } from './modal_l';
  import VueScrollTo from 'vue-scrollto';
  import image from '@/assets/img/logo.jpg';
  import img1 from  '@/assets/img/img1.jpg';
@@ -360,13 +384,16 @@
  import breakfast6 from  '@/assets/img/breakfast6.jpg';
  import img__error from  '@/assets/img/img_error.jpg';
  
- 
+
 
  
 anim()  
  
 
  export default {
+  
+  components: { modal },
+  
   data() {
     return {
       imagePath: image,
@@ -387,12 +414,22 @@ anim()
     };
     
   },
+  mounted(){
+    focusInput();
+  },
+  
   name: 'App',
   directives: {
     scrollTo: VueScrollTo.directive
     
   },
   methods: {
+    openModal() {
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
+    },
     scrollToElement() {
       // id элемента, к которому нужно перейти
       const elementId = '#elementToScrollTo';
@@ -427,9 +464,10 @@ anim()
      font-family: "Gilda Display", serif;
      max-width: 1440px;
      font-size: 15px;
-     color: #fff;
+     color: #ffffff;
      width: 100%;
      height: 100%;
+     
      
      
  }
@@ -451,7 +489,7 @@ anim()
      top: 0;
      left: 0;
      right: 0;
-     z-index: 100;
+     
  }
  
  .containder{
@@ -499,7 +537,6 @@ anim()
      width: 281px;
      
      
-     
  }
  .enter__button{
      margin-top: 30px;
@@ -519,6 +556,7 @@ anim()
      border-bottom-left-radius: 0px;
      border-top-right-radius: 10px;
      border-bottom-right-radius: 10px;
+     
  }
  .search__engin{
      margin-top: 5px;
@@ -526,6 +564,7 @@ anim()
      border-bottom-right-radius: 0px;
      border-top-left-radius: 10px;
      border-bottom-left-radius: 10px;
+     
  }
  
  .bg-light{
@@ -538,29 +577,27 @@ anim()
  input:focus {
    box-shadow: 0 0 10px rgba(2, 96, 74, 1);
  }
- .btn {
+.btn {
      background-color: rgba(2, 96, 74, 1);
      border-color: rgba(2, 96, 74, 1);
      font-family: "Gilda Display", serif;
      
      
  }
- .btn:hover{
+.btn:hover{
      background-color: rgb(1, 76, 59); 
  }
  
- .btn:focus{
-     box-shadow: 0 0 10px rgb(3, 97, 75);
+.btn:focus{
+     box-shadow: 0 0 10px rgb(3, 91, 71);
  }
- .main__text{
+.main__text{
   
      margin-top: 10px;
      background-color: rgba(1, 76, 58, 0.146);
      
  }
- .card{
-  
- }
+
  
  .card-text{
   border-top: 1px solid;
@@ -617,6 +654,7 @@ anim()
   transform: translateX(-20px);
   
   
+  
 }
 
 .col.visible{
@@ -656,12 +694,6 @@ anim()
 
 
 
-.modal{
-  --bs-modal-zindex: 0;
-  z-index: var(--bs-modal-zindex);
-  
-  
-}
 
 
 
