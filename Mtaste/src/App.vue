@@ -12,7 +12,7 @@
   <header class="header">
     <div class="intro">
       <div class="container">
-        <div class="header__inner">
+        <div class="header__inner" id="headerInner">
           <div class="logo"><img :src="imagePath">
             <div class="name">Mtaste</div>
             <div class="button-top">
@@ -106,15 +106,25 @@ export default {
   },
   mounted() {
     this.loadMoreCards();
+    this.adjustCardContainerMargin();
     window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('resize', this.adjustCardContainerMargin);
   },
   destroyed() {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
+    adjustCardContainerMargin() {
+      const headerInner = document.getElementById('headerInner');
+      const cardContainer = document.querySelector('.card-container');
+      if (headerInner && cardContainer) {
+        const headerHeight = headerInner.offsetHeight;
+        cardContainer.style.marginTop = `${headerHeight}px`;
+      }
+    },
     openRecipeModal(card) {
       // Делаем запрос к серверу для получения описания рецепта
-      axios.get(`http://0.0.0.0:8080/Mtaste/API/getRecipeByID/${card.id}`)
+      axios.get(`http://localhost:8080/Mtaste/API/getRecipeByID/${card.id}`)
           .then(response => {
             // Обновляем текущую карточку с описанием
             this.selectedCard = {
@@ -154,7 +164,7 @@ export default {
       }
     },
     loadMoreCards() {
-      axios.get(`http://0.0.0.0:8080/Mtaste/API/getRecipeByPage/${this.currentPage}`)
+      axios.get(`http://localhost:8080/Mtaste/API/getRecipeByPage/${this.currentPage}`)
           .then(response => {
             const additionalCardsData = response.data;
             const newCards = additionalCardsData.map(cardData => ({
@@ -209,7 +219,17 @@ body{
   right: 0;
   z-index: 100;
 }
-
+.header__inner {
+  width: 100%;
+}
+.header__inner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: #fff;
+}
 .logo{
   display: flex;
   font-size: 40px;
@@ -217,6 +237,8 @@ body{
   color:rgba(2, 96, 74, 1);
   font-weight: 700;
   border-bottom: 1px solid;
+  padding-left: 15%;
+  padding-right: 15%;
 
 }
 .name{
@@ -224,20 +246,42 @@ body{
   margin-top: 20px;
   margin-left: 5px;
 }
-.navigation{
-  font-size: 30px;
-  font-family: "Gilda Display", serif;
+.navigation {
   display: flex;
-  color: rgba(2, 96, 74, 1);
-
-  border-bottom: 1px solid;
-
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 20%;
+  align-items: center;
 }
-.nav-link{
-  margin-top: 15px;
-  margin-right: 70px;
-  margin-left: 15px;
 
+.nav-link {
+  flex: 1;
+  margin: 5px;
+  padding: 10px;
+  color: rgba(2, 96, 74, 1);
+  font-family: "Gilda Display", serif;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(2, 96, 74, 0.1);
+}
+
+/* Медиазапросы для адаптивности */
+@media screen and (max-width: 768px) {
+  .nav-link {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .nav-link {
+    font-size: 14px;
+  }
 }
 
 .form-inline{
@@ -251,7 +295,7 @@ body{
 }
 .enter__button{
   margin-top: 30px;
-  position: absolute; left: 75%;
+  position: absolute; left: 80%;
   width: 100px;
 
 
@@ -311,12 +355,15 @@ input:focus {
 }
 
 .card {
-  width: 300px;
+  width: 600px;
   margin: 10px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   text-align: center;
+}
+.card h3 {
+  font-size: 18px;
 }
 
 .card img {
@@ -324,10 +371,15 @@ input:focus {
   height: auto;
 }
 
-.card button {
-  margin-top: 10px;
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+.card button {
+  margin-top: auto;
+}
 .load-more-container {
   display: flex;
   justify-content: center;
