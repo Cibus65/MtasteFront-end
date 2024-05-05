@@ -45,16 +45,8 @@ export default {
     toggleDetails(detailType, index) {
       if (detailType === 'ingredients') {
         this.isIngredientsOpen = !this.isIngredientsOpen;
-        // Закрываем открытый шаг, если он был открыт
-        if (this.openedDescriptionIndex !== null) {
-          this.openedDescriptionIndex = null;
-        }
       } else if (detailType === 'description') {
         this.openedDescriptionIndex = this.openedDescriptionIndex === index ? null : index;
-        // Закрываем открытые ингредиенты, если они были открыты
-        if (this.isIngredientsOpen) {
-          this.isIngredientsOpen = false;
-        }
       }
     }
   }
