@@ -3,10 +3,37 @@
     <div class="modal-content">
       <span class="close" @click="$emit('close')">&times;</span>
       <h2>{{ card.name }}</h2>
-      <h3>Ингредиенты</h3>
-      <p v-html="formattedIngredients"></p>
-      <h3>Рецепт</h3>
-      <p v-html="formattedDescription"></p>
+      <div class="accordion">
+        <div class="accordion-item" @click="toggleDetails('ingredients')">
+          <div class="accordion-header">
+            Ингредиенты
+          </div>
+          <div class="accordion-content" v-show="isIngredientsOpen">
+            <div class="ingredients">
+              <div v-for="(amount, ingredient) in card.ingredients" :key="ingredient">
+                <strong>{{ ingredient }}:</strong> {{ amount }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item" @click="toggleDetails('description')">
+          <div class="accordion-header">
+            Рецепт
+          </div>
+          <div class="accordion-content" v-show="isDescriptionOpen">
+            <div class="description">
+              <div v-if="Array.isArray(card.description)">
+                <div v-for="(text, index) in card.description" :key="index">
+                  <strong>{{ index + 1 }}.</strong> {{ text }}
+                </div>
+              </div>
+              <div v-else>
+                <div v-text="card.description"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -17,27 +44,46 @@ export default {
     show: Boolean,
     card: Object
   },
-  computed: {
-    formattedIngredients() {
-      if (!this.card.ingredients) return '';
-      return Object.entries(this.card.ingredients)
-          .map(([ingredient, amount]) => `<strong>${ingredient}:</strong> ${amount}`)
-          .join('<br>');
-    },
-    formattedDescription() {
-      if (!this.card.description) return '';
-      if (typeof this.card.description === 'object') {
-        return Object.entries(this.card.description)
-            .map(([step, text]) => `<strong>${step}.</strong> ${text}`)
-            .join('<br>');
+  data() {
+    return {
+      isIngredientsOpen: false,
+      isDescriptionOpen: false
+    };
+  },
+  methods: {
+    toggleDetails(openedDetail) {
+      if (openedDetail === 'ingredients') {
+        this.isIngredientsOpen = !this.isIngredientsOpen;
+        this.isDescriptionOpen = false;
+      } else if (openedDetail === 'description') {
+        this.isDescriptionOpen = !this.isDescriptionOpen;
+        this.isIngredientsOpen = false;
       }
-      return this.card.description;
     }
   }
 };
 </script>
 
 <style scoped>
+.accordion {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.accordion-item {
+  margin-bottom: 10px;
+}
+
+.accordion-header {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+}
+
+.accordion-content {
+  padding: 10px;
+}
 .modal {
   display: block;
   position: fixed;
@@ -94,5 +140,22 @@ p {
     top: 0;
     opacity: 1;
   }
+}
+details {
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+summary {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+}
+
+.ingredients,
+.description {
+  padding: 10px;
 }
 </style>
