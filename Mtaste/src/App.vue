@@ -27,12 +27,13 @@
       </div>
     </header>
 
-    <div class="card-container" ref="cardContainer" @scroll="handleScroll">
+    <div class="card-container" ref="cardContainer">
       <div v-for="(card, index) in cards" :key="index" class="card">
         <img :src="img__error" alt="Изображение блюда">
         <h3>{{ card.name }}</h3>
         <button @click="openRecipeModal(card)">Готовить</button>
       </div>
+      <button v-if="cards.length % 20 === 0 && cards.length < 2000" @click="loadMoreCards" class="load-more-button">Показать еще</button>
     </div>
 
     <recipe-modal :show="showRecipeModal" :card="selectedCard" @close="closeRecipeModal"></recipe-modal>
@@ -117,7 +118,8 @@ export default {
       }
     },
     loadMoreCards() {
-      return axios.get(`http://localhost:8080/Mtaste/API/getRecipeByPage/${this.currentPage}`)
+      // Загружаем дополнительные карты
+      axios.get(`http://localhost:8080/Mtaste/API/getRecipeByPage/${this.currentPage}`)
           .then(response => {
             const additionalCardsData = response.data;
             const newCards = additionalCardsData.map(cardData => ({
@@ -127,6 +129,7 @@ export default {
             }));
             this.cards.push(...newCards);
             this.totalCards = response.headers['x-total-count'];
+            this.currentPage++; // Переходим на следующую страницу
           })
           .catch(error => {
             console.error('Ошибка при загрузке карточек:', error);
@@ -158,6 +161,15 @@ body{
   height: 100vh;
   -webkit-background-size: cover;
   background-size: cover;
+}
+
+.load-more-button{
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 18px;
+  width: 50%; 
+  cursor: pointer;
 }
 
 .header{
