@@ -3,8 +3,10 @@
     <div class="modal-content">
       <span class="close" @click="$emit('close')">&times;</span>
       <h2>{{ card.name }}</h2>
-      <p>{{ card.ingredients }}</p>
-      <p>{{ card.description }}</p>
+      <h3>Ингредиенты</h3>
+      <p v-html="formattedIngredients"></p>
+      <h3>Рецепт</h3>
+      <p v-html="formattedDescription"></p>
     </div>
   </div>
 </template>
@@ -14,6 +16,23 @@ export default {
   props: {
     show: Boolean,
     card: Object
+  },
+  computed: {
+    formattedIngredients() {
+      if (!this.card.ingredients) return '';
+      return Object.entries(this.card.ingredients)
+          .map(([ingredient, amount]) => `<strong>${ingredient}:</strong> ${amount}`)
+          .join('<br>');
+    },
+    formattedDescription() {
+      if (!this.card.description) return '';
+      if (typeof this.card.description === 'object') {
+        return Object.entries(this.card.description)
+            .map(([step, text]) => `<strong>${step}.</strong> ${text}`)
+            .join('<br>');
+      }
+      return this.card.description;
+    }
   }
 };
 </script>

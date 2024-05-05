@@ -89,9 +89,11 @@ export default {
     openRecipeModal(card) {
       axios.get(`http://localhost:8080/Mtaste/API/getRecipeByID/${card.id}`)
           .then(response => {
+            const recipeData = response.data;
             this.selectedCard = {
               ...card,
-              description: response.data.description
+              description: recipeData.description,
+              ingredients: recipeData.ingredients // Добавляем ингредиенты в объект card
             };
             this.showRecipeModal = true;
           })
@@ -168,7 +170,7 @@ body{
   margin: 20px auto;
   padding: 10px 20px;
   font-size: 18px;
-  width: 50%; 
+  width: 50%;
   cursor: pointer;
 }
 
