@@ -1,10 +1,10 @@
 <template>
   <div v-if="show" class="modal">
     <div class="modal-content">
+      <span class="close" @click="$emit('close')">&times;</span>
       <h2>{{ card.name }}</h2>
-      <img :src="card.img" alt="Изображение блюда">
-      <p v-if="card.description">{{ card.description }}</p>
-      <button @click="closeModal">Закрыть</button>
+      <p>{{ card.ingredients }}</p>
+      <p>{{ card.description }}</p>
     </div>
   </div>
 </template>
@@ -14,34 +14,66 @@ export default {
   props: {
     show: Boolean,
     card: Object
-  },
-  methods: {
-    closeModal() {
-      this.$emit('close');
-    }
   }
-}
+};
 </script>
 
 <style scoped>
 .modal {
+  display: block;
   position: fixed;
-  top: 0;
+  z-index: 1000;
   left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1000;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .modal-content {
-  position: fixed;
-  background: white;
-  width: 80%;
-  height: auto;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  background-color: #fefefe;
+  margin: 15% auto;
   padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+p {
+  color: #666;
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }
 </style>

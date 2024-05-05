@@ -1,117 +1,80 @@
 <template>
-  <!DOCTYPE html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap" rel="stylesheet">
-    <title>Mtaste</title>
-
-  </head>
-  <header class="header">
-    <div class="intro">
-      <div class="container">
-        <div class="header__inner" id="headerInner">
-          <div class="logo"><img :src="imagePath">
-            <div class="name">Mtaste</div>
-            <div class="button-top">
-
-              <button class="btn btn-outline-secondary enter__button" v-if="!isAuthenticated" @click="openModal">Войти</button>
-              <auth-modal :show="showModal" @close="closeModal"></auth-modal>
-
-
+  <div class="app">
+    <header class="header">
+      <div class="intro">
+        <div class="container">
+          <div class="header__inner" id="headerInner">
+            <div class="logo">
+              <img :src="imagePath" alt="Logo">
+              <div class="name">Mtaste</div>
+              <div class="button-top">
+                <button class="btn btn-outline-secondary enter__button" v-if="!isAuthenticated" @click="openModal">Войти</button>
+              </div>
             </div>
-          </div>
-
-          <nav class="navigation">
-            <a class="nav-link"  aria-disabled="false" href="#">Основное меню</a>
-            <a class="nav-link"  aria-disabled="false" href="#">Ингредиенты</a>
-            <a class="nav-link"  aria-disabled="false" href="#">Праздничное меню</a>
-            <nav class="navbar navbar-light bg-light">
-              <form class="form-inline">
-                <input class="form-control mr-sm-2 search__engin" type="text" placeholder="Найти рецепт...">
-                <button type="button" class="btn btn-outline-secondary search__button">Найти</button>
-              </form>
-
+            <nav class="navigation">
+              <a class="nav-link" href="#">Основное меню</a>
+              <a class="nav-link" href="#">Ингредиенты</a>
+              <a class="nav-link" href="#">Праздничное меню</a>
+              <nav class="navbar navbar-light bg-light">
+                <form class="form-inline">
+                  <input class="form-control mr-sm-2 search__engin" type="text" placeholder="Найти рецепт...">
+                  <button type="button" class="btn btn-outline-secondary search__button">Найти</button>
+                </form>
+              </nav>
             </nav>
-          </nav>
-        </div>
-
-        <div class="card-container">
-          <div v-for="(card, index) in cards" :key="index" class="card">
-            <img :src="img__error" alt="Изображение блюда">
-            <h3>{{ card.name }}</h3>
-            <button @click="openRecipeModal(card)">Готовить</button>
-            <recipe-modal :show="showRecipeModal" :card="selectedCard" @close="closeRecipeModal"></recipe-modal>
-          </div>
-          <!-- Добавление контейнера для центрирования кнопки -->
-          <div class="load-more-container">
-            <button v-if="cards.length < totalCards" @click="loadMoreCards" class="load-more-button">Показать еще</button>
           </div>
         </div>
+      </div>
+    </header>
 
-
+    <div class="card-container" ref="cardContainer" @scroll="handleScroll">
+      <div v-for="(card, index) in cards" :key="index" class="card">
+        <img :src="img__error" alt="Изображение блюда">
+        <h3>{{ card.name }}</h3>
+        <button @click="openRecipeModal(card)">Готовить</button>
       </div>
     </div>
 
+    <recipe-modal :show="showRecipeModal" :card="selectedCard" @close="closeRecipeModal"></recipe-modal>
 
+    <auth-modal :show="showModal" @close="closeModal"></auth-modal>
 
-
-
-  </header>
-
+  </div>
 </template>
 
-
-
 <script>
-
-import anim from './animation';
-import VueScrollTo from 'vue-scrollto';
-import image from '@/assets/img/logo.jpg';
-import img__error from  '@/assets/img/img_error.jpg';
-import AuthModal from './components/AuthModal.vue';
 import axios from 'axios';
+import AuthModal from './components/AuthModal.vue';
 import RecipeModal from './components/RecipeModal.vue';
-
-anim()
-
+import image from '@/assets/img/logo.jpg';
+import img__error from '@/assets/img/img_error.jpg';
 
 export default {
   components: {
     AuthModal,
     RecipeModal,
   },
+
   data() {
     return {
       imagePath: image,
       img__error: img__error,
-
       isAuthenticated: false,
       showModal: false,
       cards: [],
-      totalCards: 0, // Новое свойство для хранения общего количества карточек
-      batchCount: 10, // Количество карточек, которые будут загружаться при каждом нажатии на "Показать еще"
+      totalCards: 0,
       currentPage: 1,
       showRecipeModal: false,
       selectedCard: null,
     };
-
-  },
-  name: 'App',
-  directives: {
-    scrollTo: VueScrollTo.directive
-
   },
   mounted() {
     this.loadMoreCards();
     this.adjustCardContainerMargin();
-    window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('resize', this.adjustCardContainerMargin);
   },
-  destroyed() {
-    window.removeEventListener('scroll', this.handleScroll);
+  beforeDestroy() {
+    window.removeEventListener('resize', this.adjustCardContainerMargin);
   },
   methods: {
     adjustCardContainerMargin() {
@@ -123,10 +86,8 @@ export default {
       }
     },
     openRecipeModal(card) {
-      // Делаем запрос к серверу для получения описания рецепта
       axios.get(`http://localhost:8080/Mtaste/API/getRecipeByID/${card.id}`)
           .then(response => {
-            // Обновляем текущую карточку с описанием
             this.selectedCard = {
               ...card,
               description: response.data.description
@@ -141,30 +102,22 @@ export default {
       this.showRecipeModal = false;
     },
     openModal() {
-      this.showModal = false; // Сбрасываем состояние модального окна
-      this.$nextTick(() => {
-        this.showModal = true; // Устанавливаем состояние модального окна
-        this.isAuthenticated = false;
-      });
+      this.showModal = true;
+      this.isAuthenticated = false;
     },
     closeModal() {
-      this.showModal = false; // Сбрасываем состояние модального окна
+      this.showModal = false;
       this.isAuthenticated = true;
     },
-    scrollToElement() {
-      // id элемента, к которому нужно перейти
-      const elementId = '#elementToScrollTo';
-      // Прокрутка к элементу с заданным id
-      this.$scrollTo.scrollTo(elementId, 1500); // 1500 - это длительность анимации скролла в миллисекундах
-    },
+
     handleScroll() {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        this.currentPage += 1
+      const { scrollTop, scrollHeight, clientHeight } = this.$refs.cardContainer;
+      if (scrollTop + clientHeight >= scrollHeight - 100) {
         this.loadMoreCards();
       }
     },
     loadMoreCards() {
-      axios.get(`http://localhost:8080/Mtaste/API/getRecipeByPage/${this.currentPage}`)
+      return axios.get(`http://localhost:8080/Mtaste/API/getRecipeByPage/${this.currentPage}`)
           .then(response => {
             const additionalCardsData = response.data;
             const newCards = additionalCardsData.map(cardData => ({
@@ -173,18 +126,15 @@ export default {
               id: cardData.ID,
             }));
             this.cards.push(...newCards);
-            this.currentPage += 1;
-            this.totalCards = response.headers['x-total-count']; // Обновление общего количества карточек из заголовка ответа
+            this.totalCards = response.headers['x-total-count'];
           })
           .catch(error => {
             console.error('Ошибка при загрузке карточек:', error);
           });
     }
   }
-}
-
+};
 </script>
-
 
 <style scoped>
 
@@ -352,10 +302,12 @@ input:focus {
 .card-container {
   display: flex;
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .card {
-  width: 600px;
+  width: calc(50% - 20px);
   margin: 10px;
   padding: 20px;
   border: 1px solid #ccc;
@@ -379,26 +331,5 @@ input:focus {
 
 .card button {
   margin-top: auto;
-}
-.load-more-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 40px;
-}
-
-.load-more-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.load-more-button:hover {
-  background-color: #0056b3;
 }
 </style>
