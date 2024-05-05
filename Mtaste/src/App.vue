@@ -16,9 +16,9 @@
               <a class="nav-link" href="#">Ингредиенты</a>
               <a class="nav-link" href="#">Праздничное меню</a>
               <nav class="navbar navbar-light bg-light">
-                <form class="form-inline">
-                  <input class="form-control mr-sm-2 search__engin" type="text" placeholder="Найти рецепт...">
-                  <button type="button" class="btn btn-outline-secondary search__button">Найти</button>
+                <form class="form-inline" @submit.prevent="openSearchModal">
+                  <input class="form-control mr-sm-2 search__engin" type="text" placeholder="Найти рецепт..." v-model="searchQuery">
+                  <button type="submit" class="btn btn-outline-secondary search__button">Найти</button>
                 </form>
               </nav>
             </nav>
@@ -27,7 +27,7 @@
       </div>
     </header>
 
-    <div class="card-container" ref="cardContainer">
+    <div class="card-container" ref="cardContainer" @scroll="handleScroll">
       <div v-for="(card, index) in cards" :key="index" class="card">
         <img :src="img__error" alt="Изображение блюда">
         <h3>{{ card.name }}</h3>
@@ -41,12 +41,19 @@
     <auth-modal :show="showModal" @close="closeModal"></auth-modal>
 
   </div>
+  <search-results-modal
+      :show="showSearchModal"
+      :results="searchResults"
+      @close="closeSearchModal"
+      @openRecipeModal="openRecipeModal"
+  />
 </template>
 
 <script>
 import axios from 'axios';
 import AuthModal from './components/AuthModal.vue';
 import RecipeModal from './components/RecipeModal.vue';
+import SearchResultsModal from './components/SearchResultsModal.vue';
 import image from '@/assets/img/logo.jpg';
 import img__error from '@/assets/img/img_error.jpg';
 
@@ -54,6 +61,7 @@ export default {
   components: {
     AuthModal,
     RecipeModal,
+    SearchResultsModal,
   },
 
   data() {
@@ -67,6 +75,9 @@ export default {
       currentPage: 1,
       showRecipeModal: false,
       selectedCard: null,
+      showSearchModal: false,
+      searchResults: [],
+      searchQuery: '',
     };
   },
   mounted() {
@@ -78,6 +89,20 @@ export default {
     window.removeEventListener('resize', this.adjustCardContainerMargin);
   },
   methods: {
+    openSearchModal() {
+      this.filterCards();
+      this.showSearchModal = true;
+    },
+    closeSearchModal() {
+      this.showSearchModal = false;
+      this.searchQuery = '';
+      this.searchResults = [];
+    },
+    filterCards() {
+      this.searchResults = this.cards.filter(card =>
+          card.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    },
     adjustCardContainerMargin() {
       const headerInner = document.getElementById('headerInner');
       const cardContainer = document.querySelector('.card-container');
@@ -129,7 +154,7 @@ export default {
               img: cardData.img,
               id: cardData.ID,
             }));
-            this.cards.push(...newCards);
+            this.cards = [...this.cards, ...newCards]; // Добавляем новые карточки в существующий массив
             this.totalCards = response.headers['x-total-count'];
             this.currentPage++; // Переходим на следующую страницу
           })
@@ -140,7 +165,6 @@ export default {
   }
 };
 </script>
-
 <style scoped>
 
 body{
