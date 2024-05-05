@@ -4,8 +4,8 @@
       <span class="close" @click="$emit('close')">&times;</span>
       <h2>{{ card.name }}</h2>
       <div class="accordion">
-        <div class="accordion-item" @click="toggleDetails('ingredients')">
-          <div class="accordion-header">
+        <div class="accordion-item">
+          <div class="accordion-header" @click="toggleDetails('ingredients')">
             Ингредиенты
           </div>
           <div class="accordion-content" v-show="isIngredientsOpen">
@@ -16,21 +16,12 @@
             </div>
           </div>
         </div>
-        <div class="accordion-item" @click="toggleDetails('description')">
-          <div class="accordion-header">
-            Рецепт
+        <div v-for="(step, index) in card.description" :key="index" class="accordion-item">
+          <div class="accordion-header" @click="toggleDetails('description', index)">
+            Шаг {{ index }}
           </div>
-          <div class="accordion-content" v-show="isDescriptionOpen">
-            <div class="description">
-              <div v-if="Array.isArray(card.description)">
-                <div v-for="(text, index) in card.description" :key="index">
-                  <strong>{{ index + 1 }}.</strong> {{ text }}
-                </div>
-              </div>
-              <div v-else>
-                <div v-text="card.description"></div>
-              </div>
-            </div>
+          <div class="accordion-content" v-show="openedDescriptionIndex === index">
+            <div class="description" v-text="step"></div>
           </div>
         </div>
       </div>
@@ -47,17 +38,23 @@ export default {
   data() {
     return {
       isIngredientsOpen: false,
-      isDescriptionOpen: false
+      openedDescriptionIndex: null
     };
   },
   methods: {
-    toggleDetails(openedDetail) {
-      if (openedDetail === 'ingredients') {
+    toggleDetails(detailType, index) {
+      if (detailType === 'ingredients') {
         this.isIngredientsOpen = !this.isIngredientsOpen;
-        this.isDescriptionOpen = false;
-      } else if (openedDetail === 'description') {
-        this.isDescriptionOpen = !this.isDescriptionOpen;
-        this.isIngredientsOpen = false;
+        // Закрываем открытый шаг, если он был открыт
+        if (this.openedDescriptionIndex !== null) {
+          this.openedDescriptionIndex = null;
+        }
+      } else if (detailType === 'description') {
+        this.openedDescriptionIndex = this.openedDescriptionIndex === index ? null : index;
+        // Закрываем открытые ингредиенты, если они были открыты
+        if (this.isIngredientsOpen) {
+          this.isIngredientsOpen = false;
+        }
       }
     }
   }
@@ -85,29 +82,28 @@ export default {
   padding: 10px;
 }
 .modal {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   z-index: 1000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.5);
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); /* Чуть прозрачнее, чтобы контент под ним был видимым */
 }
 
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto;
+  margin: auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  max-width: 600px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  animation-name: animatetop;
-  animation-duration: 0.4s;
+  max-width: 800px;
+  box-sizing: border-box;
 }
-
 .close {
   color: #aaa;
   float: right;
@@ -130,7 +126,11 @@ h2 {
 p {
   color: #666;
 }
-
+@media screen and (max-width: 600px) {
+  .modal-content {
+    width: 90%;
+  }
+}
 @keyframes animatetop {
   from {
     top: -300px;
