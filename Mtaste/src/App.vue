@@ -27,7 +27,7 @@
       </div>
     </header>
 
-    <div class="card-container" ref="cardContainer" @scroll="handleScroll">
+    <div class="card-container" ref="cardContainer">
       <div v-for="(card, index) in cards" :key="index" class="card">
         <img :src="img__error" alt="Изображение блюда">
         <h3>{{ card.name }}</h3>
@@ -40,20 +40,20 @@
 
     <auth-modal :show="showModal" @close="closeModal"></auth-modal>
 
+    <search-modal
+        :show="showSearchModal"
+        :img__error="img__error"
+        @close="closeSearchModal"
+        @open-recipe="openRecipeModal"
+    />
   </div>
-  <search-results-modal
-      :show="showSearchModal"
-      :results="searchResults"
-      @close="closeSearchModal"
-      @openRecipeModal="openRecipeModal"
-  />
 </template>
 
 <script>
 import axios from 'axios';
 import AuthModal from './components/AuthModal.vue';
 import RecipeModal from './components/RecipeModal.vue';
-import SearchResultsModal from './components/SearchResultsModal.vue';
+import SearchModal from './components/SearchModal.vue';
 import image from '@/assets/img/logo.jpg';
 import img__error from '@/assets/img/img_error.jpg';
 
@@ -61,7 +61,7 @@ export default {
   components: {
     AuthModal,
     RecipeModal,
-    SearchResultsModal,
+    SearchModal,
   },
 
   data() {
@@ -76,8 +76,6 @@ export default {
       showRecipeModal: false,
       selectedCard: null,
       showSearchModal: false,
-      searchResults: [],
-      searchQuery: '',
     };
   },
   mounted() {
@@ -90,18 +88,11 @@ export default {
   },
   methods: {
     openSearchModal() {
-      this.filterCards();
       this.showSearchModal = true;
+      this.searchRecipes(this.searchQuery);
     },
     closeSearchModal() {
       this.showSearchModal = false;
-      this.searchQuery = '';
-      this.searchResults = [];
-    },
-    filterCards() {
-      this.searchResults = this.cards.filter(card =>
-          card.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
     },
     adjustCardContainerMargin() {
       const headerInner = document.getElementById('headerInner');
@@ -112,7 +103,7 @@ export default {
       }
     },
     openRecipeModal(card) {
-      axios.get(`http://localhost:8080/Mtaste/API/getRecipeByID/${card.id}`)
+      axios.get(`http://localhost:8082/Mtaste/API/getRecipeByID/${card.id}`)
           .then(response => {
             const recipeData = response.data;
             this.selectedCard = {
@@ -146,7 +137,7 @@ export default {
     },
     loadMoreCards() {
       // Загружаем дополнительные карты
-      axios.get(`http://localhost:8080/Mtaste/API/getRecipeByPage/${this.currentPage}`)
+      axios.get(`http://localhost:8082/Mtaste/API/getRecipeByPage/${this.currentPage}`)
           .then(response => {
             const additionalCardsData = response.data;
             const newCards = additionalCardsData.map(cardData => ({
@@ -154,7 +145,7 @@ export default {
               img: cardData.img,
               id: cardData.ID,
             }));
-            this.cards = [...this.cards, ...newCards]; // Добавляем новые карточки в существующий массив
+            this.cards.push(...newCards);
             this.totalCards = response.headers['x-total-count'];
             this.currentPage++; // Переходим на следующую страницу
           })
@@ -165,6 +156,7 @@ export default {
   }
 };
 </script>
+
 <style scoped>
 
 body{
