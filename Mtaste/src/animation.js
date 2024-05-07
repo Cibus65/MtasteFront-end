@@ -7,12 +7,11 @@ function handleScroll() {
     var scrollPosition = window.scrollY;
   
     // Получаем элемент, который нужно сделать видимым
-    var elements_col = document.getElementsByClassName('col');
-    var elements_meal__text = document.getElementsByClassName('meal__text');
-    var elements_border__qw = document.getElementsByClassName('border__qw');
+    var elements_card = document.getElementsByClassName('card');
     
     
-    for(var element of elements_col){
+    
+    for(var element of elements_card){
       if(element.classList.contains('visible')){
         continue;
       }
@@ -26,33 +25,6 @@ function handleScroll() {
       } 
     }
   
-    for(var element of elements_meal__text){
-      if(element.classList.contains('visible')){
-        continue;
-      }
-   
-      var visiblePosition = element.offsetTop;
-    
-      
-      if (scrollPosition >= visiblePosition - 700) {
-        
-        element.classList.add('visible');
-      }
-    }
-
-    for(var element of elements_border__qw){
-      if(element.classList.contains('visible')){
-        continue;
-      }
-   
-      var visiblePosition = element.offsetTop;
-    
-      
-      if (scrollPosition >= visiblePosition - 700) {
-        
-        element.classList.add('visible');
-      }
-    }
     
   }
   

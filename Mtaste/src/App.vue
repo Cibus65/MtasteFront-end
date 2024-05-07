@@ -31,7 +31,7 @@
       <div v-for="(card, index) in cards" :key="index" class="card">
         <img :src="img__error" alt="Изображение блюда">
         <h3>{{ card.name }}</h3>
-        <button @click="openRecipeModal(card)">Готовить</button>
+        <button class="btn btn-outline-secondary cook-btn" @click="openRecipeModal(card)">Готовить</button>
       </div>
       <button v-if="cards.length % 20 === 0 && cards.length < 2000" @click="loadMoreCards" class="load-more-button">Показать еще</button>
     </div>
@@ -56,7 +56,9 @@ import RecipeModal from './components/RecipeModal.vue';
 import SearchModal from './components/SearchModal.vue';
 import image from '@/assets/img/logo.jpg';
 import img__error from '@/assets/img/img_error.jpg';
+import animation from './animation';
 
+animation();
 export default {
   components: {
     AuthModal,
@@ -325,9 +327,6 @@ input:focus {
   box-shadow: 0 0 10px rgb(3, 97, 75);
 }
 
-.card{
-
-}
 
 .card-container {
   display: flex;
@@ -337,6 +336,7 @@ input:focus {
 }
 
 .card {
+  opacity: 0;
   width: calc(50% - 20px);
   margin: 10px;
   padding: 20px;
@@ -344,13 +344,23 @@ input:focus {
   border-radius: 5px;
   text-align: center;
 }
+
+.visible{
+  opacity: 1;
+
+  transition: opacity 1.5s;
+}
+
+
 .card h3 {
+  margin-top: 20px;
   font-size: 18px;
 }
 
 .card img {
   max-width: 100%;
   height: auto;
+  border-bottom: 1px solid;
 }
 
 .card {
@@ -361,5 +371,6 @@ input:focus {
 
 .card button {
   margin-top: auto;
+  margin-left: 380px;
 }
 </style>
