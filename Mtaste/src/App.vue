@@ -33,7 +33,7 @@
         <h3>{{ card.name }}</h3>
         <button class="btn btn-outline-secondary cook-btn" @click="openRecipeModal(card)">Готовить</button>
       </div>
-      <button v-if="cards.length % 20 === 0 && cards.length < 2000" @click="loadMoreCards" class="load-more-button">Показать еще</button>
+      <button v-if="cards.length % 20 === 0 && cards.length < 2000" @click="loadMoreCards" class="btn btn-outline-secondary load-more-button">Показать еще</button>
     </div>
 
     <recipe-modal :show="showRecipeModal" :card="selectedCard" @close="closeRecipeModal"></recipe-modal>
@@ -178,7 +178,7 @@ body{
 }
 .intro{
   width:100%;
-  height: 100vh;
+  
   -webkit-background-size: cover;
   background-size: cover;
 }
@@ -343,6 +343,11 @@ input:focus {
   border: 1px solid #ccc;
   border-radius: 5px;
   text-align: center;
+
+
+  -webkit-transform: translateX(-100px);
+  -ms-transform: translateX(-100px);
+  transform: translateX(-40px);
 }
 
 .visible{
@@ -368,6 +373,18 @@ input:focus {
   flex-direction: column;
   align-items: center;
 }
+
+.card.visible  {
+  -webkit-transform: translateX(0px);
+  -ms-transform: translateX(0px);
+  transform: translateX(0px);
+  -webkit-transition: all 1.5s;
+  -o-transition: all 1.5s;
+  transition: all 1.5s;
+
+
+}
+
 
 .card button {
   margin-top: auto;
