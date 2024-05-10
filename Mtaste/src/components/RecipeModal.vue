@@ -3,6 +3,7 @@
     <div class="modal-content">
       <span class="close" @click="$emit('close')">&times;</span>
       <h2>{{ card.name }}</h2>
+      <img :src="card.imgwindowurl" alt="Изображение блюда">
       <div class="accordion">
         <div class="accordion-item">
           <div class="accordion-header" @click="toggleDetails('ingredients')">

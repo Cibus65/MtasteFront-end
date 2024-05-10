@@ -29,7 +29,7 @@
 
     <div class="card-container" ref="cardContainer">
       <div v-for="(card, index) in cards" :key="index" class="card">
-        <img :src="img__error" alt="Изображение блюда">
+        <img :src="card.imgwindowurl" alt="Изображение блюда">
         <h3>{{ card.name }}</h3>
         <button class="btn btn-outline-secondary cook-btn" @click="openRecipeModal(card)">Готовить</button>
       </div>
@@ -104,6 +104,23 @@ export default {
         cardContainer.style.marginTop = `${headerHeight}px`;
       }
     },
+    loadMoreCards() {
+      axios.get(`http://localhost:8082/Mtaste/API/getRecipeByPage/${this.currentPage}`)
+          .then(response => {
+            const additionalCardsData = response.data;
+            const newCards = additionalCardsData.map(cardData => ({
+              name: cardData.name,
+              imgwindowurl: cardData.imgwindowurl,
+              id: cardData.ID,
+            }));
+            this.cards.push(...newCards);
+            this.totalCards = response.headers['x-total-count'];
+            this.currentPage++; // Переходим на следующую страницу
+          })
+          .catch(error => {
+            console.error('Ошибка при загрузке карточек:', error);
+          });
+    },
     openRecipeModal(card) {
       axios.get(`http://localhost:8082/Mtaste/API/getRecipeByID/${card.id}`)
           .then(response => {
@@ -111,7 +128,8 @@ export default {
             this.selectedCard = {
               ...card,
               description: recipeData.description,
-              ingredients: recipeData.ingredients // Добавляем ингредиенты в объект card
+              ingredients: recipeData.ingredients,
+              imgwindowurl: recipeData.imgwindowurl,
             };
             this.showRecipeModal = true;
           })
@@ -137,24 +155,6 @@ export default {
         this.loadMoreCards();
       }
     },
-    loadMoreCards() {
-      // Загружаем дополнительные карты
-      axios.get(`http://localhost:8082/Mtaste/API/getRecipeByPage/${this.currentPage}`)
-          .then(response => {
-            const additionalCardsData = response.data;
-            const newCards = additionalCardsData.map(cardData => ({
-              name: cardData.name,
-              img: cardData.img,
-              id: cardData.ID,
-            }));
-            this.cards.push(...newCards);
-            this.totalCards = response.headers['x-total-count'];
-            this.currentPage++; // Переходим на следующую страницу
-          })
-          .catch(error => {
-            console.error('Ошибка при загрузке карточек:', error);
-          });
-    }
   }
 };
 </script>
@@ -363,9 +363,10 @@ input:focus {
 }
 
 .card img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 100%;
   border-bottom: 1px solid;
+  object-fit: cover;
 }
 
 .card {

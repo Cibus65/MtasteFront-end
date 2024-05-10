@@ -5,7 +5,7 @@
       <h2>Результаты поиска</h2>
       <div v-if="searchResults.length > 0" class="card-container">
         <div v-for="(card, index) in searchResults" :key="index" class="card">
-          <img :src="img__error" alt="Изображение блюда">
+          <img :src="card.imgwindowurl" alt="Изображение блюда">
           <h3>{{ card.name }}</h3>
           <button @click="openRecipeModal(card)">Готовить</button>
         </div>
@@ -39,7 +39,7 @@ export default {
           .then(response => {
             this.searchResults = response.data.map(cardData => ({
               name: cardData.name,
-              img: cardData.img,
+              imgwindowurl: cardData.imgwindowurl,
               id: cardData.ID
             }));
           })
