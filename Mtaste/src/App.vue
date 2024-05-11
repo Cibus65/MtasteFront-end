@@ -29,7 +29,9 @@
 
     <div class="card-container" ref="cardContainer">
       <div v-for="(card, index) in cards" :key="index" class="card">
-        <img :src="card.imgwindowurl" alt="Изображение блюда">
+    
+        <img :src="card.imgwindowurl" alt="Изображение блюда" class = "width_height_card"> 
+        
         <h3>{{ card.name }}</h3>
         <button class="btn btn-outline-secondary cook-btn" @click="openRecipeModal(card)">Готовить</button>
       </div>
@@ -339,7 +341,7 @@ input:focus {
   opacity: 0;
   width: calc(50% - 20px);
   margin: 10px;
-  padding: 20px;
+  padding-bottom:5px;
   border: 1px solid #ccc;
   border-radius: 5px;
   text-align: center;
@@ -366,6 +368,7 @@ input:focus {
   width: 100%;
   height: 100%;
   border-bottom: 1px solid;
+  border-radius:3.5px;
   object-fit: cover;
 }
 
@@ -390,5 +393,9 @@ input:focus {
 .card button {
   margin-top: auto;
   margin-left: 380px;
+}
+.width_height_card {
+  max-width:1200px;
+  max-height:450px;
 }
 </style>
