@@ -30,7 +30,7 @@
     <div class="card-container" ref="cardContainer">
       <div v-for="(card, index) in cards" :key="index" class="card">
     
-        <img :src="card.imgwindowurl" alt="Изображение блюда" class = "width_height_card"> 
+        <img :src="card.imgwindowurl" alt="Изображение блюда" class="width_height_card"> 
         
         <h3>{{ card.name }}</h3>
         <button class="btn btn-outline-secondary cook-btn" @click="openRecipeModal(card)">Готовить</button>
@@ -49,9 +49,11 @@
         @open-recipe="openRecipeModal"
     />
   </div>
+  
 </template>
 
 <script>
+
 import axios from 'axios';
 import AuthModal from './components/AuthModal.vue';
 import RecipeModal from './components/RecipeModal.vue';
@@ -59,8 +61,16 @@ import SearchModal from './components/SearchModal.vue';
 import image from '@/assets/img/logo.jpg';
 import img__error from '@/assets/img/img_error.jpg';
 import animation from './animation';
+import animation_for_first_4_card from './animation_for_4_card';
+
+
+
+
+animation_for_first_4_card();
 
 animation();
+
+
 export default {
   components: {
     AuthModal,
@@ -347,9 +357,9 @@ input:focus {
   text-align: center;
 
 
-  -webkit-transform: translateX(-100px);
-  -ms-transform: translateX(-100px);
-  transform: translateX(-40px);
+  -webkit-transform: translateX(-50px);
+  -ms-transform: translateX(-50px);
+  transform: translateX(-20px);
 }
 
 .visible{
