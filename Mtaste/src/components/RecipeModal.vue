@@ -3,13 +3,15 @@
     <div class="modal-content">
       <span class="close" @click="$emit('close')">&times;</span>
       <h2>{{ card.name }}</h2>
-      <img :src="card.imgwindowurl" alt="Изображение блюда">
-      <div class="accordion">
+      <img :src="card.imgwindowurl" alt="Изображение блюда" class="img_modal">
+
+
+      <div class="accordion" >
         <div class="accordion-item">
-          <div class="accordion-header" @click="toggleDetails('ingredients')">
+          <div class="accordion-header" @click="toggleDetails('ingredients')" >
             Ингредиенты
           </div>
-          <div class="accordion-content" v-show="isIngredientsOpen">
+          <div class="accordion-content" v-show="isIngredientsOpen" >
             <div class="ingredients">
               <div v-for="(amount, ingredient) in card.ingredients" :key="ingredient">
                 <strong>{{ ingredient }}:</strong> {{ amount }}
@@ -17,8 +19,8 @@
             </div>
           </div>
         </div>
-        <div v-for="(step, index) in card.description" :key="index" class="accordion-item">
-          <div class="accordion-header" @click="toggleDetails('description', index)">
+        <div v-for="(step, index) in card.description" :key="index"  class="accordion-item" >
+          <div class="accordion-header" @click="toggleDetails('description', index)" >
             Шаг {{ index }}
           </div>
           <div class="accordion-content" v-show="openedDescriptionIndex === index">
@@ -31,6 +33,10 @@
 </template>
 
 <script>
+import animation_for_accordion from './animation_for_accordion';
+
+
+
 export default {
   props: {
     show: Boolean,
@@ -64,6 +70,7 @@ export default {
   margin-bottom: 10px;
 }
 
+
 .accordion-header {
   padding: 10px;
   cursor: pointer;
@@ -89,7 +96,7 @@ export default {
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: #ffffff;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
@@ -114,6 +121,8 @@ export default {
 h2 {
   margin-top: 0;
   color: #333;
+  margin-bottom: 20px;
+ 
 }
 
 p {
@@ -132,6 +141,7 @@ p {
   to {
     top: 0;
     opacity: 1;
+    transition: opacity 1.5s;
   }
 }
 details {
@@ -143,12 +153,26 @@ details {
 summary {
   padding: 10px;
   cursor: pointer;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   border-bottom: 1px solid #ddd;
 }
 
 .ingredients,
 .description {
   padding: 10px;
+  
 }
+
+.img_modal{
+  border-radius: 7px;
+  margin-bottom: 20px;
+  max-height: 350px;
+  max-width:calc(50%);
+}
+
+
+
+
+
+
 </style>

@@ -352,10 +352,10 @@ input:focus {
   width: calc(50% - 20px);
   margin: 10px;
   padding-bottom:5px;
-  border: 1px solid #ccc;
+  border: 1px solid #6e6e6e;
   border-radius: 5px;
   text-align: center;
-
+  box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
 
   -webkit-transform: translateX(-50px);
   -ms-transform: translateX(-50px);
@@ -379,7 +379,7 @@ input:focus {
   width: 100%;
   height: 100%;
   border-bottom: 1px solid;
-  border-color:#ccc;
+  border-color:#818181;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   object-fit: cover;
@@ -410,6 +410,7 @@ input:focus {
   margin-bottom: 15px;
   width: 150px;
   height: 40px;
+  box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
 }
 
 .width_height_card {
