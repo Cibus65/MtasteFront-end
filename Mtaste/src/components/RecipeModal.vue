@@ -11,7 +11,7 @@
           <div class="accordion-header" @click="toggleDetails('ingredients')" >
             Ингредиенты
           </div>
-          <div class="accordion-content" v-show="isIngredientsOpen" >
+          <div class="accordion-content" :class="{ 'is-open': isIngredientsOpen }"  >
             <div class="ingredients">
               <div v-for="(amount, ingredient) in card.ingredients" :key="ingredient">
                 <strong>{{ ingredient }}:</strong> {{ amount }}
@@ -23,7 +23,7 @@
           <div class="accordion-header" @click="toggleDetails('description', index)" >
             Шаг {{ index }}
           </div>
-          <div class="accordion-content" v-show="openedDescriptionIndex === index">
+          <div class="accordion-content" :class="{ 'is-open': openedDescriptionIndex === index }">
             <div class="description" v-text="step"></div>
           </div>
         </div>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import animation_for_accordion from './animation_for_accordion';
+
 
 
 
@@ -62,24 +62,34 @@ export default {
 
 <style scoped>
 .accordion {
-  border: 1px solid #ddd;
+  
   border-radius: 4px;
 }
 
 .accordion-item {
-  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 12px;
 }
 
 
 .accordion-header {
+  border-radius: 5px;
   padding: 10px;
   cursor: pointer;
   background-color: #f9f9f9;
   border-bottom: 1px solid #ddd;
+  box-shadow: 0px 2px 20px 2px rgba(3, 97, 75, 0.466);
 }
 
 .accordion-content {
   padding: 10px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
+.accordion-content.is-open {
+  max-height: 500px;
+  transition: max-height 0.4s ease-in;
 }
 .modal {
   display: flex;
@@ -101,7 +111,7 @@ export default {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  max-width: 800px;
+  max-width: 900px;
   box-sizing: border-box;
 }
 .close {
