@@ -5,9 +5,11 @@
       <h2>Результаты поиска</h2>
       <div v-if="searchResults.length > 0" class="card-container">
         <div v-for="(card, index) in searchResults" :key="index" class="card">
-          <img :src="card.imgwindowurl" alt="Изображение блюда">
+          <img class="card_img" :src="card.imgwindowurl" alt="Изображение блюда">
           <h3>{{ card.name }}</h3>
-          <button @click="openRecipeModal(card)">Готовить</button>
+          <div class="btn_style">
+            <button class="btn btn-outline-secondary enter__button" @click="openRecipeModal(card)">Готовить</button>
+          </div>
         </div>
       </div>
       <div v-else>
@@ -81,6 +83,17 @@ export default {
   width: 80%;
   max-width: 1200px;
   box-sizing: border-box;
+ 
+}
+
+.card_img{
+  width: 100%;
+  height: 80%;
+  border-bottom: 1px solid;
+  border-color:#818181;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  object-fit: cover;
 }
 
 .close {
@@ -107,24 +120,58 @@ h2 {
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
+ 
+}
+.enter__button{
+  margin-top: 50px;
+  margin-left: 300px;
+  width: 100px;
+
+}
+.btn_style{
+  margin-top: 10px;
+}
+.btn {
+ 
+  color: white;
+  background-color: rgba(2, 96, 74, 1);
+  border-color: rgba(2, 96, 74, 1);
+  font-family: "Gilda Display", serif;
+
+
+}
+.btn:hover{
+  background-color: rgb(1, 76, 59);
 }
 
+.btn:focus{
+  box-shadow: 0 0 10px rgb(3, 97, 75);
+}
 .card {
-  width: calc(50% - 20px); /* Уменьшаем ширину карточки, чтобы вместить две в ряд */
+  
+  padding-bottom:5px;
+  border: 1px solid #6e6e6e;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
+  width: calc(50% - 20px);
   margin: 10px;
-  padding: 20px;
+  
   border: 1px solid #ccc;
   border-radius: 5px;
   text-align: center;
+  max-height: 500px;
+  
 }
 
 .card h3 {
+  margin-top: 15px;
   font-size: 18px;
 }
 
 .card img {
-  max-width: 100%;
-  height: auto;
+  
+  max-height: 900px;
 }
 
 .card button {
@@ -140,5 +187,4 @@ h2 {
     width: calc(100% - 20px); /* При маленьком экране одна карточка в ряд */
   }
 }
-
 </style>

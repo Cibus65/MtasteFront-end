@@ -37,10 +37,14 @@
       <div v-for="(card, index) in cards" :key="index" class="card">
         <img :src="card.imgwindowurl" alt="Изображение блюда" class="width_height_card">
         <h3>{{ card.name }}</h3>
-        <button class="btn btn-outline-secondary ingredients-btn" @click="openIngredientsModal(card)">
+        <div class="ingrid_btn">
+          <button class="btn btn-outline-secondary ingredients-btn" @click="openIngredientsModal(card)">
           <i class="fas fa-utensils"></i>
-        </button>
-        <button class="btn btn-outline-secondary cook-btn" @click="openRecipeModal(card)">Готовить</button>
+          </button>
+          <button class="btn btn-outline-secondary cook-btn" @click="openRecipeModal(card)">Готовить</button>
+        </div>
+        
+        
       </div>
       <button v-if="cards.length % 20 === 0 && cards.length < 2000" @click="loadMoreCards" class="btn btn-outline-secondary load-more-button">Показать еще</button>
     </div>
@@ -435,7 +439,7 @@ input:focus {
 
   text-align: center;
   margin-top: 15px;
-  margin-left: 300px;
+  margin-left: 10px;
   margin-bottom: 15px;
   width: 150px;
   height: 40px;
@@ -455,6 +459,7 @@ input:focus {
   border-color: #02604a;
   max-width: 40px;
   max-height: 40px;
+  margin-left: 250px;
 }
 
 .ingredients-btn i {
