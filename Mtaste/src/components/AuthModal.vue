@@ -1,6 +1,7 @@
 <template>
   <div v-if="showModal" class="modal" @click.self="closeModal">
     <div class="modal-content" @click.stop="">
+      <span class="close" @click="closeModal">&times;</span>
       <h2 class="modal-title">Авторизация</h2>
       <form @submit.prevent="handleSubmit" class="auth-form">
         <input type="text" v-model="username" placeholder="Имя пользователя" required>
@@ -44,7 +45,7 @@ export default {
       console.log('Имя пользователя:', this.username);
       console.log('Пароль:', this.password);
       // После успешной авторизации закрываем модальное окно
-      this.$emit('close');
+      this.$emit('close', this.username);
     },
     handleRegister() {
       // Логика отправки формы на сервер для регистрации
@@ -55,7 +56,7 @@ export default {
       this.closeRegisterModal();
     },
     closeModal() {
-      this.showModal = false;
+      this.$emit('input', false);
     },
     closeRegisterModal() {
       this.showRegisterModal = false;
@@ -147,5 +148,21 @@ input[type="password"] {
 
 .register-link:hover {
   text-decoration: underline;
+}
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 28px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
 }
 </style>

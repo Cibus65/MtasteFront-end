@@ -7,8 +7,14 @@
             <div class="logo">
               <img :src="imagePath" alt="Logo">
               <div class="name">Mtaste</div>
-              <div class="button-top">
-                <button class="btn btn-outline-secondary enter__button" v-if="!isAuthenticated" @click="openModal">Войти</button>
+              <div class="button-top" v-if="isAuthenticated">
+                <button class="user-info">
+                  <i class="fas fa-user-circle"></i>
+                  <span class="username-text">{{ username }}</span>
+                </button>
+              </div>
+              <div class="button-top" v-else>
+                <button class="btn btn-outline-secondary enter__button" @click="openModal">Войти</button>
               </div>
             </div>
             <nav class="navigation">
@@ -41,8 +47,7 @@
 
     <recipe-modal :show="showRecipeModal" :card="selectedCard" @close="closeRecipeModal"></recipe-modal>
     <ingredients-modal :show="showIngredientsModal" :card="selectedCard" @close="closeIngredientsModal"></ingredients-modal>
-    <auth-modal :show="showModal" @close="closeModal"></auth-modal>
-
+    <auth-modal :show="showModal" @close="closeModal" @update-username="updateUsername"></auth-modal>
     <search-modal
         :show="showSearchModal"
         :img__error="img__error"
@@ -50,7 +55,7 @@
         @open-recipe="openRecipeModal"
     />
   </div>
-  
+
 </template>
 
 <script>
@@ -86,6 +91,7 @@ export default {
       imagePath: image,
       img__error: img__error,
       isAuthenticated: false,
+      username: '',
       showModal: false,
       cards: [],
       totalCards: 0,
@@ -177,9 +183,11 @@ export default {
       this.showModal = true;
       this.isAuthenticated = false;
     },
-    closeModal() {
+
+    closeModal(username) {
       this.showModal = false;
       this.isAuthenticated = true;
+      this.username = username;
     },
 
     handleScroll() {
@@ -211,7 +219,7 @@ body{
 }
 .intro{
   width:100%;
-  
+
   -webkit-background-size: cover;
   background-size: cover;
 }
@@ -393,7 +401,7 @@ input:focus {
 .card h3 {
   margin-top: 20px;
   font-size: 18px;
-  
+
 }
 
 .card img {
@@ -450,7 +458,44 @@ input:focus {
 }
 
 .ingredients-btn i {
-  margin-right: 5px; /* Отступ между иконкой и текстом */
+  margin-right: 5px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.button-top {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 80%;
+}
+
+.enter__button {
+  margin-top: 0;
+  margin-left: 10px;
+  width: 100px;
+}
+
+
+.user-info i {
+  font-size: 60px;
+  margin-right: 5px;
+}
+
+.username-text {
+  font-size: 32px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: inherit;
 }
 
 </style>
