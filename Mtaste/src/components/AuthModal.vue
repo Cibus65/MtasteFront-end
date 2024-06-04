@@ -21,6 +21,7 @@
         <input type="password" v-model="registerConfirmPassword" placeholder="Подтвердите пароль" required>
         <button type="submit" class="auth-button">Зарегистрироваться</button>
       </form>
+      <p v-if="message">{{ message }}</p>
       <p class="register-link" @click="showRegisterModal = false">Уже есть аккаунт? Войдите</p>
     </div>
   </div>
@@ -45,7 +46,9 @@ export default {
       console.log('Имя пользователя:', this.username);
       console.log('Пароль:', this.password);
       // После успешной авторизации закрываем модальное окно
+      
       this.$emit('close', this.username);
+      
     },
     handleRegister() {
       // Логика отправки формы на сервер для регистрации
@@ -53,8 +56,24 @@ export default {
       console.log('Пароль:', this.registerPassword);
       console.log('Подтверждение пароля:', this.registerConfirmPassword);
       // После успешной регистрации закрываем модальное окно регистрации
+
+     
+
+
       this.closeRegisterModal();
     },
+    registerUser() {
+      axios.post('Mtaste/API/user/signUp/', this.form)
+        .then(response => {
+          this.message = 'User registered successfully!';
+          // Обработка успешного ответа
+        })
+        .catch(error => {
+          this.message = 'Registration failed: ' + error;
+          // Обработка ошибки
+        });
+    },
+
     closeModal() {
       this.$emit('input', false);
     },
