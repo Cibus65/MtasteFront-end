@@ -29,17 +29,18 @@
 
     <div class="card-container" ref="cardContainer">
       <div v-for="(card, index) in cards" :key="index" class="card">
-    
-        <img :src="card.imgwindowurl" alt="Изображение блюда" class="width_height_card" > 
-        
+        <img :src="card.imgwindowurl" alt="Изображение блюда" class="width_height_card">
         <h3>{{ card.name }}</h3>
+        <button class="btn btn-outline-secondary ingredients-btn" @click="openIngredientsModal(card)">
+          <i class="fas fa-utensils"></i>
+        </button>
         <button class="btn btn-outline-secondary cook-btn" @click="openRecipeModal(card)">Готовить</button>
       </div>
       <button v-if="cards.length % 20 === 0 && cards.length < 2000" @click="loadMoreCards" class="btn btn-outline-secondary load-more-button">Показать еще</button>
     </div>
 
     <recipe-modal :show="showRecipeModal" :card="selectedCard" @close="closeRecipeModal"></recipe-modal>
-
+    <ingredients-modal :show="showIngredientsModal" :card="selectedCard" @close="closeIngredientsModal"></ingredients-modal>
     <auth-modal :show="showModal" @close="closeModal"></auth-modal>
 
     <search-modal
@@ -58,6 +59,7 @@ import axios from 'axios';
 import AuthModal from './components/AuthModal.vue';
 import RecipeModal from './components/RecipeModal.vue';
 import SearchModal from './components/SearchModal.vue';
+import IngredientsModal from './components/IngredientsModal.vue';
 import image from '@/assets/img/logo.jpg';
 import img__error from '@/assets/img/img_error.jpg';
 import animation from './animation';
@@ -76,6 +78,7 @@ export default {
     AuthModal,
     RecipeModal,
     SearchModal,
+    IngredientsModal,
   },
 
   data() {
@@ -90,6 +93,7 @@ export default {
       showRecipeModal: false,
       selectedCard: null,
       showSearchModal: false,
+      showIngredientsModal: false,
     };
   },
   mounted() {
@@ -132,6 +136,23 @@ export default {
           .catch(error => {
             console.error('Ошибка при загрузке карточек:', error);
           });
+    },
+    openIngredientsModal(card) {
+      axios.get(`http://localhost:8082/Mtaste/API/getRecipeByID/${card.id}`)
+          .then(response => {
+            const recipeData = response.data;
+            this.selectedCard = {
+              ...card,
+              ingredients: recipeData.ingredients,
+            };
+            this.showIngredientsModal = true;
+          })
+          .catch(error => {
+            console.error('Ошибка при загрузке описания рецепта:', error);
+          });
+    },
+    closeIngredientsModal() {
+      this.showIngredientsModal = false;
     },
     openRecipeModal(card) {
       axios.get(`http://localhost:8082/Mtaste/API/getRecipeByID/${card.id}`)
@@ -403,7 +424,7 @@ input:focus {
 }
 
 .cook-btn{
-  
+
   text-align: center;
   margin-top: 15px;
   margin-left: 300px;
@@ -416,6 +437,20 @@ input:focus {
 .width_height_card {
   max-width:900px;
   max-height:350px;
+}
+
+.ingredients-btn {
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  background-color: #02604a;
+  border-color: #02604a;
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.ingredients-btn i {
+  margin-right: 5px; /* Отступ между иконкой и текстом */
 }
 
 </style>

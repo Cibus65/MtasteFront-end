@@ -3,22 +3,8 @@
     <div class="modal-content">
       <span class="close" @click="$emit('close')">&times;</span>
       <h2>{{ card.name }}</h2>
-      <img :src="card.imgwindowurl" alt="Изображение блюда" class="img_modal">
-
 
       <div class="accordion" >
-        <div class="accordion-item">
-          <div class="accordion-header" @click="toggleDetails('ingredients')" >
-            Ингредиенты
-          </div>
-          <div class="accordion-content" :class="{ 'is-open': isIngredientsOpen }"  >
-            <div class="ingredients">
-              <div v-for="(amount, ingredient) in card.ingredients" :key="ingredient">
-                <strong>{{ ingredient }}:</strong> {{ amount }}
-              </div>
-            </div>
-          </div>
-        </div>
         <div v-for="(step, index) in card.description" :key="index"  class="accordion-item" >
           <div class="accordion-header" @click="toggleDetails('description', index)" >
             Шаг {{ index }}
