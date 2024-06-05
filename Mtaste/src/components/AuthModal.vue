@@ -60,16 +60,21 @@ export default {
 
     handleRegister() {
       axios.post('http://localhost:8082/Mtaste/API/auth/signUp', {
-        login: this.login,
-        password: this.password,
-        retry_password: this.retry_password,
-      })
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      login: this.login,
+      password: this.password,
+      retry_password: this.retry_password,
+    }, {
+      headers: {
+        'Content-Type': 'application/json' 
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+      
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
 
 
