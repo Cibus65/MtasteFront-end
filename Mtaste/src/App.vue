@@ -14,7 +14,7 @@
                     <span class="username-text">{{ username }}</span>
                   </button>
                   <div class="dropdown-content" v-show="dropdownOpen">
-                    <button @click.stop="action1">Избранное</button>
+                    <button @click.stop="ShowFavorites">Избранное</button>
                     <button @click.stop="exit">Выйти</button>
                   </div>
                 </div>
@@ -128,6 +128,50 @@ export default {
     window.removeEventListener('resize', this.adjustCardContainerMargin);
   },
   methods: {
+    addToFavorites(card) {
+      if (!this.isAuthenticated) {
+        this.openModal();
+      } else {
+        const userId = localStorage.getItem('userId');
+        const recipeId = card.id;
+
+        axios.post('http://localhost:8082/Mtaste/API/user/addToFavourite', {
+          userId: userId,
+          recipeId: recipeId
+        })
+            .then(response => {
+              card.isFavorite = true;
+              console.log('Рецепт добавлен в избранное:', response.data);
+            })
+            .catch(error => {
+              console.error('Ошибка при добавлении рецепта в избранное:', error);
+            });
+      }
+    },
+    removeFromFavorites(card) {
+      if (!this.isAuthenticated) {
+        this.openModal();
+      } else {
+        const userId = localStorage.getItem('userId'); 
+        const recipeId = card.id;
+
+        axios.post('http://localhost:8082/Mtaste/API/user/deleteFromFavourite', {
+          userId: userId,
+          recipeId: recipeId
+        })
+            .then(response => {
+              if (response.data.flag) {
+                card.isFavorite = false;
+                console.log('Рецепт удален из избранного:', response.data);
+              } else {
+                console.error('Ошибка при удалении рецепта из избранного:', response.data.error);
+              }
+            })
+            .catch(error => {
+              console.error('Ошибка при удалении рецепта из избранного:', error);
+            });
+      }
+    },
     logout() {
       localStorage.removeItem('username');
       localStorage.removeItem('isAuthenticated');
@@ -139,7 +183,7 @@ export default {
     toggleDropdown() {
       this.dropdownOpen = !this.dropdownOpen;
     },
-    action1() {
+    ShowFavorites() {
       this.showFavoritesModal = true;
       this.dropdownOpen = false;
     },
@@ -154,8 +198,11 @@ export default {
       if (!this.isAuthenticated) {
         this.openModal();
       } else {
-        card.isFavorite = !card.isFavorite;
-        // Логика добавления избранного на сервер
+        if (card.isFavorite) {
+          this.removeFromFavorites(card);
+        } else {
+          this.addToFavorites(card);
+        }
       }
     },
     openSearchModal() {
