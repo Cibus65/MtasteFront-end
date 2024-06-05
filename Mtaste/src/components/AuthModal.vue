@@ -16,9 +16,9 @@
     <div class="modal-content" @click.stop="">
       <h2 class="modal-title">Регистрация</h2>
       <form @submit.prevent="handleRegister" class="auth-form">
-        <input type="text" v-model="registerUsername" placeholder="Имя пользователя" required>
-        <input type="password" v-model="registerPassword" placeholder="Пароль" required>
-        <input type="password" v-model="registerConfirmPassword" placeholder="Подтвердите пароль" required>
+        <input type="text" v-model="login" placeholder="Имя пользователя" required>
+        <input type="password" v-model="password" placeholder="Пароль" required>
+        <input type="password" v-model="retry_password" placeholder="Подтвердите пароль" required>
         <button type="submit" class="auth-button">Зарегистрироваться</button>
       </form>
       <p v-if="message">{{ message }}</p>
@@ -28,21 +28,27 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
+
+  
   data() {
     return {
       showModal: false,
       showRegisterModal: false,
-      username: '',
-      password: '',
-      registerUsername: '',
-      registerPassword: '',
-      registerConfirmPassword: ''
+      login: "",
+      password: "",
+      retry_password: "",
+      
+     
+     // username: '',
+     // password: '',
+      
     };
   },
   methods: {
     handleSubmit() {
-      // Логика отправки формы на сервер для авторизации
+      
       console.log('Имя пользователя:', this.username);
       console.log('Пароль:', this.password);
       // После успешной авторизации закрываем модальное окно
@@ -50,7 +56,39 @@ export default {
       this.$emit('close', this.username);
       
     },
+    
+
     handleRegister() {
+
+      axios.post('/Mtaste/API/auth/signUp', {
+        login: "",
+        password: "",
+        retry_password: "",
+      })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+
+
+
+      /*
+      const url = 'http://localhost:8082/Mtaste/API/auth/signUp'
+      axios.post(url, this.user)
+        .then(response => {
+          // Обработка успешного ответа
+          console.log(response);
+          console.log("Успешно");
+        })
+        .catch(error => {
+          // Обработка ошибки
+          console.error(error);
+          
+      });
+      */
       // Логика отправки формы на сервер для регистрации
       console.log('Имя пользователя:', this.registerUsername);
       console.log('Пароль:', this.registerPassword);
@@ -63,15 +101,7 @@ export default {
       this.closeRegisterModal();
     },
     registerUser() {
-      axios.post('Mtaste/API/user/signUp/', this.form)
-        .then(response => {
-          this.message = 'User registered successfully!';
-          // Обработка успешного ответа
-        })
-        .catch(error => {
-          this.message = 'Registration failed: ' + error;
-          // Обработка ошибки
-        });
+      
     },
 
     closeModal() {
