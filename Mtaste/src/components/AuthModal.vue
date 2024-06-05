@@ -36,13 +36,13 @@ export default {
     return {
       showModal: false,
       showRegisterModal: false,
-      login: "",
-      password: "",
-      retry_password: "",
+      login: '',
+      password: '',
+      retry_password: '',
       
      
-     // username: '',
-     // password: '',
+      username: '',
+      password: '',
       
     };
   },
@@ -59,11 +59,10 @@ export default {
     
 
     handleRegister() {
-
-      axios.post('/Mtaste/API/auth/signUp', {
-        login: "",
-        password: "",
-        retry_password: "",
+      axios.post('http://localhost:8082/Mtaste/API/auth/signUp', {
+        login: this.login,
+        password: this.password,
+        retry_password: this.retry_password,
       })
         .then(function (response) {
           console.log(response);
@@ -90,9 +89,9 @@ export default {
       });
       */
       // Логика отправки формы на сервер для регистрации
-      console.log('Имя пользователя:', this.registerUsername);
-      console.log('Пароль:', this.registerPassword);
-      console.log('Подтверждение пароля:', this.registerConfirmPassword);
+      console.log('Имя пользователя:', this.login);
+      console.log('Пароль:', this.password);
+      console.log('Подтверждение пароля:', this.retry_password);
       // После успешной регистрации закрываем модальное окно регистрации
 
      
