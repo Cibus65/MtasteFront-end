@@ -616,12 +616,12 @@ input:focus {
 
 .favorite-btn.favorited {
   color: #ffffff;
-  background-color: rgb(150, 148, 148);
-  border-color: rgb(150, 148, 148);
+  background-color: rgb(175, 0, 0);
+  border-color: rgb(175, 0, 0);
 
 }
 .favorite-btn.favorited:hover {
-  background-color: rgba(136, 136, 136, 0.53);
+  background-color: rgb(159, 1, 1);
 }
 .favorite-btn:hover {
   background-color: #dab400;
