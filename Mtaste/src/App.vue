@@ -8,10 +8,16 @@
               <img :src="imagePath" alt="Logo">
               <div class="name">Mtaste</div>
               <div class="button-top" v-if="isAuthenticated">
-                <button class="user-info">
-                  <i class="fas fa-user-circle"></i>
-                  <span class="username-text">{{ username }}</span>
-                </button>
+                <div class="dropdown" @click="toggleDropdown">
+                  <button class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                    <span class="username-text">{{ username }}</span>
+                  </button>
+                  <div class="dropdown-content" v-show="dropdownOpen">
+                    <button @click.stop="action1">Избранное</button>
+                    <button @click.stop="exit">Выйти</button>
+                  </div>
+                </div>
               </div>
               <div class="button-top" v-else>
                 <button class="btn btn-outline-secondary enter__button" @click="openModal">Войти</button>
@@ -38,17 +44,19 @@
         <img :src="card.imgwindowurl" alt="Изображение блюда" class="width_height_card">
         <h3>{{ card.name }}</h3>
         <div class="ingrid_btn">
+          <button class="btn btn-outline-secondary favorite-btn" @click="toggleFavorite(card)" :class="{ 'favorited': card.isFavorite }">
+            <i class="fas" :class="{ 'fa-heart': !card.isFavorite, 'fa-heart-broken': card.isFavorite }"></i>
+          </button>
           <button class="btn btn-outline-secondary ingredients-btn" @click="openIngredientsModal(card)">
-          <i class="fas fa-utensils"></i>
+            <i class="fas fa-utensils"></i>
           </button>
           <button class="btn btn-outline-secondary cook-btn" @click="openRecipeModal(card)">Готовить</button>
         </div>
-        
-        
       </div>
       <button v-if="cards.length % 20 === 0 && cards.length < 2000" @click="loadMoreCards" class="btn btn-outline-secondary load-more-button">Показать еще</button>
     </div>
 
+    <favorites-modal :show="showFavoritesModal" @close="closeFavoritesModal"></favorites-modal>
     <recipe-modal :show="showRecipeModal" :card="selectedCard" @close="closeRecipeModal"></recipe-modal>
     <ingredients-modal :show="showIngredientsModal" :card="selectedCard" @close="closeIngredientsModal"></ingredients-modal>
     <auth-modal :show="showModal" @close="closeModal" @update-username="updateUsername"></auth-modal>
@@ -69,6 +77,7 @@ import AuthModal from './components/AuthModal.vue';
 import RecipeModal from './components/RecipeModal.vue';
 import SearchModal from './components/SearchModal.vue';
 import IngredientsModal from './components/IngredientsModal.vue';
+import FavoritesModal from './components/FavoritesModal.vue';
 import image from '@/assets/img/logo.jpg';
 import img__error from '@/assets/img/img_error.jpg';
 import animation from './animation';
@@ -88,14 +97,14 @@ export default {
     RecipeModal,
     SearchModal,
     IngredientsModal,
+    FavoritesModal,
   },
 
   data() {
     return {
       imagePath: image,
       img__error: img__error,
-      isAuthenticated: false,
-      username: '',
+
       showModal: false,
       cards: [],
       totalCards: 0,
@@ -104,6 +113,10 @@ export default {
       selectedCard: null,
       showSearchModal: false,
       showIngredientsModal: false,
+      isAuthenticated: localStorage.getItem('isAuthenticated') === 'true',
+      username: localStorage.getItem('username') || '',
+      dropdownOpen: false,
+      showFavoritesModal: false,
     };
   },
   mounted() {
@@ -115,6 +128,36 @@ export default {
     window.removeEventListener('resize', this.adjustCardContainerMargin);
   },
   methods: {
+    logout() {
+      localStorage.removeItem('username');
+      localStorage.removeItem('isAuthenticated');
+
+      this.isAuthenticated = false;
+      this.username = '';
+      this.dropdownOpen = false;
+    },
+    toggleDropdown() {
+      this.dropdownOpen = !this.dropdownOpen;
+    },
+    action1() {
+      this.showFavoritesModal = true;
+      this.dropdownOpen = false;
+    },
+    closeFavoritesModal() {
+      this.showFavoritesModal = false;
+    },
+    exit() {
+      this.logout();
+      this.dropdownOpen = false;
+    },
+    toggleFavorite(card) {
+      if (!this.isAuthenticated) {
+        this.openModal();
+      } else {
+        card.isFavorite = !card.isFavorite;
+        // Логика добавления избранного на сервер
+      }
+    },
     openSearchModal() {
       this.showSearchModal = true;
       this.searchRecipes(this.searchQuery);
@@ -185,13 +228,14 @@ export default {
     },
     openModal() {
       this.showModal = true;
-      this.isAuthenticated = false;
     },
 
     closeModal(username) {
       this.showModal = false;
       this.isAuthenticated = true;
       this.username = username;
+      localStorage.setItem('username', username);
+      localStorage.setItem('isAuthenticated', true);
     },
 
     handleScroll() {
@@ -205,6 +249,65 @@ export default {
 </script>
 
 <style scoped>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.dropdown-content button {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content button:hover {
+  background-color: #e9e9e9;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown-content:hover {
+  display: block;
+}
+
+.dropdown:hover .dropbtn,
+.dropbtn:focus {
+  background-color: #f1f1f1;
+}
+
+.dropbtn {
+  background-color: #fff;
+  color: #333;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #f1f1f1;
+}
 
 body{
   margin: 0;
@@ -266,6 +369,7 @@ body{
   border-bottom: 1px solid;
   padding-left: 15%;
   padding-right: 15%;
+  user-select: none;
 
 }
 .name{
@@ -292,6 +396,7 @@ body{
   text-align: center;
   border-radius: 5px;
   transition: background-color 0.3s ease;
+  user-select: none;
 }
 
 .nav-link:hover {
@@ -368,9 +473,6 @@ input:focus {
   background-color: rgb(1, 76, 59);
 }
 
-.btn:focus{
-  box-shadow: 0 0 10px rgb(3, 97, 75);
-}
 
 
 .card-container {
@@ -439,7 +541,7 @@ input:focus {
 
   text-align: center;
   margin-top: 15px;
-  margin-left: 10px;
+  margin-left: 5px;
   margin-bottom: 15px;
   width: 150px;
   height: 40px;
@@ -502,5 +604,29 @@ input:focus {
   padding: 0;
   color: inherit;
 }
+
+.favorite-btn {
+  color: #ffffff;
+  background-color: #ecc301;
+  max-width: 44px;
+  max-height: 40px;
+  align-items: center;
+  border-color: #ecc301;
+}
+
+.favorite-btn.favorited {
+  color: #ffffff;
+  background-color: rgb(150, 148, 148);
+  border-color: rgb(150, 148, 148);
+
+}
+.favorite-btn.favorited:hover {
+  background-color: rgba(136, 136, 136, 0.53);
+}
+.favorite-btn:hover {
+  background-color: #dab400;
+
+}
+
 
 </style>
