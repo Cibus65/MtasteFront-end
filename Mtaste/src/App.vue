@@ -24,9 +24,7 @@
               </div>
             </div>
             <nav class="navigation">
-              <a class="nav-link" href="#">Основное меню</a>
-              <a class="nav-link" href="#">Ингредиенты</a>
-              <a class="nav-link" href="#">Праздничное меню</a>
+              
               <nav class="navbar navbar-light bg-light">
                 <form class="form-inline" @submit.prevent="openSearchModal">
                   <input class="form-control mr-sm-2 search__engin" type="text" placeholder="Найти рецепт..." v-model="searchQuery">
@@ -501,7 +499,7 @@ body{
 
 .bg-light{
   --bs-bg-opacity: 0;
-
+  margin:auto;
 }
 .btn-outline-secondary{
   color:#fff;
@@ -675,5 +673,35 @@ input:focus {
 
 }
 
+@media (max-width:1010px) {
+    .ingredients-btn[data-v-7a7a37b1] {
+    margin-left:50px;
+    }
+}
+@media (max-width:615px) {
+    .favorite-btn[data-v-7a7a37b1] {
+    color: #ffffff;
+    background-color: #ecc301;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #ecc301;
+    margin-top: 55px;
+    }
 
+
+    .ingredients-btn[data-v-7a7a37b1][data-v-7a7a37b1] {
+    margin-left: 50px;
+    margin-top: 55px;
+    }
+    .cook-btn[data-v-7a7a37b1] {
+    text-align: center;
+    margin-left: 5px;
+    margin-bottom: 50px;
+    width: 150px;
+    height: 40px;
+    box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
+    margin-top: -110px;
+    }
+}
 </style>
