@@ -428,6 +428,7 @@ body{
   flex-wrap: wrap;
   padding: 0 20%;
   align-items: center;
+  background-color: #ffffff;
 }
 
 .nav-link {
@@ -463,9 +464,10 @@ body{
 
 .form-inline{
   display: flex;
-  background-color: #fff;
+  background-color: #ffffff00;
   font-family: "Gilda Display", serif;
-  width: 281px;
+  width: 700px;
+ 
 
 
 
@@ -483,7 +485,7 @@ body{
 .search__button{
   margin-top: 5px;
   width: 140px;
-  height: 45px;
+  height: 50px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   border-top-right-radius: 10px;
@@ -495,6 +497,7 @@ body{
   border-bottom-right-radius: 0px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  height: 50px;
 }
 
 .bg-light{

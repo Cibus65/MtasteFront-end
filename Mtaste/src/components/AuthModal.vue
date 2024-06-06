@@ -7,6 +7,7 @@
         <input type="text" v-model="login" placeholder="Имя пользователя" required>
         <input type="password" v-model="password" placeholder="Пароль" required>
         <button type="submit" class="auth-button">Войти</button>
+        
       </form>
       <p class="register-link" @click="showRegisterModal = true">У вас еще нет аккаунта? Зарегистрируйтесь</p>
     </div>
@@ -29,6 +30,7 @@
 
 <script>
 import axios from 'axios';
+import { ErrorCodes } from 'vue';
 export default {
 
   
@@ -56,14 +58,14 @@ export default {
     .then(function (response) {
       console.log(response);
       
+      
     })
     .catch(function (error) {
       console.log(error);
+      
     });
       
-      console.log('Имя пользователя:', this.login);
-      console.log('Пароль:', this.password);
-      // После успешной авторизации закрываем модальное окно
+      
       
       this.$emit('close', this.login);
       
