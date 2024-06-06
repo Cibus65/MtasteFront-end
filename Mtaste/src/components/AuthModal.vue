@@ -4,7 +4,7 @@
       <span class="close" @click="closeModal">&times;</span>
       <h2 class="modal-title">Авторизация</h2>
       <form @submit.prevent="handleSubmit" class="auth-form">
-        <input type="text" v-model="username" placeholder="Имя пользователя" required>
+        <input type="text" v-model="login" placeholder="Имя пользователя" required>
         <input type="password" v-model="password" placeholder="Пароль" required>
         <button type="submit" class="auth-button">Войти</button>
       </form>
@@ -40,20 +40,32 @@ export default {
       password: '',
       retry_password: '',
       
-     
-      username: '',
-      password: '',
-      
     };
   },
   methods: {
     handleSubmit() {
+
+      axios.post('http://localhost:8082/Mtaste/API/auth/signIn', {
+      login: this.login,
+      password: this.password,
+    }, {
+      headers: {
+        'Content-Type': 'application/json' 
+      }
+    })
+    .then(function (response) {
+      console.log(response);
       
-      console.log('Имя пользователя:', this.username);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+      
+      console.log('Имя пользователя:', this.login);
       console.log('Пароль:', this.password);
       // После успешной авторизации закрываем модальное окно
       
-      this.$emit('close', this.username);
+      this.$emit('close', this.login);
       
     },
     
