@@ -5,7 +5,7 @@
         <div class="container">
           <div class="header__inner" id="headerInner">
             <div class="logo">
-              <img :src="imagePath" alt="Logo">
+              <img :src="imagePath" alt="Logo" id="change_img">
               <div class="name">Mtaste</div>
               <div class="button-top" v-if="isAuthenticated">
                 <div class="dropdown" @click="toggleDropdown">
@@ -648,6 +648,7 @@ input:focus {
   cursor: pointer;
   padding: 0;
   color: inherit;
+  margin-left:-100px;
 }
 
 .favorite-btn {
@@ -677,7 +678,18 @@ input:focus {
     .ingredients-btn[data-v-7a7a37b1] {
     margin-left:50px;
     }
+    .username-text {
+    font-size:20px;
+    }
+    .user-info i[data-v-7a7a37b1] {
+    font-size:60px;
+    margin-left:-130px;
+    }
+    #change_img {
+    height:70px;
+    }
 }
+
 @media (max-width:615px) {
     .favorite-btn[data-v-7a7a37b1] {
     color: #ffffff;
@@ -703,5 +715,15 @@ input:focus {
     box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
     margin-top: -110px;
     }
+    .name[data-v-7a7a37b1] {
+    font-size:30px;
+    }
+
+    #change_img {
+    height:70px;
+    }
+    
 }
+
+
 </style>
