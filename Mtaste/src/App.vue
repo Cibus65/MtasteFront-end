@@ -683,7 +683,7 @@ input:focus {
     }
     .user-info i[data-v-7a7a37b1] {
     font-size:60px;
-    margin-left:-130px;
+    margin-left:20px;
     }
     #change_img {
     height:70px;
@@ -726,4 +726,13 @@ input:focus {
 }
 
 
+@media (max-width:500px) {
+  .card[data-v-7a7a37b1] {
+    width:100%;
+  }
+  .cook-btn[data-v-7a7a37b1][data-v-7a7a37b1] {
+  margin-top:10px;
+  margin-left:-140px;
+  }
+}
 </style>
