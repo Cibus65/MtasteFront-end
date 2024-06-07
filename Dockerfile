@@ -1,28 +1,21 @@
 # Use the official Node.js image.
-# https://hub.docker.com/_/node
-FROM node:14
+FROM node:14 AS build-stage
 
-# Create and change to the app directory.
-WORKDIR /usr/src/app
+# Set the working directory
+WORKDIR /app
 
-# Copy application dependency manifests to the container image.
-# A wildcard is used to ensure both package.json AND package-lock.json are copied.
-# Copying this separately prevents re-running npm install on every code change.
+# Copy the package files and install dependencies
 COPY package*.json ./
-
-# Install production dependencies.
 RUN npm install
 
-# Copy local code to the container image.
+# Copy the source code
 COPY . .
 
 # Build the app
 RUN npm run build
 
-# Serve the app with a static server
-RUN npm install -g serve
-CMD ["serve", "-s", "dist"]
-
-# Use the official Nginx image to serve the build files
-# FROM nginx:alpine
-# COPY --from=build-stage /usr/src/app/dist /usr/share/nginx/html
+# Stage 2: Serve the app with Nginx
+FROM nginx:alpine
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+EXPOSE 5147
+CMD ["nginx", "-g", "daemon off;"]
