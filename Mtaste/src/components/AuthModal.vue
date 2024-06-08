@@ -95,7 +95,7 @@ export default {
         Swal.fire({
           icon: "error",
           title: "Ой..",
-          text: "Пароль и подтверждение пароля должны совпадать!",
+          text: "Пароли должны совпадать!",
         });
       } else if (response.data.errorCode === 8) {
               Swal.fire({
