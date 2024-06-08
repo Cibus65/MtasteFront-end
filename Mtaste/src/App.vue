@@ -116,6 +116,7 @@ export default {
       isAuthenticated: localStorage.getItem('isAuthenticated') === 'true',
       username: localStorage.getItem('username') || '',
       dropdownOpen: false,
+      
       showFavoritesModal: false,
     };
   },
@@ -135,7 +136,7 @@ export default {
         const userId = localStorage.getItem('userId');
         const recipeId = card.id;
 
-        axios.post('http://0.0.0.0:8082/Mtaste/API/user/addToFavourite', {
+        axios.post('http://95.163.223.178:8082/Mtaste/API/user/addToFavourite', {
           userId: userId,
           recipeId: recipeId
         })
@@ -155,7 +156,7 @@ export default {
         const userId = localStorage.getItem('userId'); 
         const recipeId = card.id;
 
-        axios.post('http://0.0.0.0:8082/Mtaste/API/user/deleteFromFavourite', {
+        axios.post('http://95.163.223.178:8082/Mtaste/API/user/deleteFromFavourite', {
           userId: userId,
           recipeId: recipeId
         })
