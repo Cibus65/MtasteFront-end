@@ -13,15 +13,16 @@
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "bootstrap-vue": "^2.23.1",
+    "sweetalert2": "^11.11.1",
     "vue": "^3.4.25",
     "vue-scrollto": "^2.20.0",
-    "vue-sweetalert2": "^5.0.5",
+    "vue-sweetalert2": "^5.0.11",
     "vue.js": "^0.3.2",
     "vue2-animate": "^2.1.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
-    "vite": "^5.2.12",
+    "vite": "^5.2.13",
     "vue-waypoint": "^4.3.0"
   }
 }

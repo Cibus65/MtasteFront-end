@@ -55,6 +55,7 @@
     </div>
 
     <favorites-modal :show="showFavoritesModal" @close="closeFavoritesModal"></favorites-modal>
+    <Random_carusel> </Random_carusel>
     <recipe-modal :show="showRecipeModal" :card="selectedCard" @close="closeRecipeModal"></recipe-modal>
     <ingredients-modal :show="showIngredientsModal" :card="selectedCard" @close="closeIngredientsModal"></ingredients-modal>
     <auth-modal :show="showModal" @close="closeModal" @update-username="updateUsername"></auth-modal>
@@ -80,7 +81,7 @@ import image from '@/assets/img/logo.jpg';
 import img__error from '@/assets/img/img_error.jpg';
 import animation from './animation';
 import animation_for_first_4_card from './animation_for_4_card';
-
+import Random_carusel from './components/random_carusel.vue';
 
 
 
@@ -96,6 +97,7 @@ export default {
     SearchModal,
     IngredientsModal,
     FavoritesModal,
+    Random_carusel,
   },
 
   data() {
@@ -219,6 +221,25 @@ export default {
         cardContainer.style.marginTop = `${headerHeight}px`;
       }
     },
+    getRandomCards(card) {
+      axios.get(`http://95.163.223.178:8082/Mtaste/API/getRandomRecipe/${card.id}`)
+          .then(response => {
+            const additionalCardsData = response.data;
+            const newCards = additionalCardsData.map(cardData => ({
+              name: cardData.name,
+              imgwindowurl: cardData.imgwindowurl,
+              id: cardData.ID,
+            }));
+            this.cards.push(...newCards);
+            this.totalCards = response.headers['x-total-count'];
+            
+          })
+          .catch(error => {
+            console.error('Ошибка при загрузке карточек:', error);
+          });
+    },
+      
+    
     loadMoreCards() {
       axios.get(`http://95.163.223.178:8082/Mtaste/API/getRecipeByPage/${this.currentPage}`)
           .then(response => {
@@ -269,6 +290,7 @@ export default {
             console.error('Ошибка при загрузке описания рецепта:', error);
           });
     },
+
     closeRecipeModal() {
       this.showRecipeModal = false;
     },
@@ -429,6 +451,7 @@ body{
   flex-wrap: wrap;
   padding: 0 20%;
   align-items: center;
+  background-color: #ffffff;
 }
 
 .nav-link {
@@ -464,9 +487,10 @@ body{
 
 .form-inline{
   display: flex;
-  background-color: #fff;
+  background-color: #ffffff00;
   font-family: "Gilda Display", serif;
-  width: 281px;
+  width: 700px;
+ 
 
 
 
@@ -484,7 +508,7 @@ body{
 .search__button{
   margin-top: 5px;
   width: 140px;
-  height: 45px;
+  height: 50px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   border-top-right-radius: 10px;
@@ -496,6 +520,7 @@ body{
   border-bottom-right-radius: 0px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  height: 50px;
 }
 
 .bg-light{
@@ -684,7 +709,7 @@ input:focus {
     }
     .user-info i[data-v-7a7a37b1] {
     font-size:60px;
-    margin-left:-130px;
+    margin-left:20px;
     }
     #change_img {
     height:70px;
@@ -727,4 +752,13 @@ input:focus {
 }
 
 
+@media (max-width:500px) {
+  .card[data-v-7a7a37b1] {
+    width:100%;
+  }
+  .cook-btn[data-v-7a7a37b1][data-v-7a7a37b1] {
+  margin-top:10px;
+  margin-left:-140px;
+  }
+}
 </style>
