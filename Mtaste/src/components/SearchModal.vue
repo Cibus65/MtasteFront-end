@@ -37,7 +37,7 @@ export default {
       this.$emit('open-recipe', card);
     },
     searchRecipes(words) {
-      axios.get(`http://0.0.0.0:8082/Mtaste/API/findRecipe/${words}`)
+      axios.get(`http://95.163.223.178:8082/Mtaste/API/findRecipe/${words}`)
           .then(response => {
             this.searchResults = response.data.map(cardData => ({
               name: cardData.name,
