@@ -12,6 +12,7 @@ RUN cd ./Mtaste &&  npm install -g npm@10.8.1
 # Сборка приложения
 RUN ls
 RUN cd ./Mtaste && npm run build
+RUN ls
 
 # Этап 2: Запуск приложения с Nginx
 FROM nginx:alpine
