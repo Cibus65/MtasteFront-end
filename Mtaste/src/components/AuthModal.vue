@@ -47,7 +47,7 @@ export default {
   methods: {
     handleSubmit() {
 
-      axios.post('http://0.0.0.0:8082/Mtaste/API/auth/signIn', {
+      axios.post('http://localhost:8082/Mtaste/API/auth/signIn', {
       login: this.login,
       password: this.password,
     }, {
@@ -73,7 +73,7 @@ export default {
     
 
     handleRegister() {
-      axios.post('http://0.0.0.0:8082/Mtaste/API/auth/signUp', {
+      axios.post('http://localhost:8082/Mtaste/API/auth/signUp', {
       login: this.login,
       password: this.password,
       retry_password: this.retry_password,

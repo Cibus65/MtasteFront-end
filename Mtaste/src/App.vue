@@ -240,7 +240,7 @@ export default {
       
     
     loadMoreCards() {
-      axios.get(`http://0.0.0.0:8082/Mtaste/API/getRecipeByPage/${this.currentPage}`)
+      axios.get(`http://localhost:8082/Mtaste/API/getRecipeByPage/${this.currentPage}`)
           .then(response => {
             const additionalCardsData = response.data;
             const newCards = additionalCardsData.map(cardData => ({
@@ -257,7 +257,7 @@ export default {
           });
     },
     openIngredientsModal(card) {
-      axios.get(`http://0.0.0.0:8082/Mtaste/API/getRecipeByID/${card.id}`)
+      axios.get(`http://localhost:8082/Mtaste/API/getRecipeByID/${card.id}`)
           .then(response => {
             const recipeData = response.data;
             this.selectedCard = {
@@ -274,7 +274,7 @@ export default {
       this.showIngredientsModal = false;
     },
     openRecipeModal(card) {
-      axios.get(`http://0.0.0.0:8082/Mtaste/API/getRecipeByID/${card.id}`)
+      axios.get(`http://localhost:8082/Mtaste/API/getRecipeByID/${card.id}`)
           .then(response => {
             const recipeData = response.data;
             this.selectedCard = {
