@@ -55,6 +55,7 @@
     </div>
 
     <favorites-modal :show="showFavoritesModal" @close="closeFavoritesModal"></favorites-modal>
+    <Random_carusel> </Random_carusel>
     <recipe-modal :show="showRecipeModal" :card="selectedCard" @close="closeRecipeModal"></recipe-modal>
     <ingredients-modal :show="showIngredientsModal" :card="selectedCard" @close="closeIngredientsModal"></ingredients-modal>
     <auth-modal :show="showModal" @close="closeModal" @update-username="updateUsername"></auth-modal>
@@ -80,7 +81,7 @@ import image from '@/assets/img/logo.jpg';
 import img__error from '@/assets/img/img_error.jpg';
 import animation from './animation';
 import animation_for_first_4_card from './animation_for_4_card';
-
+import Random_carusel from './components/random_carusel.vue';
 
 
 
@@ -96,6 +97,7 @@ export default {
     SearchModal,
     IngredientsModal,
     FavoritesModal,
+    Random_carusel,
   },
 
   data() {
@@ -218,6 +220,25 @@ export default {
         cardContainer.style.marginTop = `${headerHeight}px`;
       }
     },
+    getRandomCards(card) {
+      axios.get(`http://localhost:8082/Mtaste/API/getRandomRecipe/${card.id}`)
+          .then(response => {
+            const additionalCardsData = response.data;
+            const newCards = additionalCardsData.map(cardData => ({
+              name: cardData.name,
+              imgwindowurl: cardData.imgwindowurl,
+              id: cardData.ID,
+            }));
+            this.cards.push(...newCards);
+            this.totalCards = response.headers['x-total-count'];
+            
+          })
+          .catch(error => {
+            console.error('Ошибка при загрузке карточек:', error);
+          });
+    },
+      
+    
     loadMoreCards() {
       axios.get(`http://localhost:8082/Mtaste/API/getRecipeByPage/${this.currentPage}`)
           .then(response => {
@@ -268,6 +289,7 @@ export default {
             console.error('Ошибка при загрузке описания рецепта:', error);
           });
     },
+
     closeRecipeModal() {
       this.showRecipeModal = false;
     },
