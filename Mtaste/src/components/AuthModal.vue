@@ -74,7 +74,6 @@ export default {
 
 
     handleRegister() { 
-      
       axios.post('http://95.163.223.178:8082/Mtaste/API/auth/signUp', {
         login: this.login,
         password: this.password,
