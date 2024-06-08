@@ -6,10 +6,9 @@ WORKDIR /app
 
 # Копирование исходного кода и установка зависимостей
 COPY . .
-RUN cd ./Mtaste &&  npm install -g npm@10.8.1
+RUN cd ./Mtaste &&  npm install -g npm@10.8.1 && npm run build
 
 # Сборка приложения
-RUN npm run build
 
 # Этап 2: Запуск приложения с Nginx
 FROM nginx:alpine
