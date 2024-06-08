@@ -7,7 +7,6 @@
         <input type="text" v-model="login" placeholder="Имя пользователя" required>
         <input type="password" v-model="password" placeholder="Пароль" required>
         <button type="submit" class="auth-button">Войти</button>
-        
       </form>
       <p class="register-link" @click="showRegisterModal = true">У вас еще нет аккаунта? Зарегистрируйтесь</p>
     </div>
@@ -22,15 +21,15 @@
         <input type="password" v-model="retry_password" placeholder="Подтвердите пароль" required>
         <button type="submit" class="auth-button">Зарегистрироваться</button>
       </form>
-      <p v-if="message">{{ message }}</p>
       <p class="register-link" @click="showRegisterModal = false">Уже есть аккаунт? Войдите</p>
     </div>
   </div>
+
 </template>
 
 <script>
 import axios from 'axios';
-import { ErrorCodes } from 'vue';
+import Swal from 'sweetalert2';
 export default {
 
   
@@ -41,87 +40,76 @@ export default {
       login: '',
       password: '',
       retry_password: '',
-      
+      errorMessage: '',
     };
   },
   methods: {
     handleSubmit() {
-
       axios.post('http://localhost:8082/Mtaste/API/auth/signIn', {
-      login: this.login,
-      password: this.password,
-    }, {
-      headers: {
-        'Content-Type': 'application/json' 
-      }
-    })
-    .then(function (response) {
-      console.log(response);
-      
-      
-    })
-    .catch(function (error) {
-      console.log(error);
-      
-    });
-      
-      
-      
-      this.$emit('close', this.login);
-      
+        login: this.login,
+        password: this.password,
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+          .then(response => {
+            // Проверяем, если сервер вернул ошибку с кодом 3
+            if (response.data.errorCode === 3) {
+              // Обрабатываем ошибку, например, показывая сообщение
+              Swal.fire({
+                icon: "error",
+                title: "Ой..",
+                text: "Неверный логин или пароль!",
+              });
+            } else {
+              // Сохраняем токен, если авторизация прошла успешно
+              const token = response.data.token;
+              localStorage.setItem('token', token);
+              this.$emit('close', this.login);
+            }
+          })
+
     },
-    
+
 
     handleRegister() {
       axios.post('http://localhost:8082/Mtaste/API/auth/signUp', {
-      login: this.login,
-      password: this.password,
-      retry_password: this.retry_password,
-    }, {
-      headers: {
-        'Content-Type': 'application/json' 
+        login: this.login,
+        password: this.password,
+        retry_password: this.retry_password,
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+          .then(response => {
+            if (response.data.errorCode === 2) {
+              Swal.fire({
+                icon: "error",
+                title: "Ой..",
+                text: "Пользователь с таким именем уже существует!",
+              });
+
+          } else if (response.data.errorCode === 5) {
+        Swal.fire({
+          icon: "error",
+          title: "Ой..",
+          text: "Пароль и подтверждение пароля должны совпадать!",
+        });
+      } else if (response.data.errorCode === 8) {
+              Swal.fire({
+                icon: "error",
+                title: "Ой..",
+                text: "Пароль должен быть не короче 8 символов, не длиннее 50, содержать хотя бы одну цифру и латинскую букву!",
+              });
+      }else {
+        const token = response.data.token;
+        localStorage.setItem('token', token);
+        this.closeRegisterModal();
       }
-    })
-    .then(function (response) {
-      console.log(response);
-      
-    })
-    .catch(function (error) {
-      console.log(error);
     });
-
-
-
-
-      /*
-      const url = 'http://0.0.0.0:8082/Mtaste/API/auth/signUp'
-      axios.post(url, this.user)
-        .then(response => {
-          // Обработка успешного ответа
-          console.log(response);
-          console.log("Успешно");
-        })
-        .catch(error => {
-          // Обработка ошибки
-          console.error(error);
-          
-      });
-      */
-      // Логика отправки формы на сервер для регистрации
-      console.log('Имя пользователя:', this.login);
-      console.log('Пароль:', this.password);
-      console.log('Подтверждение пароля:', this.retry_password);
-      // После успешной регистрации закрываем модальное окно регистрации
-
-     
-
-
-      this.closeRegisterModal();
     },
-    registerUser() {
-      
-    },
-
     closeModal() {
       this.$emit('input', false);
     },
