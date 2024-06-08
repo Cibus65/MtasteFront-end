@@ -134,7 +134,7 @@ export default {
         const userId = localStorage.getItem('userId');
         const recipeId = card.id;
 
-        axios.post('http://0.0.0.0:8082/Mtaste/API/user/addToFavourite', {
+        axios.post('http://95.163.223.178:8082/Mtaste/API/user/addToFavourite', {
           userId: userId,
           recipeId: recipeId
         })
@@ -154,7 +154,7 @@ export default {
         const userId = localStorage.getItem('userId'); 
         const recipeId = card.id;
 
-        axios.post('http://0.0.0.0:8082/Mtaste/API/user/deleteFromFavourite', {
+        axios.post('http://95.163.223.178:8082/Mtaste/API/user/deleteFromFavourite', {
           userId: userId,
           recipeId: recipeId
         })
@@ -220,7 +220,7 @@ export default {
       }
     },
     loadMoreCards() {
-      axios.get(`http://0.0.0.0:8082/Mtaste/API/getRecipeByPage/${this.currentPage}`)
+      axios.get(`http://95.163.223.178:8082/Mtaste/API/getRecipeByPage/${this.currentPage}`)
           .then(response => {
             const additionalCardsData = response.data;
             const newCards = additionalCardsData.map(cardData => ({
@@ -237,7 +237,7 @@ export default {
           });
     },
     openIngredientsModal(card) {
-      axios.get(`http://0.0.0.0:8082/Mtaste/API/getRecipeByID/${card.id}`)
+      axios.get(`http://95.163.223.178:8082/Mtaste/API/getRecipeByID/${card.id}`)
           .then(response => {
             const recipeData = response.data;
             this.selectedCard = {
@@ -254,7 +254,7 @@ export default {
       this.showIngredientsModal = false;
     },
     openRecipeModal(card) {
-      axios.get(`http://0.0.0.0:8082/Mtaste/API/getRecipeByID/${card.id}`)
+      axios.get(`http://95.163.223.178:8082/Mtaste/API/getRecipeByID/${card.id}`)
           .then(response => {
             const recipeData = response.data;
             this.selectedCard = {
