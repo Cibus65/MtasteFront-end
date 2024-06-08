@@ -221,7 +221,7 @@ export default {
       }
     },
     getRandomCards(card) {
-      axios.get(`http://localhost:8082/Mtaste/API/getRandomRecipe/${card.id}`)
+      axios.get(`http://95.163.223.178:8082/Mtaste/API/getRandomRecipe/${card.id}`)
           .then(response => {
             const additionalCardsData = response.data;
             const newCards = additionalCardsData.map(cardData => ({
@@ -240,7 +240,7 @@ export default {
       
     
     loadMoreCards() {
-      axios.get(`http://localhost:8082/Mtaste/API/getRecipeByPage/${this.currentPage}`)
+      axios.get(`http://95.163.223.178:8082/Mtaste/API/getRecipeByPage/${this.currentPage}`)
           .then(response => {
             const additionalCardsData = response.data;
             const newCards = additionalCardsData.map(cardData => ({
@@ -257,7 +257,7 @@ export default {
           });
     },
     openIngredientsModal(card) {
-      axios.get(`http://localhost:8082/Mtaste/API/getRecipeByID/${card.id}`)
+      axios.get(`http://95.163.223.178:8082/Mtaste/API/getRecipeByID/${card.id}`)
           .then(response => {
             const recipeData = response.data;
             this.selectedCard = {
@@ -274,7 +274,7 @@ export default {
       this.showIngredientsModal = false;
     },
     openRecipeModal(card) {
-      axios.get(`http://localhost:8082/Mtaste/API/getRecipeByID/${card.id}`)
+      axios.get(`http://95.163.223.178:8082/Mtaste/API/getRecipeByID/${card.id}`)
           .then(response => {
             const recipeData = response.data;
             this.selectedCard = {
