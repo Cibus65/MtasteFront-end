@@ -3,7 +3,7 @@
     <div class="modal-content">
       <h2>Избранное</h2>
       <div v-if="recipes.length">
-        <div v-for="recipe in recipes" :key="recipe.id" class="recipe-card">
+        <div v-for="recipe in recipes" :key="recipe.id" class="card-container">
           <h3>{{ recipe.title }}</h3>
           <!-- Добавьте другие поля, которые вы хотите отобразить -->
         </div>
@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     fetchFavouriteRecipes() {
-      const url = `http://localhost:8082/Mtaste/API/user/getFavouriteRecipes/:userID/${this.userID}/`;
+      const url = `http://localhost:8082/Mtaste/API/user/getFavouriteRecipes/162758239`;
       axios.get(url)
         .then(response => {
           this.recipes = response.data;
