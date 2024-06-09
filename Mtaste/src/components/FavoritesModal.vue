@@ -1,6 +1,7 @@
 <template>
   <div v-if="show" class="modal">
     <div class="modal-content">
+      <span class="close" @click="$emit('close')">&times;</span>
       <h2>Избранное</h2>
       <div v-if="favoritesRecipes.length > 0" class="card-container">
         <div v-for="(card, index) in favoritesRecipes" :key="index" class="card">
@@ -14,7 +15,7 @@
       <div v-else>
         <p>Нет избранных рецептов</p>
       </div>
-      <button @click="$emit('close')">Закрыть</button>
+      
     </div>
   </div>
 </template>
@@ -82,22 +83,30 @@ export default {
 
 <style scoped>
 .modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
-  background: white;
+  background-color: #fefefe;
+  margin: auto;
   padding: 20px;
-  border-radius: 5px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 1200px;
+  box-sizing: border-box;
+ 
 }
+
 .card_img{
   width: 100%;
   height: 80%;
@@ -135,9 +144,10 @@ h2 {
  
 }
 .enter__button{
-  margin-top: 50px;
+  
   margin-left: 300px;
   width: 100px;
+  margin-bottom: 15px;
 
 }
 .btn_style{
@@ -183,7 +193,7 @@ h2 {
 
 .card img {
   
-  max-height: 900px;
+  max-height: 700px;
 }
 
 .card button {
