@@ -135,9 +135,9 @@ export default {
         const userId = localStorage.getItem('userId');
         const recipeId = card.id;
 
-        axios.post('http://0.0.0.0:8082/Mtaste/API/user/addToFavourite', {
-          userId: userId,
-          recipeId: recipeId
+        axios.post('http://localhost:8082/Mtaste/API/user/addToFavourite', {
+          userID:   userId,
+		      recipeID: recipeId,
         })
             .then(response => {
               card.isFavorite = true;
@@ -152,12 +152,12 @@ export default {
       if (!this.isAuthenticated) {
         this.openModal();
       } else {
-        const userId = localStorage.getItem('userId'); 
+        const userId = localStorage.getItem('userId');
         const recipeId = card.id;
 
-        axios.post('http://0.0.0.0:8082/Mtaste/API/user/deleteFromFavourite', {
-          userId: userId,
-          recipeId: recipeId
+        axios.post('http://localhost:8082/Mtaste/API/user/deleteFromFavourite', {
+          userID:   userId,
+		      recipeID: recipeId,
         })
             .then(response => {
               if (response.data.flag) {
