@@ -35,7 +35,8 @@ export default {
   },
   data() {
     return {
-      favoritesRecipes: []
+      favoritesRecipes: [],
+      userID: localStorage.getItem('userID') || '' // Получение userID из локального хранилища
     };
   },
   watch: {
@@ -51,7 +52,8 @@ export default {
     },
     
     fetchFavouriteRecipes() {
-      const url = `http://localhost:8082/Mtaste/API/user/getFavouriteRecipes/162758239`;
+      const url = `http://localhost:8082/Mtaste/API/user/getFavouriteRecipes/${this.userID}`;
+
       
       axios.get(url)
       .then(response => {

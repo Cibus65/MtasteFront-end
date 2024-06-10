@@ -65,7 +65,9 @@ export default {
             } else {
               // Сохраняем токен, если авторизация прошла успешно
               const token = response.data.token;
+              const userID = response.data.userID;
               localStorage.setItem('token', token);
+              localStorage.setItem('userID', userID);
               this.$emit('close', this.login);
             }
           })
