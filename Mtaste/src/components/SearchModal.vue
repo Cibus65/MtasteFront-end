@@ -37,7 +37,9 @@ export default {
       this.$emit('open-recipe', card);
     },
     searchRecipes(words) {
-      axios.get(`http://localhost:8082/Mtaste/API/findRecipe/${words}`)
+      const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+
+      axios.get(`${baseURL}/Mtaste/API/findRecipe/${words}`)
           .then(response => {
             this.searchResults = response.data.map(cardData => ({
               name: cardData.name,

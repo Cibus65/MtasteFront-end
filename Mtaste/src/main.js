@@ -16,3 +16,4 @@ app.use(VueSweetalert2);
 
 
 app.mount('#app');
+require('dotenv').config();

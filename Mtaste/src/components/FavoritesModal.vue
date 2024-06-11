@@ -52,11 +52,14 @@ export default {
     },
     
     fetchFavouriteRecipes() {
-      const url = `http://localhost:8082/Mtaste/API/user/getFavouriteRecipes/${this.userID}`;
+      const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
 
+      const url = `${baseURL}/Mtaste/API/user/getFavouriteRecipes/${this.userID}`;
       
       axios.get(url)
+  
       .then(response => {
+        console.log(this)
         if (response.status === 200) {
           // Извлекаем массив рецептов из ответа
           const recipes = response.data.recipes;
