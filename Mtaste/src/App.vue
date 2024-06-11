@@ -85,6 +85,7 @@ import image from '@/assets/img/logo.jpg';
 import img__error from '@/assets/img/img_error.jpg';
 import animation from './animation';
 import animation_for_first_4_card from './animation_for_4_card';
+import Random_carusel from './components/random_carusel.vue';
 
 
 
@@ -119,7 +120,6 @@ export default {
       isAuthenticated: localStorage.getItem('isAuthenticated') === 'true',
       username: localStorage.getItem('username') || '',
       dropdownOpen: false,
-      
       showFavoritesModal: false,
     };
   },
