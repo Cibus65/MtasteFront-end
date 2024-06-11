@@ -35,8 +35,11 @@
           </div>
         </div>
       </div>
+      
     </header>
-
+    <div class="random_carusel">
+      <Random_carusel> </Random_carusel>
+    </div>
     <div class="card-container" ref="cardContainer">
       <div v-for="(card, index) in cards" :key="index" class="card">
         <img :src="card.imgwindowurl" alt="Изображение блюда" class="width_height_card">
@@ -51,10 +54,12 @@
           <button class="btn btn-outline-secondary cook-btn" @click="openRecipeModal(card)">Готовить</button>
         </div>
       </div>
+      
       <button v-if="cards.length % 20 === 0 && cards.length < 2000" @click="loadMoreCards" class="btn btn-outline-secondary load-more-button">Показать еще</button>
     </div>
-
+    
     <favorites-modal :show="showFavoritesModal" @close="closeFavoritesModal"></favorites-modal>
+    
     <recipe-modal :show="showRecipeModal" :card="selectedCard" @close="closeRecipeModal"></recipe-modal>
     <ingredients-modal :show="showIngredientsModal" :card="selectedCard" @close="closeIngredientsModal"></ingredients-modal>
     <auth-modal :show="showModal" @close="closeModal" @update-username="updateUsername"></auth-modal>
@@ -131,12 +136,13 @@ export default {
       if (!this.isAuthenticated) {
         this.openModal();
       } else {
-        const userId = localStorage.getItem('userId');
-        const recipeId = card.id;
+        const userID = localStorage.getItem('userID');
+        const recipeID = card.id;
+        const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
 
-        axios.post('http://95.163.223.178:8082/Mtaste/API/user/addToFavourite', {
-          userId: userId,
-          recipeId: recipeId
+        axios.post(`${baseURL}/Mtaste/API/user/favourite`, {
+          userID:   userID,
+		      recipeID: recipeID,
         })
             .then(response => {
               card.isFavorite = true;
@@ -151,12 +157,12 @@ export default {
       if (!this.isAuthenticated) {
         this.openModal();
       } else {
-        const userId = localStorage.getItem('userId'); 
+        const userId = localStorage.getItem('userId');
         const recipeId = card.id;
-
-        axios.post('http://95.163.223.178:8082/Mtaste/API/user/deleteFromFavourite', {
-          userId: userId,
-          recipeId: recipeId
+        const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+        axios.post(`${baseURL}/Mtaste/API/user/deleteFromFavourite`, {
+          userID:   userId,
+		      recipeID: recipeId,
         })
             .then(response => {
               if (response.data.flag) {
@@ -220,7 +226,8 @@ export default {
       }
     },
     getRandomCards(card) {
-      axios.get(`http://95.163.223.178:8082/Mtaste/API/getRandomRecipe/${card.id}`)
+      const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+      axios.get(`${baseURL}/Mtaste/API/getRandomRecipe/${card.id}`)
           .then(response => {
             const additionalCardsData = response.data;
             const newCards = additionalCardsData.map(cardData => ({
@@ -239,7 +246,10 @@ export default {
       
     
     loadMoreCards() {
-      axios.get(`http://95.163.223.178:8082/Mtaste/API/getRecipeByPage/${this.currentPage}`)
+      const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+
+      console.log(baseURL)
+      axios.get(`${baseURL}/Mtaste/API/getRecipeByPage/${this.currentPage}`)
           .then(response => {
             const additionalCardsData = response.data;
             const newCards = additionalCardsData.map(cardData => ({
@@ -256,7 +266,9 @@ export default {
           });
     },
     openIngredientsModal(card) {
-      axios.get(`http://95.163.223.178:8082/Mtaste/API/getRecipeByID/${card.id}`)
+      const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+
+      axios.get(`${baseURL}/Mtaste/API/getRecipeByID/${card.id}`)
           .then(response => {
             const recipeData = response.data;
             this.selectedCard = {
@@ -273,7 +285,9 @@ export default {
       this.showIngredientsModal = false;
     },
     openRecipeModal(card) {
-      axios.get(`http://95.163.223.178:8082/Mtaste/API/getRecipeByID/${card.id}`)
+      const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+
+      axios.get(`${baseURL}/Mtaste/API/getRecipeByID/${card.id}`)
           .then(response => {
             const recipeData = response.data;
             this.selectedCard = {
@@ -315,6 +329,7 @@ export default {
 </script>
 
 <style scoped>
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -696,6 +711,14 @@ input:focus {
 .favorite-btn:hover {
   background-color: #dab400;
 
+}
+
+.random_carusel{
+  margin-top: 200px;
+  max-height: 500px;
+  max-width: 1000px;
+  margin-left: calc(19%);
+  
 }
 
 @media (max-width:1010px) {
