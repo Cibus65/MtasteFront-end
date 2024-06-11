@@ -132,7 +132,7 @@ export default {
       if (!this.isAuthenticated) {
         this.openModal();
       } else {
-        const userID = localStorage.getItem('userid');
+        const userID = localStorage.getItem('userID');
         const recipeID = card.id;
 
         axios.post('http://localhost:8082/Mtaste/API/user/favourite', {
