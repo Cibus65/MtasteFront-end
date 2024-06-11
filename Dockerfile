@@ -1,16 +1,16 @@
 # Этап 1: С\борка приложения
 FROM node:22 AS build-stage
 
-# Установка рабочей директории
+# Установка рабочей  директории
 WORKDIR /app
 
 # Копирование исходного кода и установка зависимостей
 COPY . .
 RUN ls
-RUN cd ./Mtaste &&  npm install -g npm@10.8.1 
-RUN ls
+RUN cd ./Mtaste &&  npm install -g npm@10.8.1
+
 # Сборка приложения
-RUN cd Mtaste && npm run build
+RUN cd ./Mtaste && npm run build
 
 # Этап 2: Запуск приложения с Nginx
 FROM nginx:alpine
