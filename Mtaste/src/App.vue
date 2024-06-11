@@ -35,8 +35,11 @@
           </div>
         </div>
       </div>
+      
     </header>
-
+    <div class="random_carusel">
+      <Random_carusel> </Random_carusel>
+    </div>
     <div class="card-container" ref="cardContainer">
       <div v-for="(card, index) in cards" :key="index" class="card">
         <img :src="card.imgwindowurl" alt="Изображение блюда" class="width_height_card">
@@ -51,11 +54,12 @@
           <button class="btn btn-outline-secondary cook-btn" @click="openRecipeModal(card)">Готовить</button>
         </div>
       </div>
+      
       <button v-if="cards.length % 20 === 0 && cards.length < 2000" @click="loadMoreCards" class="btn btn-outline-secondary load-more-button">Показать еще</button>
     </div>
-
+    
     <favorites-modal :show="showFavoritesModal" @close="closeFavoritesModal"></favorites-modal>
-    <Random_carusel> </Random_carusel>
+    
     <recipe-modal :show="showRecipeModal" :card="selectedCard" @close="closeRecipeModal"></recipe-modal>
     <ingredients-modal :show="showIngredientsModal" :card="selectedCard" @close="closeIngredientsModal"></ingredients-modal>
     <auth-modal :show="showModal" @close="closeModal" @update-username="updateUsername"></auth-modal>
@@ -316,6 +320,7 @@ export default {
 </script>
 
 <style scoped>
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -697,6 +702,14 @@ input:focus {
 .favorite-btn:hover {
   background-color: #dab400;
 
+}
+
+.random_carusel{
+  margin-top: 200px;
+  max-height: 500px;
+  max-width: 1000px;
+  margin-left: calc(19%);
+  
 }
 
 @media (max-width:1010px) {
