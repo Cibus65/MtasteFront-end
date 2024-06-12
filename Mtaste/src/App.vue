@@ -752,14 +752,14 @@ input:focus {
 
 }
 
-@media (max-width:1010px) {
-  .ingredients-btn[data-v-7a7a37b1] {
+@media (max-width:1080px) {
+  .ingredients-btn {
     margin-left:50px;
   }
   .username-text {
     font-size:20px;
   }
-  .user-info i[data-v-7a7a37b1] {
+  .user-info {
     font-size:60px;
     margin-left:20px;
   }
@@ -769,7 +769,7 @@ input:focus {
 }
 
 @media (max-width:615px) {
-  .favorite-btn[data-v-7a7a37b1] {
+  .favorite-btn {
     color: #ffffff;
     background-color: #ecc301;
     max-width: 44px;
@@ -780,11 +780,11 @@ input:focus {
   }
 
 
-  .ingredients-btn[data-v-7a7a37b1][data-v-7a7a37b1] {
+  .ingredients-btn {
     margin-left: 50px;
     margin-top: 55px;
   }
-  .cook-btn[data-v-7a7a37b1] {
+  .cook-btn {
     text-align: center;
     margin-left: 5px;
     margin-bottom: 50px;
@@ -793,7 +793,7 @@ input:focus {
     box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
     margin-top: -110px;
   }
-  .name[data-v-7a7a37b1] {
+  .name {
     font-size:30px;
   }
 
@@ -805,10 +805,10 @@ input:focus {
 
 
 @media (max-width:500px) {
-  .card[data-v-7a7a37b1] {
+  .card {
     width:100%;
   }
-  .cook-btn[data-v-7a7a37b1][data-v-7a7a37b1] {
+  .cook-btn{
     margin-top:10px;
     margin-left:-140px;
   }
