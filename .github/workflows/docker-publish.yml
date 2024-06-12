@@ -47,8 +47,12 @@ jobs:
           rm .env
           echo "VITE_BASE_URL=http://${{secrets.BACKEND_IP}}:8082" > .env
           # Install dependencies and build the project
+          pwd
+          ls
           npm install
           npm run build
           # Move built files to the www directory
+          pwd
+          ls
           rm -rf /var/www/${{ secrets.SSH_USERNAME }}/data/data/www/mtaste.ru/
           cp -r dist/* /var/www/${{ secrets.SSH_USERNAME }}/data/data/www/mtaste.ru/
