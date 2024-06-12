@@ -37,11 +37,10 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-      working-directory: ./MtasteFront-end/Mtaste
-
+      working-directory: . 
     - name: Build the project
       run: npm run build
-      working-directory: ./MtasteFront-end/Mtaste
+      working-directory: .
 
     - name: Archive production artifacts
       run: tar -czf dist.tar.gz -C ./MtasteFront-end/Mtaste/dist .
