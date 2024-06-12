@@ -45,7 +45,9 @@ export default {
   },
   methods: {
     handleSubmit() {
-      axios.post('http://localhost:8082/Mtaste/API/auth/signIn', {
+      const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+
+      axios.post(`${baseURL}/Mtaste/API/auth/signIn`, {
         login: this.login,
         password: this.password,
       }, {
@@ -76,7 +78,8 @@ export default {
 
 
     handleRegister() {
-      axios.post('http://localhost:8082/Mtaste/API/auth/signUp', {
+      const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+      axios.post(`${baseURL}/Mtaste/API/auth/signUp`, {
         login: this.login,
         password: this.password,
         retry_password: this.retry_password,
