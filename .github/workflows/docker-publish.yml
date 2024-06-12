@@ -77,7 +77,7 @@ jobs:
           # Extract the new files
           ls
           pwd
-          tar -xzf ~/dist -C /var/www/${{ secrets.SSH_USERNAME }}/data/www/mtaste.ru/
+          tar -xzf ~/dist.tar.gz -C /var/www/${{ secrets.SSH_USERNAME }}/data/www/mtaste.ru/
           ls 
           pwd
 
