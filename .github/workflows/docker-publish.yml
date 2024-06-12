@@ -69,17 +69,11 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         script: |
           cd ./www
-          ls
-          pwd
           # Remove old files
           rm -rf /var/www/${{ secrets.SSH_USERNAME }}/data/www/mtaste.ru/*
 
           # Extract the new files
-          ls
-          pwd
           tar -xzf ~/www/dist.tar.gz -C /var/www/${{ secrets.SSH_USERNAME }}/data/www/mtaste.ru/
-          ls 
-          pwd
 
           # Cleanup
-          rm ~/dist.tar.gz
+          rm ~/www/dist.tar.gz
