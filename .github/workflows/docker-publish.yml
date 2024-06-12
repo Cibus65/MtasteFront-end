@@ -1,4 +1,4 @@
-name: Build and Publish Docker Image
+name: Build, Publish Docker Image and Deploy
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-push:
+  build-and-deploy:
     runs-on: ubuntu-latest
     
     steps:
@@ -29,3 +29,26 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/mtaste_frontend:latest
+
+    - name: SSH to server and deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        password: ${{ secrets.SSH_PASSWORD }} 
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          # Remove the old repository if it exists
+          rm -rf ~/repo
+          # Clone the repository
+          git clone https://github.com/Cibus65/MtasteFront-end.git ~/repo
+          cd ~/repo
+          cd ./MtasteFront-end/Mtaste
+          rm .env
+          echo "VITE_BASE_URL=http://${{secrets.BACKEND_IP}}:8082" > .env
+          # Install dependencies and build the project
+          npm install
+          npm run build
+          # Move built files to the www directory
+          rm -rf /var/www/${{ secrets.SSH_USERNAME }}/data/data/www/mtaste.ru/
+          cp -r dist/* /var/www/${{ secrets.SSH_USERNAME }}/data/data/www/mtaste.ru/
