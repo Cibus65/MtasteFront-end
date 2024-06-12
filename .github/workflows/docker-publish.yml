@@ -57,7 +57,7 @@ jobs:
         password: ${{ secrets.SSH_PASSWORD }}
         port: ${{ secrets.SSH_PORT }}
         source: "dist.tar.gz"
-        target: " /var/www/${{ secrets.SSH_USERNAME }}/data/www/dist.tar.gz"
+        target: " /var/www/${{ secrets.SSH_USERNAME }}/data/www/"
 
     - name: SSH to server and deploy
       uses: appleboy/ssh-action@master
