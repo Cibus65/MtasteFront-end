@@ -37,10 +37,10 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-      working-directory: . 
+      working-directory: ./Mtaste
     - name: Build the project
       run: npm run build
-      working-directory: .
+      working-directory: ./Mtaste
  
     - name: Archive production artifacts
       run: ls Mtaste && pwd&&tar -czf dist.tar.gz -C Mtaste/dist .
