@@ -47,6 +47,8 @@ jobs:
  
     - name: Archive production artifacts
       run: tar -czf dist.tar.gz -C ./Mtaste/dist .
+      working-directory: .
+
     
     - name: Copy files to server
       uses: appleboy/scp-action@v0.1.1
