@@ -102,7 +102,13 @@ export default {
           title: "Ой..",
           text: "Пароли должны совпадать!",
         });
-      } else if (response.data.errorCode === 8) {
+      }else if (response.data.errorCode === 9) {
+              Swal.fire({
+                icon: "error",
+                title: "Ой..",
+                text: "Логин должен содержать не менее 6 символов, не быть длиннее 12, иметь хотя бы одну латинскую букву, и не содержать другие спец.символы кроме _ и цифр."
+              });
+            } else if (response.data.errorCode === 8) {
               Swal.fire({
                 icon: "error",
                 title: "Ой..",

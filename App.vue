@@ -782,6 +782,7 @@ input:focus {
 .bg-light[data-v-7a7a37b1] {
     margin-left:7%;
     }
+
 }
 @media (max-width:615px) {
   .favorite-btn {
@@ -828,6 +829,18 @@ input:focus {
     .logo {
     padding-left:2%;
     }
+    .modal-content[data-v-c3c6d662] {
+    width:500px;
+    }
+    .auth-button[data-v-c3c6d662] {
+    width:80%;
+    }
+    input[type="text"][data-v-c3c6d662], input[type="password"][data-v-c3c6d662] {
+    width:80%;
+    }
+    .modal-title[data-v-c3c6d662] {
+    font-size:50px;
+    }
 }
 
 
@@ -850,6 +863,18 @@ input:focus {
     }
     .logo {
     padding-left:2%;
+    }
+    .modal-content[data-v-c3c6d662] {
+    width:500px;
+    }
+    .auth-button[data-v-c3c6d662] {
+    width:80%;
+    }
+    input[type="text"][data-v-c3c6d662], input[type="password"][data-v-c3c6d662] {
+    width:80%;
+    }
+    .modal-title[data-v-c3c6d662] {
+    font-size:50px;
     }
 }
 </style>
