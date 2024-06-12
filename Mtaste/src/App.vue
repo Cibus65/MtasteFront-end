@@ -37,9 +37,7 @@
       </div>
       
     </header>
-    <div class="random_carusel">
-      <Random_carusel> </Random_carusel>
-    </div>
+   
     <div class="card-container" ref="cardContainer">
       <div v-for="(card, index) in cards" :key="index" class="card">
         <img :src="card.imgwindowurl" alt="Изображение блюда" class="width_height_card">
@@ -85,7 +83,7 @@ import image from '@/assets/img/logo.jpg';
 import img__error from '@/assets/img/img_error.jpg';
 import animation from './animation';
 import animation_for_first_4_card from './animation_for_4_card';
-import Random_carusel from './components/random_carusel.vue';
+
 
 
 
@@ -101,7 +99,7 @@ export default {
     SearchModal,
     IngredientsModal,
     FavoritesModal,
-    Random_carusel,
+   
   },
 
   data() {
