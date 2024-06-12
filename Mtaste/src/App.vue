@@ -24,7 +24,7 @@
               </div>
             </div>
             <nav class="navigation">
-              
+
               <nav class="navbar navbar-light bg-light">
                 <form class="form-inline" @submit.prevent="openSearchModal">
                   <input class="form-control mr-sm-2 search__engin" type="text" placeholder="Найти рецепт..." v-model="searchQuery">
@@ -35,29 +35,30 @@
           </div>
         </div>
       </div>
-      
+
     </header>
-   
+
     <div class="card-container" ref="cardContainer">
       <div v-for="(card, index) in cards" :key="index" class="card">
         <img :src="card.imgwindowurl" alt="Изображение блюда" class="width_height_card">
         <h3>{{ card.name }}</h3>
         <div class="ingrid_btn">
-          <button class="btn btn-outline-secondary favorite-btn" @click="toggleFavorite(card)" :class="{ 'favorited': card.isFavorite }">
-            <i class="fas" :class="{ 'fa-heart': !card.isFavorite, 'fa-heart-broken': card.isFavorite }"></i>
+          <button
+              class="btn btn-outline-secondary favorite-btn" @click="toggleFavorite(card)" :class="{ 'favorited': card.isFavorite, 'not-favorited': !card.isFavorite }"><i class="fas" :class="{ 'fa-heart': card.isFavorite, 'fa-heart-broken': !card.isFavorite }"></i>
           </button>
+
           <button class="btn btn-outline-secondary ingredients-btn" @click="openIngredientsModal(card)">
             <i class="fas fa-utensils"></i>
           </button>
           <button class="btn btn-outline-secondary cook-btn" @click="openRecipeModal(card)">Готовить</button>
         </div>
       </div>
-      
+
       <button v-if="cards.length % 20 === 0 && cards.length < 2000" @click="loadMoreCards" class="btn btn-outline-secondary load-more-button">Показать еще</button>
     </div>
-    
+
     <favorites-modal :show="showFavoritesModal" @close="closeFavoritesModal"></favorites-modal>
-    
+
     <recipe-modal :show="showRecipeModal" :card="selectedCard" @close="closeRecipeModal"></recipe-modal>
     <ingredients-modal :show="showIngredientsModal" :card="selectedCard" @close="closeIngredientsModal"></ingredients-modal>
     <auth-modal :show="showModal" @close="closeModal" @update-username="updateUsername"></auth-modal>
@@ -99,7 +100,7 @@ export default {
     SearchModal,
     IngredientsModal,
     FavoritesModal,
-   
+
   },
 
   data() {
@@ -125,6 +126,10 @@ export default {
     this.loadMoreCards();
     this.adjustCardContainerMargin();
     window.addEventListener('resize', this.adjustCardContainerMargin);
+    const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+    this.cards.forEach(card => {
+      card.isFavorite = favoriteRecipes.includes(card.id);
+    });
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.adjustCardContainerMargin);
@@ -139,32 +144,40 @@ export default {
         const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
 
         axios.post(`${baseURL}/Mtaste/API/user/favourite`, {
-          userID:   userID,
-		      recipeID: recipeID,
+          userID: userID,
+          recipeID: recipeID,
         })
             .then(response => {
               card.isFavorite = true;
+              const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+              localStorage.setItem('favoriteRecipes', JSON.stringify([...favoriteRecipes, card.id]));
               console.log('Рецепт добавлен в избранное:', response.data);
+
             })
             .catch(error => {
               console.error('Ошибка при добавлении рецепта в избранное:', error);
             });
       }
     },
+
     removeFromFavorites(card) {
       if (!this.isAuthenticated) {
         this.openModal();
       } else {
-        const userId = localStorage.getItem('userId');
-        const recipeId = card.id;
+        const userID = localStorage.getItem('userID');
+        const recipeID = card.id;
         const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
-        axios.post(`${baseURL}/Mtaste/API/user/deleteFromFavourite`, {
-          userID:   userId,
-		      recipeID: recipeId,
+
+        axios.post(`${baseURL}/Mtaste/API/user/favourite`, {
+          userID: userID,
+          recipeID: recipeID,
         })
             .then(response => {
               if (response.data.flag) {
                 card.isFavorite = false;
+                let favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+                favoriteRecipes = favoriteRecipes.filter(id => id !== card.id);
+                localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
                 console.log('Рецепт удален из избранного:', response.data);
               } else {
                 console.error('Ошибка при удалении рецепта из избранного:', response.data.error);
@@ -201,11 +214,17 @@ export default {
       if (!this.isAuthenticated) {
         this.openModal();
       } else {
-        if (card.isFavorite) {
+        const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+        const isFavorite = favoriteRecipes.includes(card.id);
+
+        if (isFavorite) {
           this.removeFromFavorites(card);
         } else {
           this.addToFavorites(card);
         }
+
+        // Обновляем локальное хранилище
+        localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
       }
     },
     openSearchModal() {
@@ -235,18 +254,17 @@ export default {
             }));
             this.cards.push(...newCards);
             this.totalCards = response.headers['x-total-count'];
-            
+
           })
           .catch(error => {
             console.error('Ошибка при загрузке карточек:', error);
           });
     },
-      
-    
+
+
     loadMoreCards() {
       const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
 
-      console.log(baseURL)
       axios.get(`${baseURL}/Mtaste/API/getRecipeByPage/${this.currentPage}`)
           .then(response => {
             const additionalCardsData = response.data;
@@ -254,15 +272,30 @@ export default {
               name: cardData.name,
               imgwindowurl: cardData.imgwindowurl,
               id: cardData.ID,
+              isFavorite: false // По умолчанию считаем, что новые карточки не в избранном
             }));
+
+            // Загружаем избранные рецепты из локального хранилища
+            const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+
+            // Обновляем состояние isFavorite для новых карточек
+            newCards.forEach(card => {
+              card.isFavorite = favoriteRecipes.includes(card.id);
+            });
+
             this.cards.push(...newCards);
             this.totalCards = response.headers['x-total-count'];
             this.currentPage++; // Переходим на следующую страницу
+
+            // Обновляем локальное хранилище с ID всех рецептов
+            const allRecipeIds = [...favoriteRecipes, ...newCards.map(card => card.id)];
+            localStorage.setItem('favoriteRecipes', JSON.stringify(allRecipeIds));
           })
           .catch(error => {
             console.error('Ошибка при загрузке карточек:', error);
           });
     },
+
     openIngredientsModal(card) {
       const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
 
@@ -501,7 +534,7 @@ body{
   background-color: #ffffff00;
   font-family: "Gilda Display", serif;
   width: 700px;
- 
+
 
 
 
@@ -690,24 +723,24 @@ input:focus {
 
 .favorite-btn {
   color: #ffffff;
-  background-color: #ecc301;
+  background-color: #9f0101;
   max-width: 44px;
   max-height: 40px;
   align-items: center;
-  border-color: #ecc301;
+  border-color: #9f0101;
 }
 
 .favorite-btn.favorited {
   color: #ffffff;
-  background-color: rgb(175, 0, 0);
-  border-color: rgb(175, 0, 0);
+  background-color: rgb(236, 195, 1);
+  border-color: rgb(218, 180, 0);
 
 }
 .favorite-btn.favorited:hover {
-  background-color: rgb(159, 1, 1);
+  background-color: rgb(236, 195, 1);
 }
 .favorite-btn:hover {
-  background-color: #dab400;
+  background-color: #af0000;
 
 }
 
@@ -716,42 +749,42 @@ input:focus {
   max-height: 500px;
   max-width: 1000px;
   margin-left: calc(19%);
-  
+
 }
 
 @media (max-width:1010px) {
-    .ingredients-btn[data-v-7a7a37b1] {
+  .ingredients-btn[data-v-7a7a37b1] {
     margin-left:50px;
-    }
-    .username-text {
+  }
+  .username-text {
     font-size:20px;
-    }
-    .user-info i[data-v-7a7a37b1] {
+  }
+  .user-info i[data-v-7a7a37b1] {
     font-size:60px;
     margin-left:20px;
-    }
-    #change_img {
+  }
+  #change_img {
     height:70px;
-    }
+  }
 }
 
 @media (max-width:615px) {
-    .favorite-btn[data-v-7a7a37b1] {
+  .favorite-btn[data-v-7a7a37b1] {
     color: #ffffff;
     background-color: #ecc301;
     max-width: 44px;
     max-height: 40px;
     align-items: center;
-    border-color: #ecc301;
+    border-color: #9f0101;
     margin-top: 55px;
-    }
+  }
 
 
-    .ingredients-btn[data-v-7a7a37b1][data-v-7a7a37b1] {
+  .ingredients-btn[data-v-7a7a37b1][data-v-7a7a37b1] {
     margin-left: 50px;
     margin-top: 55px;
-    }
-    .cook-btn[data-v-7a7a37b1] {
+  }
+  .cook-btn[data-v-7a7a37b1] {
     text-align: center;
     margin-left: 5px;
     margin-bottom: 50px;
@@ -759,15 +792,15 @@ input:focus {
     height: 40px;
     box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
     margin-top: -110px;
-    }
-    .name[data-v-7a7a37b1] {
+  }
+  .name[data-v-7a7a37b1] {
     font-size:30px;
-    }
+  }
 
-    #change_img {
+  #change_img {
     height:70px;
-    }
-    
+  }
+
 }
 
 
@@ -776,8 +809,8 @@ input:focus {
     width:100%;
   }
   .cook-btn[data-v-7a7a37b1][data-v-7a7a37b1] {
-  margin-top:10px;
-  margin-left:-140px;
+    margin-top:10px;
+    margin-left:-140px;
   }
 }
 </style>
