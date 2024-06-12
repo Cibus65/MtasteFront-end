@@ -41,7 +41,9 @@ jobs:
     - name: Build the project
       run: npm run build
       working-directory: ./Mtaste
- 
+    - name: Print
+      run: ls && pwd
+      working-directory: ./Mtaste
     - name: Archive production artifacts
       run: ls Mtaste && pwd&&tar -czf dist.tar.gz -C Mtaste/dist .
       working-directory: .
