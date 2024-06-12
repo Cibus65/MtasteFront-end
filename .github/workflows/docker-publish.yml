@@ -72,7 +72,6 @@ jobs:
           rm -rf /var/www/${{ secrets.SSH_USERNAME }}/data/www/mtaste.ru/*
           # Extract the new files
           ls
-          pwd
 
           tar -xzf ~/dist.tar.gz -C /var/www/${{ secrets.SSH_USERNAME }}/data/www/mtaste.ru/
           # Cleanup
