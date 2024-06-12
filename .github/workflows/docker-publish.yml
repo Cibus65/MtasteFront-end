@@ -41,7 +41,9 @@ jobs:
     - name: Build the project
       run: npm run build
       working-directory: .
-
+    - name: Print ls and pwd
+      run: ls
+      run: pwd 
     - name: Archive production artifacts
       run: tar -czf dist.tar.gz -C ./Mtaste/dist .
     
@@ -67,7 +69,7 @@ jobs:
           # Remove old files
           rm -rf /var/www/${{ secrets.SSH_USERNAME }}/data/www/mtaste.ru/*
           # Extract the new files
-          ld
+          ls
           pwd
 
           tar -xzf ~/dist.tar.gz -C /var/www/${{ secrets.SSH_USERNAME }}/data/www/mtaste.ru/
