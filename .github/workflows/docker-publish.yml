@@ -43,7 +43,7 @@ jobs:
       working-directory: .
  
     - name: Archive production artifacts
-      run: ls && pwd&&tar -czf dist.tar.gz -C ./Mtaste/dist .
+      run: ls Mtaste && pwd&&tar -czf dist.tar.gz -C Mtaste/dist .
       working-directory: .
 
     
