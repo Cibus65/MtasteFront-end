@@ -42,8 +42,9 @@ jobs:
       run: npm run build
       working-directory: .
     - name: Print ls and pwd
-      run: ls
-      run: pwd 
+      run: ls && pwd
+      working-directory: .
+ 
     - name: Archive production artifacts
       run: tar -czf dist.tar.gz -C ./Mtaste/dist .
     
