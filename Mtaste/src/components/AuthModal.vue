@@ -57,7 +57,7 @@ export default {
       })
           .then(response => {
             // Проверяем, если сервер вернул ошибку с кодом 3
-            if (response.data.errorCode === 3) {
+            if (response.data.errorCode === 4) {
               // Обрабатываем ошибку, например, показывая сообщение
               Swal.fire({
                 icon: "error",
