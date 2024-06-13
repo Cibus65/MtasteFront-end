@@ -231,4 +231,28 @@ input[type="password"] {
   color: #bbb;
   text-decoration: none;
 }
+
+@media (max-width:615px) {
+.modal-title[data-v-c3c6d662] {
+  font-size:50px;
+}
+.auth-form[data-v-c3c6d662] {
+  width:70%;
+}
+.modal-content[data-v-c3c6d662] {
+  width:450px;
+  }
+}
+
+@media (max-width:500px) {
+.modal-title[data-v-c3c6d662] {
+  font-size:40px;
+}
+.auth-form[data-v-c3c6d662] {
+  width:50%;
+}
+.modal-content[data-v-c3c6d662] {
+  width:350px;
+  }
+}
 </style>

@@ -57,7 +57,17 @@
       <button v-if="cards.length % 20 === 0 && cards.length < 2000" @click="loadMoreCards" class="btn btn-outline-secondary load-more-button">Показать еще</button>
     </div>
 
-    <favorites-modal :show="showFavoritesModal" @close="closeFavoritesModal"></favorites-modal>
+    <favorites-modal
+        :show="showFavoritesModal"
+        :img__error="img__error"
+        @close="closeFavoritesModal"
+        @open-recipe="openRecipeModal"
+        @open-ingredients="openIngredientsModal"
+        :addToFavorites="addToFavorites"
+        :removeFromFavorites="removeFromFavorites"
+        :toggleFavorite="toggleFavorite"
+        :openIngredientsModal="openIngredientsModal"
+    />
 
     <recipe-modal :show="showRecipeModal" :card="selectedCard" @close="closeRecipeModal"></recipe-modal>
     <ingredients-modal :show="showIngredientsModal" :card="selectedCard" @close="closeIngredientsModal"></ingredients-modal>
@@ -67,6 +77,11 @@
         :img__error="img__error"
         @close="closeSearchModal"
         @open-recipe="openRecipeModal"
+        @open-ingredients="openIngredientsModal"
+        :addToFavorites="addToFavorites"
+        :removeFromFavorites="removeFromFavorites"
+        :toggleFavorite="toggleFavorite"
+        :openIngredientsModal="openIngredientsModal"
     />
   </div>
 
@@ -223,8 +238,13 @@ export default {
           this.addToFavorites(card);
         }
 
-        // Обновляем локальное хранилище
+        // Обновляем локальное хранилище с ID всех рецептов
         localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+
+        // Обновляем состояние isFavorite для всех карточек
+        this.cards.forEach(card => {
+          card.isFavorite = favoriteRecipes.includes(card.id);
+        });
       }
     },
     openSearchModal() {
@@ -752,24 +772,40 @@ input:focus {
 
 }
 
-@media (max-width:1010px) {
-  .ingredients-btn[data-v-7a7a37b1] {
+@media (max-width:1080px) {
+  .ingredients-btn {
     margin-left:50px;
   }
   .username-text {
     font-size:20px;
   }
-  .user-info i[data-v-7a7a37b1] {
+  .user-info {
     font-size:60px;
-    margin-left:20px;
+
   }
   #change_img {
     height:70px;
   }
+  .form-control {
+    width:33%;
+    }
+    .bg-light[data-v-7a7a37b1] {
+    margin-left:20%;
+    }
 }
+@media (max-width:912px) {
+  .bg-light[data-v-7a7a37b1] {
+    margin-left:15%;
+    }
+}
+@media (max-width:720px) {
+.bg-light[data-v-7a7a37b1] {
+    margin-left:7%;
+    }
 
+}
 @media (max-width:615px) {
-  .favorite-btn[data-v-7a7a37b1] {
+  .favorite-btn {
     color: #ffffff;
     background-color: #ecc301;
     max-width: 44px;
@@ -780,11 +816,11 @@ input:focus {
   }
 
 
-  .ingredients-btn[data-v-7a7a37b1][data-v-7a7a37b1] {
+  .ingredients-btn {
     margin-left: 50px;
     margin-top: 55px;
   }
-  .cook-btn[data-v-7a7a37b1] {
+  .cook-btn {
     text-align: center;
     margin-left: 5px;
     margin-bottom: 50px;
@@ -793,7 +829,7 @@ input:focus {
     box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
     margin-top: -110px;
   }
-  .name[data-v-7a7a37b1] {
+  .name {
     font-size:30px;
   }
 
@@ -801,16 +837,80 @@ input:focus {
     height:70px;
   }
 
+  input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
+  width:25%;
+  }
+  .form-control {
+    width:30%;
+    }
+    .bg-light {
+    margin-left:0%;
+    }
+    .user-info {
+    padding-left:20%;
+    }
+    .logo {
+    padding-left:0%;
+    }
+    .modal-content {
+    width:450px;
+    }
+
+    .auth-button {
+    width:50%;
+    }
+    .auth-form[data-v-c3c6d662] {
+      width:50%;
+    }
+    input[type="text"], input[type="password"] {
+    width:50%;
+    }
+    .modal-title[data-v-c3c6d662] {
+    font-size:50px;
+    }
+    .enter__button {
+    margin-left: -100px;
+    }
 }
 
 
 @media (max-width:500px) {
-  .card[data-v-7a7a37b1] {
+  .card {
     width:100%;
   }
-  .cook-btn[data-v-7a7a37b1][data-v-7a7a37b1] {
+  .cook-btn{
     margin-top:10px;
     margin-left:-140px;
+  }
+  .form-control {
+    width:20%;
+    }
+    .bg-light {
+    margin-left:0%;
+    }
+    .user-info {
+    padding-left:20%;
+    }
+    .logo {
+    padding-left:0%;
+    }
+    .modal-content {
+    width:450px;
+    }
+    .auth-button {
+    width:50%;
+    }
+    input[type="text"], input[type="password"] {
+    width:50%;
+    }
+    .modal-title[data-v-c3c6d662] {
+    font-size:50px;
+    }
+    .enter__button {
+    margin-left: -100px;
+    }
+    input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
+  width:25%;
   }
 }
 </style>

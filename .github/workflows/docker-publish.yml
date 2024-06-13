@@ -1,4 +1,4 @@
-name: Build and Publish Docker Image
+name: Build, Publish Docker Image and Deploy
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-push:
+  build-and-deploy:
     runs-on: ubuntu-latest
     
     steps:
@@ -29,3 +29,52 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/mtaste_frontend:latest
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '22'
+
+    - name: Install dependencies
+      run: npm install
+      working-directory: ./Mtaste
+    - name: Build the project
+      run: npm run build
+      working-directory: ./Mtaste
+    - name: Print
+      run: ls && pwd
+      working-directory: ./Mtaste
+    - name: Archive production artifacts
+      run: ls Mtaste && pwd&&tar -czf dist.tar.gz -C Mtaste/dist .
+      working-directory: .
+
+    
+    - name: Copy files to server
+      uses: appleboy/scp-action@v0.1.1
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        port: ${{ secrets.SSH_PORT }}
+        source: "dist.tar.gz"
+        target: " /var/www/${{ secrets.SSH_USERNAME }}/data/www/"
+
+    - name: SSH to server and deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        
+        username: ${{ secrets.SSH_USERNAME }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          cd ./www
+          # Remove old files
+          rm -rf /var/www/${{ secrets.SSH_USERNAME }}/data/www/mtaste.ru/*
+
+          # Extract the new files
+          tar -xzf ~/www/dist.tar.gz -C /var/www/${{ secrets.SSH_USERNAME }}/data/www/mtaste.ru/
+          tar -xzf ~/www/dist.tar.gz -C /var/www/${{ secrets.SSH_USERNAME }}/data/www/mtaste.online/
+
+          # Cleanup
+          rm ~/www/dist.tar.gz
