@@ -238,8 +238,13 @@ export default {
           this.addToFavorites(card);
         }
 
-        // Обновляем локальное хранилище
+        // Обновляем локальное хранилище с ID всех рецептов
         localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+
+        // Обновляем состояние isFavorite для всех карточек
+        this.cards.forEach(card => {
+          card.isFavorite = favoriteRecipes.includes(card.id);
+        });
       }
     },
     openSearchModal() {

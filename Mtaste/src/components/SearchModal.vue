@@ -9,7 +9,7 @@
           <h3>{{ card.name }}</h3>
           <div class="ingrid_btn">
             <button class="btn btn-outline-secondary favorite-btn" @click="toggleFavorite(card)" :class="{ 'favorited': card.isFavorite, 'not-favorited': !card.isFavorite }">
-              <i class="fas" :class="{ 'fa-heart': card.isFavorite, 'fa-heart-broken': !card.isFavorite }"></i>
+              <i class="fas" :class="{ 'fa-heart-broken': card.isFavorite, 'fa-heart': !card.isFavorite }"></i>
             </button>
             <button class="btn btn-outline-secondary ingredients-btn" @click="openIngredientsModal(card)">
               <i class="fas fa-utensils"></i>
@@ -44,6 +44,9 @@ export default {
     };
   },
   methods: {
+    toggleFavorite(card) {
+      this.$emit('toggleFavorite', card);
+    },
     openRecipeModal(card) {
       this.$emit('open-recipe', card);
     },
@@ -55,18 +58,19 @@ export default {
 
       axios.get(`${baseURL}/Mtaste/API/findRecipe/${words}`)
           .then(response => {
+            const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
             this.searchResults = response.data.map(cardData => ({
               name: cardData.name,
               imgwindowurl: cardData.imgwindowurl,
               id: cardData.ID,
-              isFavorite: this.$parent.cards.find(c => c.id === cardData.ID)?.isFavorite || false
+              isFavorite: favoriteRecipes.includes(cardData.ID)
             }));
           })
           .catch(error => {
             console.error('Ошибка при поиске рецептов:', error);
           });
     }
-  },
+},
   watch: {
     show(newValue) {
       if (newValue) {
@@ -223,24 +227,24 @@ input:focus {
 
 .favorite-btn {
   color: #ffffff;
-  background-color: #9f0101;
+  background-color: #ecc301;
   max-width: 44px;
   max-height: 40px;
   align-items: center;
-  border-color: #9f0101;
+  border-color: #dab818;
 }
 
 .favorite-btn.favorited {
   color: #ffffff;
-  background-color: rgb(236, 195, 1);
-  border-color: rgb(218, 180, 0);
+  background-color: rgb(175, 0, 0);
+  border-color: rgb(159, 1, 1);
 
 }
 .favorite-btn.favorited:hover {
-  background-color: rgb(236, 195, 1);
+  background-color: rgb(159, 1, 1);
 }
 .favorite-btn:hover {
-  background-color: #af0000;
+  background-color: #dab400;
 
 }
 .ingredients-btn {
