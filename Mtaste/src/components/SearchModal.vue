@@ -260,5 +260,26 @@ input:focus {
   box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
   margin-top: -110px;
 }
+@media (max-width:615px) {
+.cook-btn[data-v-6c566dde] {
+  margin-bottom:0px;
+  margin-left:-30%;
+  margin-top:0px;
+  }
+}
+@media (max-width:830px) {
+.cook-btn[data-v-6c566dde] {
+  margin-bottom:20px;
+  margin-top:20px;
+  margin-left:1%;
+  }
+}
 
+@media (min-width:830px) {
+.cook-btn[data-v-6c566dde]{
+margin-bottom:0px;
+margin-left:10px;
+
+  }
+}
 </style>
