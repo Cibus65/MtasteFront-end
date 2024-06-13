@@ -7,15 +7,20 @@
         <div v-for="(card, index) in favoritesRecipes" :key="index" class="card">
           <img class="card_img" :src="card.imgwindowurl" alt="Изображение блюда">
           <h3>{{ card.name }}</h3>
-          <div class="btn_style">
-            <button class="btn btn-outline-secondary enter__button" @click="openRecipeModal(card)">Готовить</button>
+          <div class="ingrid_btn">
+            <button class="btn btn-outline-secondary favorite-btn" @click="toggleFavorite(card)" :class="{ 'favorited': card.isFavorite, 'not-favorited': !card.isFavorite }">
+              <i class="fas" :class="{ 'fa-heart': card.isFavorite, 'fa-heart-broken': !card.isFavorite }"></i>
+            </button>
+            <button class="btn btn-outline-secondary ingredients-btn" @click="openIngredientsModal(card)">
+              <i class="fas fa-utensils"></i>
+            </button>
+            <button class="btn btn-outline-secondary cook-btn" @click="openRecipeModal(card)">Готовить</button>
           </div>
         </div>
       </div>
       <div v-else>
         <p>Нет избранных рецептов</p>
       </div>
-      
     </div>
   </div>
 </template>
@@ -27,11 +32,12 @@ export default {
   emits: ['close'],
   props: {
     show: Boolean,
-    userID: {
-      type: Number,
-      required: true
-    },
     img__error: String,
+    toggleFavorite: Function,
+    openIngredientsModal: Function,
+    openRecipeModal: Function,
+    addToFavorites: Function,
+    removeFromFavorites: Function,
   },
   data() {
     return {
@@ -50,37 +56,37 @@ export default {
     openRecipeModal(card) {
       this.$emit('open-recipe', card);
     },
-    
+
     fetchFavouriteRecipes() {
       const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
 
       const url = `${baseURL}/Mtaste/API/user/getFavouriteRecipes/${this.userID}`;
-      
+
       axios.get(url)
-  
-      .then(response => {
-        console.log(this)
-        if (response.status === 200) {
-          // Извлекаем массив рецептов из ответа
-          const recipes = response.data.recipes;
-          // Проверяем, является ли recipes массивом
-          if (Array.isArray(recipes)) {
-            // Если recipes является массивом, то используем map для преобразования данных
-            this.favoritesRecipes = recipes.map(recipe => ({
-              name: recipe.name,
-              imgwindowurl: recipe.imgwindowurl,
-              id: recipe.ID
-            }));
-          } else {
-            console.error('Ожидался массив рецептов, но получен другой тип данных:', recipes);
-          }
-        } else {
-          console.error('Ошибка при получении избранных рецептов:', response.status);
-        }
-      })
-      .catch(error => {
-        console.error('Ошибка при получении избранных рецептов:', error);
-      });
+
+          .then(response => {
+            console.log(this)
+            if (response.status === 200) {
+              // Извлекаем массив рецептов из ответа
+              const recipes = response.data.recipes;
+              // Проверяем, является ли recipes массивом
+              if (Array.isArray(recipes)) {
+                // Если recipes является массивом, то используем map для преобразования данных
+                this.favoritesRecipes = recipes.map(recipe => ({
+                  name: recipe.name,
+                  imgwindowurl: recipe.imgwindowurl,
+                  id: recipe.ID
+                }));
+              } else {
+                console.error('Ожидался массив рецептов, но получен другой тип данных:', recipes);
+              }
+            } else {
+              console.error('Ошибка при получении избранных рецептов:', response.status);
+            }
+          })
+          .catch(error => {
+            console.error('Ошибка при получении избранных рецептов:', error);
+          });
     }
   }
 };
@@ -109,7 +115,7 @@ export default {
   width: 80%;
   max-width: 1200px;
   box-sizing: border-box;
- 
+
 }
 
 .card_img{
@@ -146,10 +152,10 @@ h2 {
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
- 
+
 }
 .enter__button{
-  
+
   margin-left: 300px;
   width: 100px;
   margin-bottom: 15px;
@@ -159,7 +165,7 @@ h2 {
   margin-top: 10px;
 }
 .btn {
- 
+
   color: white;
   background-color: rgba(2, 96, 74, 1);
   border-color: rgba(2, 96, 74, 1);
@@ -175,7 +181,7 @@ h2 {
   box-shadow: 0 0 10px rgb(3, 97, 75);
 }
 .card {
-  
+
   padding-bottom:5px;
   border: 1px solid #6e6e6e;
   border-radius: 5px;
@@ -183,12 +189,12 @@ h2 {
   box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
   width: calc(50% - 20px);
   margin: 10px;
-  
+
   border: 1px solid #ccc;
   border-radius: 5px;
   text-align: center;
   max-height: 500px;
-  
+
 }
 
 .card h3 {
@@ -197,7 +203,7 @@ h2 {
 }
 
 .card img {
-  
+
   max-height: 700px;
 }
 
@@ -214,4 +220,60 @@ h2 {
     width: calc(100% - 20px); /* При маленьком экране одна карточка в ряд */
   }
 }
+.ingrid_btn {
+  display: flex;
+  justify-content: space-around;
+  margin-top: auto;
+}
+.btn-outline-secondary{
+  color:#fff;
+}
+input:focus {
+  box-shadow: 0 0 10px rgba(2, 96, 74, 1);
+}
+.btn {
+  background-color: rgba(2, 96, 74, 1);
+  border-color: rgba(2, 96, 74, 1);
+  font-family: "Gilda Display", serif;
+}
+.btn:hover{
+  background-color: rgb(1, 76, 59);
+}
+
+.favorite-btn {
+  color: #ffffff;
+  background-color: #9f0101;
+  max-width: 44px;
+  max-height: 40px;
+  align-items: center;
+  border-color: #9f0101;
+}
+
+.favorite-btn.favorited {
+  color: #ffffff;
+  background-color: rgb(236, 195, 1);
+  border-color: rgb(218, 180, 0);
+
+}
+.favorite-btn.favorited:hover {
+  background-color: rgb(236, 195, 1);
+}
+.favorite-btn:hover {
+  background-color: #af0000;
+
+}
+.ingredients-btn {
+  margin-left:50px;
+  margin-top: 55px;
+}
+.cook-btn {
+  text-align: center;
+  margin-left: 5px;
+  margin-bottom: 50px;
+  width: 150px;
+  height: 40px;
+  box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
+  margin-top: -110px;
+}
+
 </style>

@@ -57,7 +57,17 @@
       <button v-if="cards.length % 20 === 0 && cards.length < 2000" @click="loadMoreCards" class="btn btn-outline-secondary load-more-button">Показать еще</button>
     </div>
 
-    <favorites-modal :show="showFavoritesModal" @close="closeFavoritesModal"></favorites-modal>
+    <favorites-modal
+        :show="showFavoritesModal"
+        :img__error="img__error"
+        @close="closeFavoritesModal"
+        @open-recipe="openRecipeModal"
+        @open-ingredients="openIngredientsModal"
+        :addToFavorites="addToFavorites"
+        :removeFromFavorites="removeFromFavorites"
+        :toggleFavorite="toggleFavorite"
+        :openIngredientsModal="openIngredientsModal"
+    />
 
     <recipe-modal :show="showRecipeModal" :card="selectedCard" @close="closeRecipeModal"></recipe-modal>
     <ingredients-modal :show="showIngredientsModal" :card="selectedCard" @close="closeIngredientsModal"></ingredients-modal>
@@ -67,6 +77,11 @@
         :img__error="img__error"
         @close="closeSearchModal"
         @open-recipe="openRecipeModal"
+        @open-ingredients="openIngredientsModal"
+        :addToFavorites="addToFavorites"
+        :removeFromFavorites="removeFromFavorites"
+        :toggleFavorite="toggleFavorite"
+        :openIngredientsModal="openIngredientsModal"
     />
   </div>
 
@@ -835,7 +850,7 @@ input:focus {
     .modal-content {
     width:450px;
     }
-    
+
     .auth-button {
     width:50%;
     }
