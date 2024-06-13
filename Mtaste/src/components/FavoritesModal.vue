@@ -222,8 +222,10 @@ h2 {
 }
 .ingrid_btn {
   display: flex;
-  justify-content: space-around;
-  margin-top: auto;
+  
+  margin-top: 15px;
+  margin-bottom: 15px;
+
 }
 .btn-outline-secondary{
   color:#fff;
@@ -247,6 +249,8 @@ input:focus {
   max-height: 40px;
   align-items: center;
   border-color: #9f0101;
+  margin-left: 40px;
+  
 }
 
 .favorite-btn.favorited {
@@ -263,21 +267,106 @@ input:focus {
 
 }
 .ingredients-btn {
-  margin-left:50px;
-  margin-top: 55px;
+  margin-left: 240px;
+  
 }
 .cook-btn {
   text-align: center;
-  margin-left: 5px;
-  margin-bottom: 50px;
   width: 150px;
   height: 40px;
   box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
   margin-top: -110px;
+  margin-left: 10px;
 }
 @media (max-width:2000px) {
 .cook-btn[data-v-449bbd70] {
     margin-bottom:0%;
   }
+}
+
+@media (max-width:600px){
+  .card-container[data-v-449bbd70]{
+    max-width: 400px;
+    
+  }
+  .cook-btn[data-v-449bbd70][data-v-449bbd70] {
+        text-align: center;
+        width: 100px;
+        height: 40px;
+        margin-left: 10px;
+    }
+  .ingredients-btn[data-v-449bbd70]{
+    margin-left: 80px;
+  }
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+            margin-left: 130px;
+        }
+        .favorite-btn[data-v-449bbd70][data-v-449bbd70] {
+        color: #ffffff;
+        background-color: #9f0101;
+        max-width: 44px;
+        max-height: 40px;
+        align-items: center;
+        border-color: #9f0101;
+        margin-left: 20px;
+    }
+    .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+        margin-left: 130px;
+    }
+}
+@media (max-width:800px){
+  .cook-btn[data-v-449bbd70] {
+    text-align: center;
+    width: 100px;
+    height: 40px;
+    
+    
+    margin-left: 10px;
+  }
+  .ingredients-btn[data-v-449bbd70] {
+    margin-left: 25px;
+}
+
+}
+@media (max-width:700px){
+  .favorite-btn[data-v-449bbd70] {
+    color: #ffffff;
+    background-color: #9f0101;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #9f0101;
+    margin-left: 10px;
+  }
+  @media (max-width:640px){
+    .ingredients-btn[data-v-449bbd70][data-v-449bbd70] {
+        margin-left: 5px;
+    }
+  }
+}
+@media (max-width:450px){
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+        margin-left: 100px;
+    }
+}
+@media (max-width:1450px){
+  .ingredients-btn[data-v-449bbd70] {
+    margin-left: 200px;
+}
+}
+@media (max-width:1200px){
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70] {
+        margin-left: 110px;
+    }
+}
+@media (max-width:930px){
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+        margin-left: 30px;
+    }
+}
+@media (max-width:730px){
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+        margin-left: 10px;
+    }
 }
 </style>
