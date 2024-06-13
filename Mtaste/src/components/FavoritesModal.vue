@@ -275,5 +275,9 @@ input:focus {
   box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
   margin-top: -110px;
 }
-
+@media (max-width:2000px) {
+.cook-btn[data-v-449bbd70] {
+    margin-bottom:0%;
+  }
+}
 </style>
