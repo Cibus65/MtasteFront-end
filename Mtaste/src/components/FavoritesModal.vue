@@ -7,15 +7,20 @@
         <div v-for="(card, index) in favoritesRecipes" :key="index" class="card">
           <img class="card_img" :src="card.imgwindowurl" alt="Изображение блюда">
           <h3>{{ card.name }}</h3>
-          <div class="btn_style">
-            <button class="btn btn-outline-secondary enter__button" @click="openRecipeModal(card)">Готовить</button>
+          <div class="ingrid_btn">
+            <button class="btn btn-outline-secondary favorite-btn" @click="toggleFavorite(card)" :class="'not-favorited'">
+              <i class="fas" :class="'fa-heart-broken'"></i>
+            </button>
+            <button class="btn btn-outline-secondary ingredients-btn" @click="openIngredientsModal(card)">
+              <i class="fas fa-utensils"></i>
+            </button>
+            <button class="btn btn-outline-secondary cook-btn" @click="openRecipeModal(card)">Готовить</button>
           </div>
         </div>
       </div>
       <div v-else>
         <p>Нет избранных рецептов</p>
       </div>
-      
     </div>
   </div>
 </template>
@@ -27,11 +32,20 @@ export default {
   emits: ['close'],
   props: {
     show: Boolean,
-    userID: {
-      type: Number,
-      required: true
-    },
     img__error: String,
+    toggleFavorite: Function,
+    openIngredientsModal: Function,
+    openRecipeModal: Function,
+    addToFavorites: Function,
+    removeFromFavorites: Function,
+    favoriteRecipes: {
+      type: Array,
+      default: () => []
+    },
+    cards: {
+      type: Array,
+      default: () => []
+    },
   },
   data() {
     return {
@@ -44,43 +58,51 @@ export default {
       if (newValue) {
         this.fetchFavouriteRecipes();
       }
+    },
+    favoriteRecipes: {
+      handler(newVal) {
+        this.favoritesRecipes = newVal.map(id => this.cards.find(card => card.id === id));
+      },
+      immediate: true,
+      deep: true
     }
   },
   methods: {
+    updateFavorites(newFavorites) {
+      this.favoritesRecipes = this.cards.filter(card => newFavorites.includes(card.id)).map(card => ({
+        ...card,
+        isFavorite: true// Убедитесь, что isFavorite установлен в true для избранных рецептов
+      }));
+    },
     openRecipeModal(card) {
       this.$emit('open-recipe', card);
     },
-    
+
     fetchFavouriteRecipes() {
       const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
 
       const url = `${baseURL}/Mtaste/API/user/getFavouriteRecipes/${this.userID}`;
-      
+
       axios.get(url)
-  
-      .then(response => {
-        console.log(this)
-        if (response.status === 200) {
-          // Извлекаем массив рецептов из ответа
-          const recipes = response.data.recipes;
-          // Проверяем, является ли recipes массивом
-          if (Array.isArray(recipes)) {
-            // Если recipes является массивом, то используем map для преобразования данных
-            this.favoritesRecipes = recipes.map(recipe => ({
-              name: recipe.name,
-              imgwindowurl: recipe.imgwindowurl,
-              id: recipe.ID
-            }));
-          } else {
-            console.error('Ожидался массив рецептов, но получен другой тип данных:', recipes);
-          }
-        } else {
-          console.error('Ошибка при получении избранных рецептов:', response.status);
-        }
-      })
-      .catch(error => {
-        console.error('Ошибка при получении избранных рецептов:', error);
-      });
+          .then(response => {
+            if (response.status === 200) {
+              const recipes = response.data.recipes;
+              if (Array.isArray(recipes)) {
+                this.favoritesRecipes = recipes.map(recipe => ({
+                  name: recipe.name,
+                  imgwindowurl: recipe.imgwindowurl,
+                  id: recipe.ID
+                }));
+              } else {
+                console.error('Ожидался массив рецептов, но получен другой тип данных:', recipes);
+              }
+            } else {
+              console.error('Ошибка при получении избранных рецептов:', response.status);
+            }
+          })
+          .catch(error => {
+            console.error('Ошибка при получении избранных рецептов:', error);
+          });
     }
   }
 };
@@ -109,7 +131,7 @@ export default {
   width: 80%;
   max-width: 1200px;
   box-sizing: border-box;
- 
+
 }
 
 .card_img{
@@ -146,10 +168,10 @@ h2 {
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
- 
+
 }
 .enter__button{
-  
+
   margin-left: 300px;
   width: 100px;
   margin-bottom: 15px;
@@ -159,7 +181,7 @@ h2 {
   margin-top: 10px;
 }
 .btn {
- 
+
   color: white;
   background-color: rgba(2, 96, 74, 1);
   border-color: rgba(2, 96, 74, 1);
@@ -175,7 +197,7 @@ h2 {
   box-shadow: 0 0 10px rgb(3, 97, 75);
 }
 .card {
-  
+
   padding-bottom:5px;
   border: 1px solid #6e6e6e;
   border-radius: 5px;
@@ -183,12 +205,12 @@ h2 {
   box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
   width: calc(50% - 20px);
   margin: 10px;
-  
+
   border: 1px solid #ccc;
   border-radius: 5px;
   text-align: center;
   max-height: 500px;
-  
+
 }
 
 .card h3 {
@@ -197,7 +219,7 @@ h2 {
 }
 
 .card img {
-  
+
   max-height: 700px;
 }
 
@@ -212,6 +234,237 @@ h2 {
 
   .card {
     width: calc(100% - 20px); /* При маленьком экране одна карточка в ряд */
+  }
+}
+.ingrid_btn {
+  display: flex;
+
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+}
+.btn-outline-secondary{
+  color:#fff;
+}
+input:focus {
+  box-shadow: 0 0 10px rgba(2, 96, 74, 1);
+}
+.btn {
+  background-color: rgba(2, 96, 74, 1);
+  border-color: rgba(2, 96, 74, 1);
+  font-family: "Gilda Display", serif;
+}
+.btn:hover{
+  background-color: rgb(1, 76, 59);
+}
+
+.favorite-btn {
+  color: #ffffff;
+  background-color: #9f0101;
+  max-width: 44px;
+  max-height: 40px;
+  align-items: center;
+  border-color: #9f0101;
+  margin-left: 40px;
+
+}
+
+.favorite-btn.favorited {
+  color: #ffffff;
+  background-color: rgb(236, 195, 1);
+  border-color: rgb(218, 180, 0);
+
+}
+.favorite-btn.favorited:hover {
+  background-color: rgb(236, 195, 1);
+}
+.favorite-btn:hover {
+  background-color: #af0000;
+
+}
+.ingredients-btn {
+  margin-left: 240px;
+
+}
+.cook-btn {
+  text-align: center;
+  width: 150px;
+  height: 40px;
+  box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
+  margin-top: -110px;
+  margin-left: 10px;
+}
+@media (max-width:2000px) {
+  .cook-btn[data-v-449bbd70] {
+    margin-bottom:0%;
+  }
+}
+
+@media (max-width:600px){
+  .card-container[data-v-449bbd70]{
+    max-width: 400px;
+
+  }
+  .cook-btn[data-v-449bbd70][data-v-449bbd70] {
+    text-align: center;
+    width: 100px;
+    height: 40px;
+    margin-left: 10px;
+  }
+  .ingredients-btn[data-v-449bbd70]{
+    margin-left: 80px;
+  }
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left: 130px;
+  }
+  .favorite-btn[data-v-449bbd70][data-v-449bbd70] {
+    color: #ffffff;
+    background-color: #9f0101;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #9f0101;
+    margin-left: 20px;
+  }
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left: 130px;
+  }
+}
+@media (max-width:800px){
+  .cook-btn[data-v-449bbd70] {
+    text-align: center;
+    width: 100px;
+    height: 40px;
+
+
+    margin-left: 10px;
+  }
+  .ingredients-btn[data-v-449bbd70] {
+    margin-left: 25px;
+  }
+
+}
+@media (max-width:700px){
+  .favorite-btn[data-v-449bbd70] {
+    color: #ffffff;
+    background-color: #9f0101;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #9f0101;
+    margin-left: 10px;
+  }
+}
+  @media (max-width:640px){
+    .ingredients-btn[data-v-449bbd70][data-v-449bbd70] {
+      margin-left: 5px;
+    }
+  }
+
+
+@media (max-width:450px){
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left: 100px;
+  }
+}
+@media (max-width:1450px){
+  .ingredients-btn[data-v-449bbd70] {
+    margin-left: 200px;
+  }
+}
+@media (max-width:1200px){
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70] {
+    margin-left: 110px;
+  }
+}
+@media (max-width:930px){
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left: 30px;
+  }
+}
+@media (max-width:730px){
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left: 10px;
+  }
+}
+@media (max-width:1500px){
+  .ingredients-btn[data-v-449bbd70] {
+    margin-left: 180px;
+}
+
+}
+
+@media (max-width:1260px){
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70] {
+        margin-left: 150px;
+    }
+}
+@media (max-width:1180px){
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+        margin-left: 130px;
+    }
+}
+@media (max-width:1140px){
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+        margin-left: 110px;
+    }
+}
+@media (max-width:1100px){
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+        margin-left: 90px;
+    }
+}
+@media (max-width:620px) {
+.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left:5px;
+  }
+}
+
+@media (max-width:860px) {
+.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left:40px;
+  }
+.favorite-btn[data-v-449bbd70] {
+margin-left:10px;
+  }
+}
+
+@media (max-width:680px) {
+.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left:30px;
+  }
+
+.favorite-btn[data-v-449bbd70] {
+margin-left:5px;
+  }
+}
+@media (max-width:645px) {
+.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left:20px;
+  }
+
+.favorite-btn[data-v-449bbd70] {
+margin-left:3px;
+  }
+}
+
+@media (max-width:610px) {
+.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left:10px;
+  }
+
+.favorite-btn[data-v-449bbd70] {
+margin-left:3px;
+  }
+}
+
+@media (max-width:600px) {
+.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left:150px;
+  }
+
+.favorite-btn[data-v-449bbd70] {
+margin-left:3px;
   }
 }
 </style>
