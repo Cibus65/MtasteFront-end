@@ -8,7 +8,7 @@
           <img class="card_img" :src="card.imgwindowurl" alt="Изображение блюда">
           <h3>{{ card.name }}</h3>
           <div class="ingrid_btn">
-            <button class="btn btn-outline-secondary favorite-btn" @click="toggleFavorite(card)" :class="{ 'favorited': card.isFavorite, 'not-favorited': !card.isFavorite }">
+            <button class="btn btn-outline-secondary favorite-btn" @click="toggleFavorite(card)" :class="{'not-favorited': !card.isFavorite, 'favorited': card.isFavorite }">
               <i class="fas" :class="{ 'fa-heart-broken': card.isFavorite, 'fa-heart': !card.isFavorite }"></i>
             </button>
             <button class="btn btn-outline-secondary ingredients-btn" @click="openIngredientsModal(card)">
@@ -45,8 +45,10 @@ export default {
   },
   methods: {
     toggleFavorite(card) {
+      console.log('toggleFavorite called', card);
       this.$emit('toggleFavorite', card);
     },
+
     openRecipeModal(card) {
       this.$emit('open-recipe', card);
     },

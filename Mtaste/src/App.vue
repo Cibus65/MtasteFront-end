@@ -58,6 +58,7 @@
     </div>
 
     <favorites-modal
+        ref="favoritesModal"
         :show="showFavoritesModal"
         :img__error="img__error"
         @close="closeFavoritesModal"
@@ -67,6 +68,8 @@
         :removeFromFavorites="removeFromFavorites"
         :toggleFavorite="toggleFavorite"
         :openIngredientsModal="openIngredientsModal"
+        :favoriteRecipes="favoriteRecipes"
+        :cards="cards"
     />
 
     <recipe-modal :show="showRecipeModal" :card="selectedCard" @close="closeRecipeModal"></recipe-modal>
@@ -80,7 +83,7 @@
         @open-ingredients="openIngredientsModal"
         :addToFavorites="addToFavorites"
         :removeFromFavorites="removeFromFavorites"
-        :toggleFavorite="toggleFavorite"
+        @toggleFavorite="toggleFavorite"
         :openIngredientsModal="openIngredientsModal"
     />
   </div>
@@ -122,11 +125,11 @@ export default {
     return {
       imagePath: image,
       img__error: img__error,
-
       showModal: false,
       cards: [],
       totalCards: 0,
       currentPage: 1,
+      searchQuery: '',
       showRecipeModal: false,
       selectedCard: null,
       showSearchModal: false,
@@ -135,21 +138,42 @@ export default {
       username: localStorage.getItem('username') || '',
       dropdownOpen: false,
       showFavoritesModal: false,
+      favoriteRecipes: JSON.parse(localStorage.getItem('favoriteRecipes')) || [],
     };
   },
   mounted() {
     this.loadMoreCards();
     this.adjustCardContainerMargin();
     window.addEventListener('resize', this.adjustCardContainerMargin);
-    const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
-    this.cards.forEach(card => {
-      card.isFavorite = favoriteRecipes.includes(card.id);
-    });
+    this.updateFavoriteStatus();
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.adjustCardContainerMargin);
   },
   methods: {
+    searchRecipes(words) {
+      const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+
+      axios.get(`${baseURL}/Mtaste/API/findRecipe/${words}`)
+          .then(response => {
+            const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+            this.searchResults = response.data.map(cardData => ({
+              name: cardData.name,
+              imgwindowurl: cardData.imgwindowurl,
+              id: cardData.ID,
+              isFavorite: favoriteRecipes.includes(cardData.ID)
+            }));
+          })
+          .catch(error => {
+            console.error('Ошибка при поиске рецептов:', error);
+          });
+    },
+    updateFavoriteStatus() {
+      const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+      this.cards.forEach(card => {
+        card.isFavorite = favoriteRecipes.includes(card.id);
+      });
+    },
     addToFavorites(card) {
       if (!this.isAuthenticated) {
         this.openModal();
@@ -168,15 +192,11 @@ export default {
               if (!favoriteRecipes.includes(card.id)) {
                 favoriteRecipes.push(card.id);
                 localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
-                console.log('Рецепт добавлен в избранное:', response.data);
+                this.favoriteRecipes = favoriteRecipes;
+                this.updateFavoriteStatus();
               } else {
                 console.warn('Рецепт уже в избранном:', card.id);
               }
-
-              // Обновляем состояние isFavorite для всех карточек
-              this.cards.forEach(card => {
-                card.isFavorite = favoriteRecipes.includes(card.id);
-              });
             })
             .catch(error => {
               console.error('Ошибка при добавлении рецепта в избранное:', error);
@@ -203,15 +223,12 @@ export default {
                 if (favoriteRecipes.includes(card.id)) {
                   favoriteRecipes = favoriteRecipes.filter(id => id !== card.id);
                   localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
-                  console.log('Рецепт удален из избранного:', response.data);
+                  this.favoriteRecipes = favoriteRecipes;
+                  this.$refs.favoritesModal.updateFavorites(favoriteRecipes); // Добавьте эту строку
+                  this.updateFavoriteStatus();
                 } else {
                   console.warn('Рецепт не найден в избранном:', card.id);
                 }
-
-                // Обновляем состояние isFavorite для всех карточек
-                this.cards.forEach(card => {
-                  card.isFavorite = favoriteRecipes.includes(card.id);
-                });
               } else {
                 console.error('Ошибка при удалении рецепта из избранного:', response.data.error);
               }
@@ -256,13 +273,8 @@ export default {
           this.addToFavorites(card);
         }
 
-        // Обновляем локальное хранилище с ID всех рецептов
         localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
-
-        // Обновляем состояние isFavorite для всех карточек
-        this.cards.forEach(card => {
-          card.isFavorite = favoriteRecipes.includes(card.id);
-        });
+        this.updateFavoriteStatus();
       }
     },
     openSearchModal() {
@@ -390,6 +402,7 @@ export default {
       }
     },
   }
+
 };
 </script>
 
@@ -802,20 +815,20 @@ input:focus {
   }
   .form-control {
     width:33%;
-    }
-    .bg-light[data-v-7a7a37b1] {
+  }
+  .bg-light[data-v-7a7a37b1] {
     margin-left:20%;
-    }
+  }
 }
 @media (max-width:912px) {
   .bg-light[data-v-7a7a37b1] {
     margin-left:15%;
-    }
+  }
 }
 @media (max-width:720px) {
-.bg-light[data-v-7a7a37b1] {
+  .bg-light[data-v-7a7a37b1] {
     margin-left:7%;
-    }
+  }
 
 }
 @media (max-width:615px) {
@@ -852,39 +865,39 @@ input:focus {
   }
 
   input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
-  width:25%;
+    width:25%;
   }
   .form-control {
     width:30%;
-    }
-    .bg-light {
+  }
+  .bg-light {
     margin-left:0%;
-    }
-    .user-info {
+  }
+  .user-info {
     padding-left:20%;
-    }
-    .logo {
+  }
+  .logo {
     padding-left:0%;
-    }
-    .modal-content {
+  }
+  .modal-content {
     width:450px;
-    }
+  }
 
-    .auth-button {
+  .auth-button {
     width:50%;
-    }
-    .auth-form[data-v-c3c6d662] {
-      width:50%;
-    }
-    input[type="text"], input[type="password"] {
+  }
+  .auth-form[data-v-c3c6d662] {
     width:50%;
-    }
-    .modal-title[data-v-c3c6d662] {
+  }
+  input[type="text"], input[type="password"] {
+    width:50%;
+  }
+  .modal-title[data-v-c3c6d662] {
     font-size:50px;
-    }
-    .enter__button {
+  }
+  .enter__button {
     margin-left: -100px;
-    }
+  }
 }
 
 
@@ -898,33 +911,33 @@ input:focus {
   }
   .form-control {
     width:20%;
-    }
-    .bg-light {
+  }
+  .bg-light {
     margin-left:0%;
-    }
-    .user-info {
+  }
+  .user-info {
     padding-left:20%;
-    }
-    .logo {
+  }
+  .logo {
     padding-left:0%;
-    }
-    .modal-content {
+  }
+  .modal-content {
     width:450px;
-    }
-    .auth-button {
+  }
+  .auth-button {
     width:50%;
-    }
-    input[type="text"], input[type="password"] {
+  }
+  input[type="text"], input[type="password"] {
     width:50%;
-    }
-    .modal-title[data-v-c3c6d662] {
+  }
+  .modal-title[data-v-c3c6d662] {
     font-size:50px;
-    }
-    .enter__button {
+  }
+  .enter__button {
     margin-left: -100px;
-    }
-    input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
-  width:25%;
+  }
+  input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
+    width:25%;
   }
 }
 </style>

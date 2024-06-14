@@ -8,8 +8,8 @@
           <img class="card_img" :src="card.imgwindowurl" alt="Изображение блюда">
           <h3>{{ card.name }}</h3>
           <div class="ingrid_btn">
-            <button class="btn btn-outline-secondary favorite-btn" @click="toggleFavorite(card)" :class="{ 'favorited': card.isFavorite, 'not-favorited': !card.isFavorite }">
-              <i class="fas" :class="{ 'fa-heart': card.isFavorite, 'fa-heart-broken': !card.isFavorite }"></i>
+            <button class="btn btn-outline-secondary favorite-btn" @click="toggleFavorite(card)" :class="'not-favorited'">
+              <i class="fas" :class="'fa-heart-broken'"></i>
             </button>
             <button class="btn btn-outline-secondary ingredients-btn" @click="openIngredientsModal(card)">
               <i class="fas fa-utensils"></i>
@@ -38,6 +38,14 @@ export default {
     openRecipeModal: Function,
     addToFavorites: Function,
     removeFromFavorites: Function,
+    favoriteRecipes: {
+      type: Array,
+      default: () => []
+    },
+    cards: {
+      type: Array,
+      default: () => []
+    },
   },
   data() {
     return {
@@ -50,9 +58,22 @@ export default {
       if (newValue) {
         this.fetchFavouriteRecipes();
       }
+    },
+    favoriteRecipes: {
+      handler(newVal) {
+        this.favoritesRecipes = newVal.map(id => this.cards.find(card => card.id === id));
+      },
+      immediate: true,
+      deep: true
     }
   },
   methods: {
+    updateFavorites(newFavorites) {
+      this.favoritesRecipes = this.cards.filter(card => newFavorites.includes(card.id)).map(card => ({
+        ...card,
+        isFavorite: true// Убедитесь, что isFavorite установлен в true для избранных рецептов
+      }));
+    },
     openRecipeModal(card) {
       this.$emit('open-recipe', card);
     },
@@ -63,15 +84,10 @@ export default {
       const url = `${baseURL}/Mtaste/API/user/getFavouriteRecipes/${this.userID}`;
 
       axios.get(url)
-
           .then(response => {
-            console.log(this)
             if (response.status === 200) {
-              // Извлекаем массив рецептов из ответа
               const recipes = response.data.recipes;
-              // Проверяем, является ли recipes массивом
               if (Array.isArray(recipes)) {
-                // Если recipes является массивом, то используем map для преобразования данных
                 this.favoritesRecipes = recipes.map(recipe => ({
                   name: recipe.name,
                   imgwindowurl: recipe.imgwindowurl,
@@ -222,7 +238,7 @@ h2 {
 }
 .ingrid_btn {
   display: flex;
-  
+
   margin-top: 15px;
   margin-bottom: 15px;
 
@@ -250,7 +266,7 @@ input:focus {
   align-items: center;
   border-color: #9f0101;
   margin-left: 40px;
-  
+
 }
 
 .favorite-btn.favorited {
@@ -268,7 +284,7 @@ input:focus {
 }
 .ingredients-btn {
   margin-left: 240px;
-  
+
 }
 .cook-btn {
   text-align: center;
@@ -279,7 +295,7 @@ input:focus {
   margin-left: 10px;
 }
 @media (max-width:2000px) {
-.cook-btn[data-v-449bbd70] {
+  .cook-btn[data-v-449bbd70] {
     margin-bottom:0%;
   }
 }
@@ -287,45 +303,45 @@ input:focus {
 @media (max-width:600px){
   .card-container[data-v-449bbd70]{
     max-width: 400px;
-    
+
   }
   .cook-btn[data-v-449bbd70][data-v-449bbd70] {
-        text-align: center;
-        width: 100px;
-        height: 40px;
-        margin-left: 10px;
-    }
+    text-align: center;
+    width: 100px;
+    height: 40px;
+    margin-left: 10px;
+  }
   .ingredients-btn[data-v-449bbd70]{
     margin-left: 80px;
   }
   .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-            margin-left: 130px;
-        }
-        .favorite-btn[data-v-449bbd70][data-v-449bbd70] {
-        color: #ffffff;
-        background-color: #9f0101;
-        max-width: 44px;
-        max-height: 40px;
-        align-items: center;
-        border-color: #9f0101;
-        margin-left: 20px;
-    }
-    .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-        margin-left: 130px;
-    }
+    margin-left: 130px;
+  }
+  .favorite-btn[data-v-449bbd70][data-v-449bbd70] {
+    color: #ffffff;
+    background-color: #9f0101;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #9f0101;
+    margin-left: 20px;
+  }
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left: 130px;
+  }
 }
 @media (max-width:800px){
   .cook-btn[data-v-449bbd70] {
     text-align: center;
     width: 100px;
     height: 40px;
-    
-    
+
+
     margin-left: 10px;
   }
   .ingredients-btn[data-v-449bbd70] {
     margin-left: 25px;
-}
+  }
 
 }
 @media (max-width:700px){
@@ -340,33 +356,33 @@ input:focus {
   }
   @media (max-width:640px){
     .ingredients-btn[data-v-449bbd70][data-v-449bbd70] {
-        margin-left: 5px;
+      margin-left: 5px;
     }
   }
 }
 @media (max-width:450px){
   .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-        margin-left: 100px;
-    }
+    margin-left: 100px;
+  }
 }
 @media (max-width:1450px){
   .ingredients-btn[data-v-449bbd70] {
     margin-left: 200px;
-}
+  }
 }
 @media (max-width:1200px){
   .ingredients-btn[data-v-449bbd70][data-v-449bbd70] {
-        margin-left: 110px;
-    }
+    margin-left: 110px;
+  }
 }
 @media (max-width:930px){
   .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-        margin-left: 30px;
-    }
+    margin-left: 30px;
+  }
 }
 @media (max-width:730px){
   .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-        margin-left: 10px;
-    }
+    margin-left: 10px;
+  }
 }
 </style>
