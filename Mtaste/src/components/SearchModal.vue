@@ -70,7 +70,7 @@ export default {
             console.error('Ошибка при поиске рецептов:', error);
           });
     }
-},
+  },
   watch: {
     show(newValue) {
       if (newValue) {

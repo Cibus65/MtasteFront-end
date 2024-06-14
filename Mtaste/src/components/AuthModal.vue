@@ -64,6 +64,13 @@ export default {
                 title: "Ой..",
                 text: "Неверный логин или пароль!",
               });
+            } else if (response.data.errorCode === 3) {
+              // Обрабатываем ошибку, например, показывая сообщение
+              Swal.fire({
+                icon: "error",
+                title: "Ой..",
+                text: "Пользователь с таким именем не существует!",
+              });
             } else {
               // Сохраняем токен, если авторизация прошла успешно
               const token = response.data.token;

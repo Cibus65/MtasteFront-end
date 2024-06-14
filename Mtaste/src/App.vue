@@ -44,7 +44,7 @@
         <h3>{{ card.name }}</h3>
         <div class="ingrid_btn">
           <button
-              class="btn btn-outline-secondary favorite-btn" @click="toggleFavorite(card)" :class="{ 'favorited': card.isFavorite, 'not-favorited': !card.isFavorite }"><i class="fas" :class="{ 'fa-heart': card.isFavorite, 'fa-heart-broken': !card.isFavorite }"></i>
+              class="btn btn-outline-secondary favorite-btn" @click="toggleFavorite(card)" :class="{ 'favorited': card.isFavorite, 'not-favorited': !card.isFavorite }"><i class="fas" :class="{ 'fa-heart': !card.isFavorite, 'fa-heart-broken': card.isFavorite }"></i>
           </button>
 
           <button class="btn btn-outline-secondary ingredients-btn" @click="openIngredientsModal(card)">
@@ -165,9 +165,18 @@ export default {
             .then(response => {
               card.isFavorite = true;
               const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
-              localStorage.setItem('favoriteRecipes', JSON.stringify([...favoriteRecipes, card.id]));
-              console.log('Рецепт добавлен в избранное:', response.data);
+              if (!favoriteRecipes.includes(card.id)) {
+                favoriteRecipes.push(card.id);
+                localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+                console.log('Рецепт добавлен в избранное:', response.data);
+              } else {
+                console.warn('Рецепт уже в избранном:', card.id);
+              }
 
+              // Обновляем состояние isFavorite для всех карточек
+              this.cards.forEach(card => {
+                card.isFavorite = favoriteRecipes.includes(card.id);
+              });
             })
             .catch(error => {
               console.error('Ошибка при добавлении рецепта в избранное:', error);
@@ -191,9 +200,18 @@ export default {
               if (response.data.flag) {
                 card.isFavorite = false;
                 let favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
-                favoriteRecipes = favoriteRecipes.filter(id => id !== card.id);
-                localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
-                console.log('Рецепт удален из избранного:', response.data);
+                if (favoriteRecipes.includes(card.id)) {
+                  favoriteRecipes = favoriteRecipes.filter(id => id !== card.id);
+                  localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+                  console.log('Рецепт удален из избранного:', response.data);
+                } else {
+                  console.warn('Рецепт не найден в избранном:', card.id);
+                }
+
+                // Обновляем состояние isFavorite для всех карточек
+                this.cards.forEach(card => {
+                  card.isFavorite = favoriteRecipes.includes(card.id);
+                });
               } else {
                 console.error('Ошибка при удалении рецепта из избранного:', response.data.error);
               }
@@ -306,10 +324,6 @@ export default {
             this.cards.push(...newCards);
             this.totalCards = response.headers['x-total-count'];
             this.currentPage++; // Переходим на следующую страницу
-
-            // Обновляем локальное хранилище с ID всех рецептов
-            const allRecipeIds = [...favoriteRecipes, ...newCards.map(card => card.id)];
-            localStorage.setItem('favoriteRecipes', JSON.stringify(allRecipeIds));
           })
           .catch(error => {
             console.error('Ошибка при загрузке карточек:', error);
@@ -743,24 +757,24 @@ input:focus {
 
 .favorite-btn {
   color: #ffffff;
-  background-color: #9f0101;
+  background-color: #ecc301;
   max-width: 44px;
   max-height: 40px;
   align-items: center;
-  border-color: #9f0101;
+  border-color: #dab818;
 }
 
 .favorite-btn.favorited {
   color: #ffffff;
-  background-color: rgb(236, 195, 1);
-  border-color: rgb(218, 180, 0);
+  background-color: rgb(175, 0, 0);
+  border-color: rgb(159, 1, 1);
 
 }
 .favorite-btn.favorited:hover {
-  background-color: rgb(236, 195, 1);
+  background-color: rgb(159, 1, 1);
 }
 .favorite-btn:hover {
-  background-color: #af0000;
+  background-color: #dab400;
 
 }
 
@@ -811,7 +825,7 @@ input:focus {
     max-width: 44px;
     max-height: 40px;
     align-items: center;
-    border-color: #9f0101;
+    border-color: #ecc301;
     margin-top: 55px;
   }
 
