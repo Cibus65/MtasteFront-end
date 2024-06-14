@@ -354,12 +354,14 @@ input:focus {
     border-color: #9f0101;
     margin-left: 10px;
   }
+}
   @media (max-width:640px){
     .ingredients-btn[data-v-449bbd70][data-v-449bbd70] {
       margin-left: 5px;
     }
   }
-}
+
+
 @media (max-width:450px){
   .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
     margin-left: 100px;
@@ -412,5 +414,57 @@ input:focus {
         margin-left: 90px;
     }
 }
+@media (max-width:620px) {
+.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left:5px;
+  }
+}
 
+@media (max-width:860px) {
+.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left:40px;
+  }
+.favorite-btn[data-v-449bbd70] {
+margin-left:10px;
+  }
+}
+
+@media (max-width:680px) {
+.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left:30px;
+  }
+
+.favorite-btn[data-v-449bbd70] {
+margin-left:5px;
+  }
+}
+@media (max-width:645px) {
+.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left:20px;
+  }
+
+.favorite-btn[data-v-449bbd70] {
+margin-left:3px;
+  }
+}
+
+@media (max-width:610px) {
+.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left:10px;
+  }
+
+.favorite-btn[data-v-449bbd70] {
+margin-left:3px;
+  }
+}
+
+@media (max-width:600px) {
+.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+    margin-left:150px;
+  }
+
+.favorite-btn[data-v-449bbd70] {
+margin-left:3px;
+  }
+}
 </style>
