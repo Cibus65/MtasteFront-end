@@ -57,12 +57,19 @@ export default {
       })
           .then(response => {
             // Проверяем, если сервер вернул ошибку с кодом 3
-            if (response.data.errorCode === 3) {
+            if (response.data.errorCode === 4) {
               // Обрабатываем ошибку, например, показывая сообщение
               Swal.fire({
                 icon: "error",
                 title: "Ой..",
                 text: "Неверный логин или пароль!",
+              });
+            } else if (response.data.errorCode === 3) {
+              // Обрабатываем ошибку, например, показывая сообщение
+              Swal.fire({
+                icon: "error",
+                title: "Ой..",
+                text: "Пользователь с таким именем не существует!",
               });
             } else {
               // Сохраняем токен, если авторизация прошла успешно
@@ -230,5 +237,29 @@ input[type="password"] {
 .close:focus {
   color: #bbb;
   text-decoration: none;
+}
+
+@media (max-width:615px) {
+.modal-title[data-v-c3c6d662] {
+  font-size:50px;
+}
+.auth-form[data-v-c3c6d662] {
+  width:70%;
+}
+.modal-content[data-v-c3c6d662] {
+  width:450px;
+  }
+}
+
+@media (max-width:500px) {
+.modal-title[data-v-c3c6d662] {
+  font-size:40px;
+}
+.auth-form[data-v-c3c6d662] {
+  width:50%;
+}
+.modal-content[data-v-c3c6d662] {
+  width:350px;
+  }
 }
 </style>

@@ -7,7 +7,7 @@ export default function addVisibleClass() {
             for (var i = 0; i < 4 && i < elements.length; i++) {
                 elements[i].classList.add('visible');
             }
-        }, 500); 
+        }, 700); 
     });
 }
 
