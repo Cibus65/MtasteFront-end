@@ -284,4 +284,26 @@ margin-left:10px;
 
   }
 }
+@media (max-width:850px) {
+.cook-btn[data-v-6c566dde][data-v-6c566dde] {
+margin-left: 10px;
+margin-top: 20px;
+}
+}
+@media (min-width:1000px) {
+  .ingredients-btn[data-v-6c566dde] {
+  margin-left:200px;
+  }
+}
+
+@media (max-width:1220px) {
+.ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  margin-left:40px;
+  }
+}
+@media (max-width:600px) {
+.ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  margin-left:100px;
+  }
+}
 </style>
