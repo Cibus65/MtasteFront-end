@@ -385,4 +385,32 @@ input:focus {
     margin-left: 10px;
   }
 }
+@media (max-width:1500px){
+  .ingredients-btn[data-v-449bbd70] {
+    margin-left: 180px;
+}
+
+}
+
+@media (max-width:1260px){
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70] {
+        margin-left: 150px;
+    }
+}
+@media (max-width:1180px){
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+        margin-left: 130px;
+    }
+}
+@media (max-width:1140px){
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+        margin-left: 110px;
+    }
+}
+@media (max-width:1100px){
+  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
+        margin-left: 90px;
+    }
+}
+
 </style>
