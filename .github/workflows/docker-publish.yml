@@ -38,6 +38,10 @@ jobs:
     - name: Install dependencies
       run: npm install
       working-directory: ./Mtaste
+    - name: Setting .env
+      run: echo "VITE_BASE_URL=http://${{ secrets.BACKEND_IP }}:8082" > .env
+      working-directory: ./Mtaste
+
     - name: Build the project
       run: npm run build
       working-directory: ./Mtaste
