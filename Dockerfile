@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 RUN ls
 RUN cd ./Mtaste &&  npm install -g npm@10.8.1
-
+RUN ls && pwd
 # Сборка приложения
 RUN cd ./Mtaste && npm run build
 
