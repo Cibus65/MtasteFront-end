@@ -828,11 +828,7 @@ input:focus {
 @media (max-width:720px) {
   .bg-light[data-v-7a7a37b1] {
     margin-left:7%;
-<<<<<<< HEAD
-    }
-=======
   }
->>>>>>> testing-branch
 
 }
 @media (max-width:615px) {
@@ -869,41 +865,6 @@ input:focus {
   }
 
   input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
-<<<<<<< HEAD
-  width:25%;
-  }
-  .form-control {
-    width:30%;
-    }
-    .bg-light {
-    margin-left:0%;
-    }
-    .user-info {
-    padding-left:20%;
-    }
-    .logo {
-    padding-left:0%;
-    }
-    .modal-content {
-    width:450px;
-    }
-    
-    .auth-button {
-    width:50%;
-    }
-    .auth-form[data-v-c3c6d662] {
-      width:50%;
-    }
-    input[type="text"], input[type="password"] {
-    width:50%;
-    }
-    .modal-title[data-v-c3c6d662] {
-    font-size:50px;
-    }
-    .enter__button {
-    margin-left: -100px;
-    }
-=======
     width:25%;
   }
   .form-control {
@@ -937,7 +898,6 @@ input:focus {
   .enter__button {
     margin-left: -100px;
   }
->>>>>>> testing-branch
 }
 
 
@@ -951,35 +911,6 @@ input:focus {
   }
   .form-control {
     width:20%;
-<<<<<<< HEAD
-    }
-    .bg-light {
-    margin-left:0%;
-    }
-    .user-info {
-    padding-left:20%;
-    }
-    .logo {
-    padding-left:0%;
-    }
-    .modal-content {
-    width:450px;
-    }
-    .auth-button {
-    width:50%;
-    }
-    input[type="text"], input[type="password"] {
-    width:50%;
-    }
-    .modal-title[data-v-c3c6d662] {
-    font-size:50px;
-    }
-    .enter__button {
-    margin-left: -100px;
-    }
-    input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
-  width:25%;
-=======
   }
   .bg-light {
     margin-left:0%;
@@ -1007,7 +938,6 @@ input:focus {
   }
   input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
     width:25%;
->>>>>>> testing-branch
   }
 }
 </style>
