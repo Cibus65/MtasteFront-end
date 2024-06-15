@@ -251,7 +251,7 @@ input:focus {
 
 }
 .ingredients-btn {
-  margin-left:180px;
+  margin-left:250px;
   
 }
 .ingrid_btn{
