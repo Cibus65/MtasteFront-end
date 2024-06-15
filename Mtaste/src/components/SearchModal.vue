@@ -252,11 +252,11 @@ input:focus {
 }
 .ingredients-btn {
   margin-left:50px;
-  margin-top: 55px;
+  
 }
 .ingrid_btn{
   display: flex;
-
+  
 }
 .cook-btn {
   text-align: center;
