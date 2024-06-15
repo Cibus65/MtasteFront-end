@@ -3,7 +3,7 @@ name: Build, Publish Docker Image and Deploy
 on:
   push:
     branches:
-      - main
+      - testing-branch
 
 jobs:
   build-and-deploy:
