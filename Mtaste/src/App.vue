@@ -898,6 +898,12 @@ input:focus {
   .enter__button {
     margin-left: -100px;
   }
+  input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
+    width:17%;
+  }
+  .search__button[data-v-7a7a37b1] {
+    width:80px;
+    }
 }
 
 
@@ -939,5 +945,11 @@ input:focus {
   input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
     width:25%;
   }
+  input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
+    width:17%;
+  }
+  .search__button[data-v-7a7a37b1] {
+    width:80px;
+    }
 }
 </style>
