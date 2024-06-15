@@ -251,7 +251,7 @@ input:focus {
 
 }
 .ingredients-btn {
-  margin-left:50px;
+  margin-left:180px;
   
 }
 .ingrid_btn{
@@ -261,7 +261,7 @@ input:focus {
 .cook-btn {
   text-align: center;
   margin-left: 5px;
-  margin-bottom: 50px;
+  
   width: 150px;
   height: 40px;
   box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
