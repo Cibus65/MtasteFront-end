@@ -311,4 +311,9 @@ margin-top: 20px;
   margin-left:100px;
   }
 }
+@media (max-width:780px){
+  .ingredients-btn[data-v-61cd8a52] {
+    margin-left: 5px;
+}
+}
 </style>
