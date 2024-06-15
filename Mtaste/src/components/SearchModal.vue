@@ -234,7 +234,6 @@ input:focus {
   max-height: 40px;
   align-items: center;
   border-color: #dab818;
-  margin-left: 20px;
 }
 
 .favorite-btn.favorited {
@@ -251,17 +250,13 @@ input:focus {
 
 }
 .ingredients-btn {
-  margin-left:250px;
-  
-}
-.ingrid_btn{
-  display: flex;
-  
+  margin-left:50px;
+  margin-top: 55px;
 }
 .cook-btn {
   text-align: center;
   margin-left: 5px;
-  
+  margin-bottom: 50px;
   width: 150px;
   height: 40px;
   box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
@@ -310,10 +305,5 @@ margin-top: 20px;
 .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
   margin-left:100px;
   }
-}
-@media (max-width:780px){
-  .ingredients-btn[data-v-61cd8a52] {
-    margin-left: 5px;
-}
 }
 </style>
