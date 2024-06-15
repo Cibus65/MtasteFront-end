@@ -234,6 +234,7 @@ input:focus {
   max-height: 40px;
   align-items: center;
   border-color: #dab818;
+  margin-left: 20px;
 }
 
 .favorite-btn.favorited {
@@ -252,6 +253,10 @@ input:focus {
 .ingredients-btn {
   margin-left:50px;
   margin-top: 55px;
+}
+.ingrid_btn{
+  display: flex;
+
 }
 .cook-btn {
   text-align: center;
