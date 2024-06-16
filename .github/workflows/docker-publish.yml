@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - testing-branch
+      - new_branch
 
 jobs:
   build-and-deploy:

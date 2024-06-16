@@ -5,6 +5,10 @@ import vue from '@vitejs/plugin-vue'
 
 //  https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    minify: false, // временно отключите минификацию для отладки
+    sourcemap: true, // включите sourcemaps для лучшей отладки
+  },
   plugins: [
     vue(),
   ],
