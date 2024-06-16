@@ -326,11 +326,34 @@ margin-top: 20px;
     margin-left: 150px;
     
 }
+}
 @media (max-width:1100px){
   .ingredients-btn[data-v-e4d53d11] {
     margin-left: 100px;
+  
+}
+}
+@media (max-width:1630px){
+  .cook-btn[data-v-e4d53d11] {
+    text-align: center;
+    margin-left: 5px;
+   
+    width: 150px;
+    height: 40px;
+    box-shadow: 5px 5px 5px 1.5px #ddd;
+    margin-top: -110px;
+}
+.ingredients-btn[data-v-e4d53d11] {
+    margin-left: 250px;
     
 }
 }
+
+@media (max-width:1330px){
+  .ingredients-btn[data-v-e4d53d11] {
+    margin-left: 150px;
+    
 }
+}
+
 </style>
