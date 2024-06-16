@@ -200,15 +200,7 @@ h2 {
 .card button {
   margin-top: auto;
 }
-@media screen and (max-width: 600px) {
-  .modal-content {
-    width: 90%;
-  }
 
-  .card {
-    width: calc(100% - 20px); /* При маленьком экране одна карточка в ряд */
-  }
-}
 .btn_style {
   display: flex;
   justify-content: space-around;
@@ -265,6 +257,15 @@ input:focus {
   margin-top: -110px;
 }
 
+@media screen and (max-width: 900px) {
+  .modal-content {
+    width: 90%;
+  }
+
+  .card {
+    width: calc(100% - 20px); /* При маленьком экране одна карточка в ряд */
+  }
+}
 @media (max-width:390px){
   .ingredients-btn[data-v-8303fc85] {
     margin-left: 80px !important;
