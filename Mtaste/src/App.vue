@@ -864,9 +864,7 @@ input:focus {
     height:70px;
   }
 
-  input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
-    width:25%;
-  }
+ 
   .form-control {
     width:30%;
   }
@@ -889,9 +887,7 @@ input:focus {
   .auth-form[data-v-c3c6d662] {
     width:50%;
   }
-  input[type="text"], input[type="password"] {
-    width:50%;
-  }
+  
   .modal-title[data-v-c3c6d662] {
     font-size:50px;
   }
@@ -927,18 +923,14 @@ input:focus {
   .auth-button {
     width:50%;
   }
-  input[type="text"], input[type="password"] {
-    width:50%;
-  }
+  
   .modal-title[data-v-c3c6d662] {
     font-size:50px;
   }
   .enter__button {
     margin-left: -100px;
   }
-  input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
-    width:25%;
-  }
+  
 }
 @media (max-width:1080px) {
   .ingredients-btn {
@@ -1005,9 +997,7 @@ input:focus {
     height:70px;
   }
 
-  input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
-    width:25%;
-  }
+ 
   .form-control {
     width:30%;
   }
@@ -1030,19 +1020,14 @@ input:focus {
   .auth-form[data-v-c3c6d662] {
     width:50%;
   }
-  input[type="text"], input[type="password"] {
-    width:50%;
-    margin-left: 70px;
-  }
+ 
   .modal-title[data-v-c3c6d662] {
     font-size:50px;
   }
   .enter__button {
     margin-left: -60px;
   }
-  input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
-    width:17%;
-  }
+  
   .search__button[data-v-7a7a37b1] {
     width:80px;
     }
@@ -1075,9 +1060,7 @@ input:focus {
   .auth-button {
     width:50%;
   }
-  input[type="text"], input[type="password"] {
-    width:50%;
-  }
+  
   .modal-title[data-v-c3c6d662] {
     font-size:50px;
   }
