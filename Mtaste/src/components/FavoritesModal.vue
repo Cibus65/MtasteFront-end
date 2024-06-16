@@ -8,8 +8,8 @@
           <img class="card_img" :src="card.imgwindowurl" alt="Изображение блюда">
           <h3>{{ card.name }}</h3>
           <div class="ingrid_btn">
-            <button class="btn btn-outline-secondary favorite-btn" @click="toggleFavorite(card)" :class="'not-favorited'">
-              <i class="fas" :class="'fa-heart-broken'"></i>
+            <button class="btn btn-outline-secondary favorite-btn" @click="toggleFavorite(card)" :class="{ favorited: card.isFavorite }">
+              <i class="fas" :class="card.isFavorite ? 'fa-heart' : 'fa-heart-broken'"></i>
             </button>
             <button class="btn btn-outline-secondary ingredients-btn" @click="openIngredientsModal(card)">
               <i class="fas fa-utensils"></i>
@@ -32,12 +32,9 @@ export default {
   emits: ['close'],
   props: {
     show: Boolean,
-    img__error: String,
     toggleFavorite: Function,
     openIngredientsModal: Function,
     openRecipeModal: Function,
-    addToFavorites: Function,
-    removeFromFavorites: Function,
     favoriteRecipes: {
       type: Array,
       default: () => []
@@ -50,7 +47,7 @@ export default {
   data() {
     return {
       favoritesRecipes: [],
-      userID: localStorage.getItem('userID') || '' // Получение userID из локального хранилища
+      userID: localStorage.getItem('userID') || ''
     };
   },
   watch: {
@@ -71,38 +68,36 @@ export default {
     updateFavorites(newFavorites) {
       this.favoritesRecipes = this.cards.filter(card => newFavorites.includes(card.id)).map(card => ({
         ...card,
-        isFavorite: true// Убедитесь, что isFavorite установлен в true для избранных рецептов
+        isFavorite: true
       }));
     },
     openRecipeModal(card) {
       this.$emit('open-recipe', card);
     },
-
     fetchFavouriteRecipes() {
       const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
-
       const url = `${baseURL}/Mtaste/API/user/getFavouriteRecipes/${this.userID}`;
 
       axios.get(url)
-          .then(response => {
-            if (response.status === 200) {
-              const recipes = response.data.recipes;
-              if (Array.isArray(recipes)) {
-                this.favoritesRecipes = recipes.map(recipe => ({
-                  name: recipe.name,
-                  imgwindowurl: recipe.imgwindowurl,
-                  id: recipe.ID
-                }));
-              } else {
-                console.error('Ожидался массив рецептов, но получен другой тип данных:', recipes);
-              }
+        .then(response => {
+          if (response.status === 200) {
+            const recipes = response.data.recipes;
+            if (Array.isArray(recipes)) {
+              this.favoritesRecipes = recipes.map(recipe => ({
+                name: recipe.name,
+                imgwindowurl: recipe.imgwindowurl,
+                id: recipe.ID
+              }));
             } else {
-              console.error('Ошибка при получении избранных рецептов:', response.status);
+              console.error('Ожидался массив рецептов, но получен другой тип данных:', recipes);
             }
-          })
-          .catch(error => {
-            console.error('Ошибка при получении избранных рецептов:', error);
-          });
+          } else {
+            console.error('Ошибка при получении избранных рецептов:', response.status);
+          }
+        })
+        .catch(error => {
+          console.error('Ошибка при получении избранных рецептов:', error);
+        });
     }
   }
 };
@@ -131,14 +126,12 @@ export default {
   width: 80%;
   max-width: 1200px;
   box-sizing: border-box;
-
 }
 
-.card_img{
+.card_img {
   width: 100%;
   height: 80%;
-  border-bottom: 1px solid;
-  border-color:#818181;
+  border-bottom: 1px solid #818181;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   object-fit: cover;
@@ -168,49 +161,17 @@ h2 {
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
-
-}
-.enter__button{
-
-  margin-left: 300px;
-  width: 100px;
-  margin-bottom: 15px;
-
-}
-.btn_style{
-  margin-top: 10px;
-}
-.btn {
-
-  color: white;
-  background-color: rgba(2, 96, 74, 1);
-  border-color: rgba(2, 96, 74, 1);
-  font-family: "Gilda Display", serif;
-
-
-}
-.btn:hover{
-  background-color: rgb(1, 76, 59);
 }
 
-.btn:focus{
-  box-shadow: 0 0 10px rgb(3, 97, 75);
-}
 .card {
-
-  padding-bottom:5px;
+  padding-bottom: 5px;
   border: 1px solid #6e6e6e;
   border-radius: 5px;
   text-align: center;
   box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
   width: calc(50% - 20px);
   margin: 10px;
-
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  text-align: center;
   max-height: 500px;
-
 }
 
 .card h3 {
@@ -218,44 +179,26 @@ h2 {
   font-size: 18px;
 }
 
-.card img {
-
-  max-height: 700px;
-}
-
-.card button {
-  margin-top: auto;
-}
-
-@media screen and (max-width: 600px) {
-  .modal-content {
-    width: 90%;
-  }
-
-  .card {
-    width: calc(100% - 20px); /* При маленьком экране одна карточка в ряд */
-  }
-}
 .ingrid_btn {
   display: flex;
-
+  justify-content: space-between;
   margin-top: 15px;
   margin-bottom: 15px;
+}
 
-}
-.btn-outline-secondary{
-  color:#fff;
-}
-input:focus {
-  box-shadow: 0 0 10px rgba(2, 96, 74, 1);
-}
 .btn {
+  color: white;
   background-color: rgba(2, 96, 74, 1);
   border-color: rgba(2, 96, 74, 1);
   font-family: "Gilda Display", serif;
 }
-.btn:hover{
+
+.btn:hover {
   background-color: rgb(1, 76, 59);
+}
+
+.btn:focus {
+  box-shadow: 0 0 10px rgb(3, 97, 75);
 }
 
 .favorite-btn {
@@ -265,206 +208,59 @@ input:focus {
   max-height: 40px;
   align-items: center;
   border-color: #9f0101;
-  margin-left: 40px;
-
 }
 
 .favorite-btn.favorited {
-  color: #ffffff;
   background-color: rgb(236, 195, 1);
   border-color: rgb(218, 180, 0);
-
 }
+
 .favorite-btn.favorited:hover {
   background-color: rgb(236, 195, 1);
 }
+
 .favorite-btn:hover {
   background-color: #af0000;
-
 }
+
 .ingredients-btn {
-  margin-left: 240px;
-
+  flex-grow: 1;
 }
+
 .cook-btn {
-  text-align: center;
   width: 150px;
   height: 40px;
   box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
-  margin-top: -110px;
-  margin-left: 10px;
-}
-@media (max-width:2000px) {
-  .cook-btn[data-v-449bbd70] {
-    margin-bottom:0%;
-  }
 }
 
-@media (max-width:600px){
-  .card-container[data-v-449bbd70]{
-    max-width: 400px;
-
+/* Медиазапросы */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 90%;
   }
-  .cook-btn[data-v-449bbd70][data-v-449bbd70] {
-    text-align: center;
+
+  .card {
+    width: calc(100% - 20px); /* Одна карточка в ряд */
+  }
+
+  .cook-btn {
     width: 100px;
-    height: 40px;
+  }
+
+  .ingredients-btn {
     margin-left: 10px;
   }
-  .ingredients-btn[data-v-449bbd70]{
-    margin-left: 80px;
-  }
-  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-    margin-left: 130px;
-  }
-  .favorite-btn[data-v-449bbd70][data-v-449bbd70] {
-    color: #ffffff;
-    background-color: #9f0101;
-    max-width: 44px;
-    max-height: 40px;
-    align-items: center;
-    border-color: #9f0101;
-    margin-left: 20px;
-  }
-  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-    margin-left: 130px;
-  }
 }
-@media (max-width:800px){
-  .cook-btn[data-v-449bbd70] {
-    text-align: center;
-    width: 100px;
-    height: 40px;
 
-
-    margin-left: 10px;
-  }
-  .ingredients-btn[data-v-449bbd70] {
+@media (max-width: 800px) {
+  .ingredients-btn {
     margin-left: 25px;
   }
-
-}
-@media (max-width:700px){
-  .favorite-btn[data-v-449bbd70] {
-    color: #ffffff;
-    background-color: #9f0101;
-    max-width: 44px;
-    max-height: 40px;
-    align-items: center;
-    border-color: #9f0101;
-    margin-left: 10px;
-  }
-}
-  @media (max-width:640px){
-    .ingredients-btn[data-v-449bbd70][data-v-449bbd70] {
-      margin-left: 5px;
-    }
-  }
-
-
-@media (max-width:450px){
-  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-    margin-left: 100px;
-  }
-}
-@media (max-width:1450px){
-  .ingredients-btn[data-v-449bbd70] {
-    margin-left: 200px;
-  }
-}
-@media (max-width:1200px){
-  .ingredients-btn[data-v-449bbd70][data-v-449bbd70] {
-    margin-left: 110px;
-  }
-}
-@media (max-width:930px){
-  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-    margin-left: 30px;
-  }
-}
-@media (max-width:730px){
-  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-    margin-left: 10px;
-  }
-}
-@media (max-width:1500px){
-  .ingredients-btn[data-v-449bbd70] {
-    margin-left: 180px;
 }
 
-}
-
-@media (max-width:1260px){
-  .ingredients-btn[data-v-449bbd70][data-v-449bbd70] {
-        margin-left: 150px;
-    }
-}
-@media (max-width:1180px){
-  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-        margin-left: 130px;
-    }
-}
-@media (max-width:1140px){
-  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-        margin-left: 110px;
-    }
-}
-@media (max-width:1100px){
-  .ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-        margin-left: 90px;
-    }
-}
-@media (max-width:620px) {
-.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-    margin-left:5px;
-  }
-}
-
-@media (max-width:860px) {
-.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-    margin-left:40px;
-  }
-.favorite-btn[data-v-449bbd70] {
-margin-left:10px;
-  }
-}
-
-@media (max-width:680px) {
-.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-    margin-left:30px;
-  }
-
-.favorite-btn[data-v-449bbd70] {
-margin-left:5px;
-  }
-}
-@media (max-width:645px) {
-.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-    margin-left:20px;
-  }
-
-.favorite-btn[data-v-449bbd70] {
-margin-left:3px;
-  }
-}
-
-@media (max-width:610px) {
-.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-    margin-left:10px;
-  }
-
-.favorite-btn[data-v-449bbd70] {
-margin-left:3px;
-  }
-}
-
-@media (max-width:600px) {
-.ingredients-btn[data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70][data-v-449bbd70] {
-    margin-left:150px;
-  }
-
-.favorite-btn[data-v-449bbd70] {
-margin-left:3px;
+@media (max-width: 1000px) {
+  .ingredients-btn {
+    margin-left: 50px;
   }
 }
 </style>
