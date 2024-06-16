@@ -954,73 +954,73 @@ input:focus {
     width:80px;
     }
 }
-@media (max-width:1280px){
+@media screen and (max-width:1280px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
       width: 450px;
       margin-left: 85px;
     }
 }
-@media (max-width:1024px){
+@media screen and (max-width:1024px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
       width: 350px;
       margin-left: -45px;
     }
 }
-@media (max-width:853px){
+@media screen and (max-width:853px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
       width: 300px;
       margin-left: -25px;
     }
 }
-@media (max-width:820px){
+@media screen and (max-width:820px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
       width: 300px;
       margin-left: -25px;
     }
 }
-@media (max-width:768px){
+@media screen and (max-width:768px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
       width: 300px;
       margin-left: -35px;
     }
 }
-@media (max-width:540px){
+@media screen and (max-width:540px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
       width: 200px;
       margin-left: 10px;
     }
 }
-@media (max-width:430px){
+@media screen and (max-width:430px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
       width: 200px;
       margin-left: -25px;
     }
 }
-@media (max-width:414px){
+@media screen and (max-width:414px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
         width: 150px;
         margin-left: 0px;
     }
 }
-@media (max-width:412px){
+@media screen and (max-width:412px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
         width: 150px;
         margin-left: 0px;
     }
 }
-@media (max-width:412px){
+@media screen and (max-width:412px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
         width: 150px;
         margin-left: 0px;
     }
 }
-@media (max-width:375px){
+@media screen and (max-width:375px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
         width: 150px;
         margin-left: -5px;
     }
 }
-@media (max-width:375px){
+@media screen and (max-width:375px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
         width: 150px;
         margin-left: -15px;

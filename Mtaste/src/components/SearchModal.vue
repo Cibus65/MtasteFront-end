@@ -266,17 +266,17 @@ input:focus {
   box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
   margin-top: -110px;
 }
-@media (max-width:1450px){
+@media screen and (max-width:1450px){
   .ingredients-btn[data-v-6c566dde] {
     margin-left: 200px;
   }
 }
-@media (max-width:1420px){
+@media screen and (max-width:1420px){
   .ingredients-btn[data-v-6c566dde] {
     margin-left: 200px;
   }
 }
-@media (max-width:1350px){
+@media screen and (max-width:1350px){
   .ingredients-btn[data-v-6c566dde] {
     margin-left: 180px;
   }
@@ -286,33 +286,33 @@ input:focus {
   }
 }
 
-@media (max-width:1290px){
+@media screen and (max-width:1290px){
   .ingredients-btn[data-v-6c566dde] {
     margin-left: 150px;
   }
 }
-@media (max-width:1210px){
+@media screen and (max-width:1210px){
   .ingredients-btn[data-v-6c566dde] {
     margin-left: 130px;
   }
 }
 
-@media (max-width:1160px){
+@media screen and (max-width:1160px){
   .ingredients-btn[data-v-6c566dde] {
     margin-left: 110px;
   }
 }
-@media (max-width:1110px){
+@media screen and (max-width:1110px){
   .ingredients-btn[data-v-6c566dde] {
     margin-left: 90px;
   }
 }
-@media (max-width:1055px){
+@media screen and (max-width:1055px){
   .ingredients-btn[data-v-6c566dde] {
     margin-left: 70px;
   }
 }
-@media (max-width:1024px){
+@media screen and (max-width:1024px){
   .favorite-btn[data-v-6c566dde] {
     color: #ffffff;
     background-color: #ecc301;
@@ -323,22 +323,22 @@ input:focus {
     margin-left: 30px;
 }
 }
-@media (max-width:1010px){
+@media screen and (max-width:1010px){
   .ingredients-btn[data-v-6c566dde] {
     margin-left: 50px;
   }
 }
-@media (max-width:960px){
+@media screen and (max-width:960px){
   .ingredients-btn[data-v-6c566dde] {
     margin-left: 30px;
   }
 }
-@media (max-width:910px){
+@media screen and (max-width:910px){
   .ingredients-btn[data-v-6c566dde] {
     margin-left: 15px;
   }
 }
-@media (max-width:920px){
+@media screen and (max-width:920px){
   .card[data-v-6c566dde] {
     padding-bottom: 5px;
     border: 1px solid #6e6e6e;
@@ -359,94 +359,94 @@ input:focus {
     }
 }
 
-@media (max-width:870px){
+@media screen and (max-width:870px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
         margin-left: 310px;
     }
 }
-@media (max-width:840px){
+@media screen and (max-width:840px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
         margin-left: 290px;
     }
 }
-@media (max-width:853px){
+@media screen and (max-width:853px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
         margin-left: 250px;
     }
 }
-@media (max-width:810px){
+@media screen and (max-width:810px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
         margin-left: 270px;
     }
 }
 
-@media (max-width:790px){
+@media screen and (max-width:790px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
         margin-left: 250px;
     }
 }
-@media (max-width:760px){
+@media screen and (max-width:760px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
         margin-left: 230px;
     }
 }
-@media (max-width:740px){
+@media screen and (max-width:740px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
         margin-left: 210px;
     }
 }
-@media (max-width:710px){
+@media screen and (max-width:710px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
         margin-left: 190px;
     }
 }
-@media (max-width:690px){
+@media screen and (max-width:690px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
         margin-left: 170px;
     }
 }
-@media (max-width:660px){
+@media screen and (max-width:660px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
         margin-left: 150px;
     }
 }
-@media (max-width:640px){
+@media screen and (max-width:640px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
         margin-left: 120px;
     }
 }
-@media (max-width:610px){
+@media screen and (max-width:610px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
         margin-left: 110px;
     }
 }
-@media (max-width:600px){
+@media screen and (max-width:600px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
         margin-left: 160px;
     }
 }
-@media (max-width:580px){
+@media screen and (max-width:580px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
         margin-left: 140px;
     }
 }
-@media (max-width:560px){
+@media screen and (max-width:560px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
         margin-left: 120px;
     }
 }
-@media (max-width:530px){
+@media screen and (max-width:530px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
         margin-left: 100px;
     }
 }
-@media (max-width:510px){
+@media screen and (max-width:510px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
         margin-left: 80px;
     }
 }
 
-@media (max-width:450px){
+@media screen and (max-width:450px){
   .card[data-v-6c566dde][data-v-6c566dde] {
         padding-bottom: 5px;
         border: 1px solid #6e6e6e;
@@ -470,7 +470,7 @@ input:focus {
     margin-left: 20px;
 }
 }
-@media (max-width:430px){
+@media screen and (max-width:430px){
   .card[data-v-6c566dde][data-v-6c566dde] {
         padding-bottom: 5px;
         border: 1px solid #6e6e6e;
@@ -494,7 +494,7 @@ input:focus {
     margin-left: 20px;
 }
 }
-@media (max-width:414px){
+@media screen and (max-width:414px){
   .card[data-v-6c566dde][data-v-6c566dde] {
         padding-bottom: 5px;
         border: 1px solid #6e6e6e;
@@ -519,7 +519,7 @@ input:focus {
 }
 }
 
-@media (max-width:390px){
+@media screen and (max-width:390px){
   .card[data-v-6c566dde][data-v-6c566dde] {
         padding-bottom: 5px;
         border: 1px solid #6e6e6e;
@@ -543,7 +543,7 @@ input:focus {
     margin-left: 15px;
 }
 }
-@media (max-width:375px){
+@media screen and (max-width:375px){
   .card[data-v-6c566dde][data-v-6c566dde] {
         padding-bottom: 5px;
         border: 1px solid #6e6e6e;
@@ -576,7 +576,7 @@ input:focus {
 }
 }
 
-@media (max-width:360px){
+@media screen and (max-width:360px){
   .card[data-v-6c566dde][data-v-6c566dde] {
         padding-bottom: 5px;
         border: 1px solid #6e6e6e;
@@ -609,7 +609,7 @@ input:focus {
 }
 }
 
-@media (max-width:344px){
+@media screen and (max-width:344px){
   .card[data-v-6c566dde][data-v-6c566dde] {
         padding-bottom: 5px;
         border: 1px solid #6e6e6e;
