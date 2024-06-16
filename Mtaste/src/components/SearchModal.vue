@@ -200,7 +200,70 @@ h2 {
 .card button {
   margin-top: auto;
 }
+@media screen and (max-width: 600px) {
+  .modal-content {
+    width: 90%;
+  }
 
+  .card {
+    width: calc(100% - 20px); /* При маленьком экране одна карточка в ряд */
+  }
+}
+.btn_style {
+  display: flex;
+  justify-content: space-around;
+  margin-top: auto;
+}
+.btn-outline-secondary{
+  color:#fff;
+}
+input:focus {
+  box-shadow: 0 0 10px rgba(2, 96, 74, 1);
+}
+.btn {
+  background-color: rgba(2, 96, 74, 1);
+  border-color: rgba(2, 96, 74, 1);
+  font-family: "Gilda Display", serif;
+}
+.btn:hover{
+  background-color: rgb(1, 76, 59);
+}
+
+.favorite-btn {
+  color: #ffffff;
+  background-color: #ecc301;
+  max-width: 44px;
+  max-height: 40px;
+  align-items: center;
+  border-color: #dab818;
+}
+
+.favorite-btn.favorited {
+  color: #ffffff;
+  background-color: rgb(175, 0, 0);
+  border-color: rgb(159, 1, 1);
+
+}
+.favorite-btn.favorited:hover {
+  background-color: rgb(159, 1, 1);
+}
+.favorite-btn:hover {
+  background-color: #dab400;
+
+}
+.ingredients-btn {
+  margin-left:250px;
+  
+}
+.cook-btn {
+  text-align: center;
+  margin-left: 5px;
+  
+  width: 150px;
+  height: 40px;
+  box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
+  margin-top: -110px;
+}
 
 @media (max-width:390px){
   .ingredients-btn[data-v-8303fc85] {
