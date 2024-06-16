@@ -2,7 +2,8 @@
 // import './assets/main.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
-
+// Это ES6 Modules (работает в браузере)
+ 
 
 import { createApp } from 'vue';
 import App from './App.vue';
@@ -17,4 +18,4 @@ app.use(VueSweetalert2);
 
 app.mount('#app');
 
-require('dotenv').config();
+ 
