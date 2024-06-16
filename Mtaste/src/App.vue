@@ -940,4 +940,231 @@ input:focus {
     width:25%;
   }
 }
+@media (max-width:1080px) {
+  .ingredients-btn {
+    margin-left:50px;
+  }
+  .username-text {
+    font-size:20px;
+  }
+  .user-info {
+    font-size:60px;
+
+  }
+  #change_img {
+    height:70px;
+  }
+  .form-control {
+    width:33%;
+  }
+  .bg-light[data-v-7a7a37b1] {
+    margin-left:20%;
+  }
+}
+@media (max-width:912px) {
+  .bg-light[data-v-7a7a37b1] {
+    margin-left:15%;
+  }
+}
+@media (max-width:720px) {
+  .bg-light[data-v-7a7a37b1] {
+    margin-left:7%;
+  }
+
+}
+@media (max-width:615px) {
+  .favorite-btn {
+    color: #ffffff;
+    background-color: #ecc301;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #ecc301;
+    margin-top: 55px;
+  }
+
+
+  .ingredients-btn {
+    margin-left: 50px;
+    margin-top: 55px;
+  }
+  .cook-btn {
+    text-align: center;
+    margin-left: 5px;
+    margin-bottom: 50px;
+    width: 150px;
+    height: 40px;
+    box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
+    margin-top: -110px;
+  }
+  .name {
+    font-size:30px;
+  }
+
+  #change_img {
+    height:70px;
+  }
+
+  input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
+    width:25%;
+  }
+  .form-control {
+    width:30%;
+  }
+  .bg-light {
+    margin-left:0%;
+  }
+  .user-info {
+    padding-left:20%;
+  }
+  .logo {
+    padding-left:0%;
+  }
+  .modal-content {
+    width:450px;
+  }
+
+  .auth-button {
+    width:50%;
+  }
+  .auth-form[data-v-c3c6d662] {
+    width:50%;
+  }
+  input[type="text"], input[type="password"] {
+    width:50%;
+    margin-left: 70px;
+  }
+  .modal-title[data-v-c3c6d662] {
+    font-size:50px;
+  }
+  .enter__button {
+    margin-left: -60px;
+  }
+  input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
+    width:17%;
+  }
+  .search__button[data-v-7a7a37b1] {
+    width:80px;
+    }
+}
+
+
+@media (max-width:500px) {
+  .card {
+    width:100%;
+  }
+  .cook-btn{
+    margin-top:10px;
+    margin-left:-140px;
+  }
+  .form-control {
+    width:20%;
+  }
+  .bg-light {
+    margin-left:0%;
+  }
+  .user-info {
+    padding-left:20%;
+  }
+  .logo {
+    padding-left:0%;
+  }
+  .modal-content {
+    width:450px;
+  }
+  .auth-button {
+    width:50%;
+  }
+  input[type="text"], input[type="password"] {
+    width:50%;
+  }
+  .modal-title[data-v-c3c6d662] {
+    font-size:50px;
+  }
+  .enter__button {
+    margin-left: -40px;
+  }
+  input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
+    width:25%;
+    margin-left: 40px;
+  }
+  input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
+    width:17%;
+  }
+  .search__button[data-v-7a7a37b1] {
+    width:80px;
+    }
+}
+@media screen and (max-width:1280px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+      width: 450px;
+      margin-left: 85px;
+    }
+}
+@media screen and (max-width:1024px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+      width: 350px;
+      margin-left: -45px;
+    }
+}
+@media screen and (max-width:853px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+      width: 300px;
+      margin-left: -25px;
+    }
+}
+@media screen and (max-width:820px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+      width: 300px;
+      margin-left: -25px;
+    }
+}
+@media screen and (max-width:768px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+      width: 300px;
+      margin-left: -35px;
+    }
+}
+@media screen and (max-width:540px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+      width: 200px;
+      margin-left: 10px;
+    }
+}
+@media screen and (max-width:430px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+      width: 200px;
+      margin-left: -25px;
+    }
+}
+@media screen and (max-width:414px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+        width: 150px;
+        margin-left: 0px;
+    }
+}
+@media screen and (max-width:412px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+        width: 150px;
+        margin-left: 0px;
+    }
+}
+@media screen and (max-width:412px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+        width: 150px;
+        margin-left: 0px;
+    }
+}
+@media screen and (max-width:375px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+        width: 150px;
+        margin-left: -5px;
+    }
+}
+@media screen and (max-width:375px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+        width: 150px;
+        margin-left: -15px;
+    }
+}
 </style>
