@@ -171,6 +171,9 @@ h2 {
 .btn:focus{
   box-shadow: 0 0 10px rgb(3, 97, 75);
 }
+.ingrid_btn{
+  display: flex;
+}
 .card {
 
   padding-bottom:5px;
