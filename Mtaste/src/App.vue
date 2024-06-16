@@ -891,12 +891,13 @@ input:focus {
   }
   input[type="text"], input[type="password"] {
     width:50%;
+    margin-left: 70px;
   }
   .modal-title[data-v-c3c6d662] {
     font-size:50px;
   }
   .enter__button {
-    margin-left: -100px;
+    margin-left: -60px;
   }
   input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
     width:17%;
@@ -940,16 +941,89 @@ input:focus {
     font-size:50px;
   }
   .enter__button {
-    margin-left: -100px;
+    margin-left: -40px;
   }
   input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
     width:25%;
+    margin-left: 40px;
   }
   input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
     width:17%;
   }
   .search__button[data-v-7a7a37b1] {
     width:80px;
+    }
+}
+@media (max-width:1280px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+      width: 450px;
+      margin-left: 85px;
+    }
+}
+@media (max-width:1024px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+      width: 350px;
+      margin-left: -45px;
+    }
+}
+@media (max-width:853px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+      width: 300px;
+      margin-left: -25px;
+    }
+}
+@media (max-width:820px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+      width: 300px;
+      margin-left: -25px;
+    }
+}
+@media (max-width:768px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+      width: 300px;
+      margin-left: -35px;
+    }
+}
+@media (max-width:540px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+      width: 200px;
+      margin-left: 10px;
+    }
+}
+@media (max-width:430px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+      width: 200px;
+      margin-left: -25px;
+    }
+}
+@media (max-width:414px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+        width: 150px;
+        margin-left: 0px;
+    }
+}
+@media (max-width:412px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+        width: 150px;
+        margin-left: 0px;
+    }
+}
+@media (max-width:412px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+        width: 150px;
+        margin-left: 0px;
+    }
+}
+@media (max-width:375px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+        width: 150px;
+        margin-left: -5px;
+    }
+}
+@media (max-width:375px){
+  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+        width: 150px;
+        margin-left: -15px;
     }
 }
 </style>

@@ -234,6 +234,7 @@ input:focus {
   max-height: 40px;
   align-items: center;
   border-color: #dab818;
+  margin-left: 50px;
 }
 
 .favorite-btn.favorited {
@@ -250,110 +251,397 @@ input:focus {
 
 }
 .ingredients-btn {
-  margin-left:50px;
-  margin-top: 55px;
+  margin-left:230px;
+  
+}
+.ingrid_btn{
+  display: flex;
 }
 .cook-btn {
   text-align: center;
   margin-left: 5px;
-  margin-bottom: 50px;
+  
   width: 150px;
   height: 40px;
   box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
   margin-top: -110px;
 }
-@media (max-width:615px) {
-.cook-btn[data-v-6c566dde] {
-  margin-bottom:0px;
-  margin-left:-30%;
-  margin-top:0px;
-  }
-}
-@media (max-width:830px) {
-.cook-btn[data-v-6c566dde] {
-  margin-bottom:20px;
-  margin-top:20px;
-  margin-left:1%;
-  }
-}
-
-@media (min-width:830px) {
-.cook-btn[data-v-6c566dde]{
-margin-bottom:0px;
-margin-left:10px;
-
-  }
-}
-@media (max-width:850px) {
-.cook-btn[data-v-6c566dde][data-v-6c566dde] {
-margin-left: 10px;
-margin-top: 20px;
-}
-}
-@media (min-width:1000px) {
+@media (max-width:1450px){
   .ingredients-btn[data-v-6c566dde] {
-  margin-left:200px;
+    margin-left: 200px;
+  }
+}
+@media (max-width:1420px){
+  .ingredients-btn[data-v-6c566dde] {
+    margin-left: 200px;
+  }
+}
+@media (max-width:1350px){
+  .ingredients-btn[data-v-6c566dde] {
+    margin-left: 180px;
+  }
+  .ingrid_btn[data-v-6c566dde] {
+    display: flex;
+    margin-bottom: 10px;
   }
 }
 
-@media (max-width:1220px) {
-.ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
-  margin-left:40px;
-  }
-}
-@media (max-width:600px) {
-.ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
-  margin-left:100px;
-  }
-}
-@media (max-width:1640px){
-  .cook-btn[data-v-e4d53d11] {
-    text-align: center;
-    margin-left: 5px;
-   
-    width: 150px;
-    height: 40px;
-    box-shadow: 5px 5px 5px 1.5px #ddd;
-    margin-top: -110px;
-}
-.ingredients-btn[data-v-e4d53d11] {
-    margin-left: 250px;
-    
-}
-}
-@media (max-width:1310px){
-  .ingredients-btn[data-v-e4d53d11] {
+@media (max-width:1290px){
+  .ingredients-btn[data-v-6c566dde] {
     margin-left: 150px;
-    
+  }
+}
+@media (max-width:1210px){
+  .ingredients-btn[data-v-6c566dde] {
+    margin-left: 130px;
+  }
+}
+
+@media (max-width:1160px){
+  .ingredients-btn[data-v-6c566dde] {
+    margin-left: 110px;
+  }
+}
+@media (max-width:1110px){
+  .ingredients-btn[data-v-6c566dde] {
+    margin-left: 90px;
+  }
+}
+@media (max-width:1055px){
+  .ingredients-btn[data-v-6c566dde] {
+    margin-left: 70px;
+  }
+}
+@media (max-width:1024px){
+  .favorite-btn[data-v-6c566dde] {
+    color: #ffffff;
+    background-color: #ecc301;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #dab818;
+    margin-left: 30px;
 }
 }
-@media (max-width:1100px){
-  .ingredients-btn[data-v-e4d53d11] {
-    margin-left: 100px;
-  
+@media (max-width:1010px){
+  .ingredients-btn[data-v-6c566dde] {
+    margin-left: 50px;
+  }
+}
+@media (max-width:960px){
+  .ingredients-btn[data-v-6c566dde] {
+    margin-left: 30px;
+  }
+}
+@media (max-width:910px){
+  .ingredients-btn[data-v-6c566dde] {
+    margin-left: 15px;
+  }
+}
+@media (max-width:920px){
+  .card[data-v-6c566dde] {
+    padding-bottom: 5px;
+    border: 1px solid #6e6e6e;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
+    width: calc(100% - 20px);
+    margin: 10px;
+    max-height: 500px;
+}
+.ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 330px;
+    }
+    .ingrid_btn[data-v-6c566dde][data-v-6c566dde] {
+        display: flex;
+        margin-bottom: 20px;
+        
+    }
+}
+
+@media (max-width:870px){
+  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 310px;
+    }
+}
+@media (max-width:840px){
+  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 290px;
+    }
+}
+@media (max-width:853px){
+  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 250px;
+    }
+}
+@media (max-width:810px){
+  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 270px;
+    }
+}
+
+@media (max-width:790px){
+  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 250px;
+    }
+}
+@media (max-width:760px){
+  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 230px;
+    }
+}
+@media (max-width:740px){
+  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 210px;
+    }
+}
+@media (max-width:710px){
+  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 190px;
+    }
+}
+@media (max-width:690px){
+  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 170px;
+    }
+}
+@media (max-width:660px){
+  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 150px;
+    }
+}
+@media (max-width:640px){
+  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 120px;
+    }
+}
+@media (max-width:610px){
+  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 110px;
+    }
+}
+@media (max-width:600px){
+  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 160px;
+    }
+}
+@media (max-width:580px){
+  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 140px;
+    }
+}
+@media (max-width:560px){
+  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 120px;
+    }
+}
+@media (max-width:530px){
+  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 100px;
+    }
+}
+@media (max-width:510px){
+  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 80px;
+    }
+}
+
+@media (max-width:450px){
+  .card[data-v-6c566dde][data-v-6c566dde] {
+        padding-bottom: 5px;
+        border: 1px solid #6e6e6e;
+        border-radius: 5px;
+        text-align: center;
+        box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
+        max-width: 310px;
+        margin: 10px;
+        max-height: 500px;
+    }
+    .ingredients-btn[data-v-6c566dde][data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 35px;
+    }
+    .favorite-btn[data-v-6c566dde] {
+    color: #ffffff;
+    background-color: #ecc301;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #dab818;
+    margin-left: 20px;
 }
 }
-@media (max-width:1630px){
-  .cook-btn[data-v-e4d53d11] {
+@media (max-width:430px){
+  .card[data-v-6c566dde][data-v-6c566dde] {
+        padding-bottom: 5px;
+        border: 1px solid #6e6e6e;
+        border-radius: 5px;
+        text-align: center;
+        box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
+        max-width: 350px;
+        margin: 10px;
+        max-height: 500px;
+    }
+    .ingredients-btn[data-v-6c566dde][data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 50px;
+    }
+    .favorite-btn[data-v-6c566dde] {
+    color: #ffffff;
+    background-color: #ecc301;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #dab818;
+    margin-left: 20px;
+}
+}
+@media (max-width:414px){
+  .card[data-v-6c566dde][data-v-6c566dde] {
+        padding-bottom: 5px;
+        border: 1px solid #6e6e6e;
+        border-radius: 5px;
+        text-align: center;
+        box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
+        max-width: 350px;
+        margin: 10px;
+        max-height: 500px;
+    }
+    .ingredients-btn[data-v-6c566dde][data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 30px;
+    }
+    .favorite-btn[data-v-6c566dde] {
+    color: #ffffff;
+    background-color: #ecc301;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #dab818;
+    margin-left: 20px;
+}
+}
+
+@media (max-width:390px){
+  .card[data-v-6c566dde][data-v-6c566dde] {
+        padding-bottom: 5px;
+        border: 1px solid #6e6e6e;
+        border-radius: 5px;
+        text-align: center;
+        box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
+        max-width: 310px;
+        margin: 10px;
+        max-height: 500px;
+    }
+    .ingredients-btn[data-v-6c566dde][data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 25px;
+    }
+    .favorite-btn[data-v-6c566dde] {
+    color: #ffffff;
+    background-color: #ecc301;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #dab818;
+    margin-left: 15px;
+}
+}
+@media (max-width:375px){
+  .card[data-v-6c566dde][data-v-6c566dde] {
+        padding-bottom: 5px;
+        border: 1px solid #6e6e6e;
+        border-radius: 5px;
+        text-align: center;
+        box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
+        max-width: 350px;
+        margin: 10px;
+        max-height: 500px;
+    }
+    .ingredients-btn[data-v-6c566dde][data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 50px;
+    }
+    .favorite-btn[data-v-6c566dde] {
+    color: #ffffff;
+    background-color: #ecc301;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #dab818;
+    margin-left: 20px;
+}
+.cook-btn[data-v-6c566dde] {
     text-align: center;
     margin-left: 5px;
-   
-    width: 150px;
+    width: 100px;
     height: 40px;
-    box-shadow: 5px 5px 5px 1.5px #ddd;
-    margin-top: -110px;
-}
-.ingredients-btn[data-v-e4d53d11] {
-    margin-left: 250px;
+    box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
     
 }
 }
 
-@media (max-width:1330px){
-  .ingredients-btn[data-v-e4d53d11] {
-    margin-left: 150px;
+@media (max-width:360px){
+  .card[data-v-6c566dde][data-v-6c566dde] {
+        padding-bottom: 5px;
+        border: 1px solid #6e6e6e;
+        border-radius: 5px;
+        text-align: center;
+        box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
+        max-width: 350px;
+        margin: 10px;
+        max-height: 500px;
+    }
+    .ingredients-btn[data-v-6c566dde][data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 40px;
+    }
+    .favorite-btn[data-v-6c566dde] {
+    color: #ffffff;
+    background-color: #ecc301;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #dab818;
+    margin-left: 20px;
+}
+.cook-btn[data-v-6c566dde] {
+    text-align: center;
+    margin-left: 5px;
+    width: 100px;
+    height: 40px;
+    box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
     
 }
 }
+
+@media (max-width:344px){
+  .card[data-v-6c566dde][data-v-6c566dde] {
+        padding-bottom: 5px;
+        border: 1px solid #6e6e6e;
+        border-radius: 5px;
+        text-align: center;
+        box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
+        max-width: 350px;
+        margin: 10px;
+        max-height: 500px;
+    }
+    .ingredients-btn[data-v-6c566dde][data-v-6c566dde][data-v-6c566dde] {
+        margin-left: 30px;
+    }
+    .favorite-btn[data-v-6c566dde] {
+    color: #ffffff;
+    background-color: #ecc301;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #dab818;
+    margin-left: 10px;
+}
+.cook-btn[data-v-6c566dde] {
+    text-align: center;
+    margin-left: 5px;
+    width: 100px;
+    height: 40px;
+    box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
+    
+}
+}
+
+
 
 </style>
