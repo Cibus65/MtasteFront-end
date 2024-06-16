@@ -1097,74 +1097,74 @@ input:focus {
 }
 @media screen and (max-width:1280px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
-      width: 450px;
-      margin-left: 85px;
+      width: 450px !important;
+      margin-left: 85px !important;
     }
 }
 @media screen and (max-width:1024px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
-      width: 350px;
-      margin-left: -45px;
+      width: 350px !important;
+      margin-left: -45px !important;
     }
 }
 @media screen and (max-width:853px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
-      width: 300px;
-      margin-left: -25px;
+      width: 300px !important;
+      margin-left: -25px !important;
     }
 }
 @media screen and (max-width:820px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
-      width: 300px;
-      margin-left: -25px;
+      width: 300px !important;
+      margin-left: -25px !important;
     }
 }
 @media screen and (max-width:768px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
-      width: 300px;
-      margin-left: -35px;
+      width: 300px !important;
+      margin-left: -35px !important;
     }
 }
 @media screen and (max-width:540px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
-      width: 200px;
-      margin-left: 10px;
+      width: 200px !important;
+      margin-left: 10px !important;
     }
 }
 @media screen and (max-width:430px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
-      width: 200px;
-      margin-left: -25px;
+      width: 200px !important;
+      margin-left: -25px !important;
     }
 }
 @media screen and (max-width:414px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
-        width: 150px;
-        margin-left: 0px;
+        width: 150px !important;
+        margin-left: 0px !important;
     }
 }
 @media screen and (max-width:412px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
-        width: 150px;
-        margin-left: 0px;
+        width: 150px !important;
+        margin-left: 0px !important;
     }
 }
 @media screen and (max-width:412px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
-        width: 150px;
-        margin-left: 0px;
+        width: 150px !important;
+        margin-left: 0px !important;
     }
 }
 @media screen and (max-width:375px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
-        width: 150px;
-        margin-left: -5px;
+        width: 150px !important;
+        margin-left: -5px !important;
     }
 }
 @media screen and (max-width:375px){
   input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
-        width: 150px;
-        margin-left: -15px;
+        width: 150px !important;
+        margin-left: -15px !important;
     }
 }
 </style>
