@@ -256,6 +256,20 @@ input:focus {
   box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
   margin-top: -110px;
 }
+@media screen and (max-width:1630px){
+  .favorite-btn[data-v-db92f942] {
+    color: #fff;
+    background-color: #ecc301;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #dab818;
+    margin-left: 20px;
+}
+.ingredients-btn[data-v-db92f942] {
+    margin-left: 280px;
+}
+}
 
 @media screen and (max-width: 900px) {
   .modal-content {
