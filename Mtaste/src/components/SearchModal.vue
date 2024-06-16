@@ -264,11 +264,11 @@ input:focus {
     max-height: 40px;
     align-items: center;
     border-color: #dab818;
-    margin-left: 20px;
-}
-.ingredients-btn[data-v-db92f942] {
-    margin-left: 280px;
-}
+    margin-left: 20px !important;
+  }
+  .ingredients-btn[data-v-db92f942] {
+    margin-left: 280px !important;
+  }
 }
 
 @media screen and (max-width: 900px) {
@@ -280,7 +280,7 @@ input:focus {
     width: calc(100% - 20px); /* При маленьком экране одна карточка в ряд */
   }
 }
-@media (max-width:390px){
+@media screen and (max-width:390px){
   .ingredients-btn[data-v-8303fc85] {
     margin-left: 80px !important;
   }
