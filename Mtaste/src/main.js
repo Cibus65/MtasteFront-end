@@ -16,5 +16,8 @@ app.use(VueSweetalert2);
 
 
 app.mount('#app');
+const express = require('express');
+const cors = require('cors');
 
+app.use(cors());
 require('dotenv').config();
