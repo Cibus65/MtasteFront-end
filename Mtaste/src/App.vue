@@ -152,7 +152,7 @@ export default {
   },
   methods: {
     searchRecipes(words) {
-      const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+      const baseURL ="http://80.78.242.57:8082";
 
       axios.get(`${baseURL}/Mtaste/API/findRecipe/${words}`)
           .then(response => {
@@ -180,7 +180,7 @@ export default {
       } else {
         const userID = localStorage.getItem('userID');
         const recipeID = card.id;
-        const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+        const baseURL ="http://80.78.242.57:8082";
 
         axios.post(`${baseURL}/Mtaste/API/user/favourite`, {
           userID: userID,
@@ -210,7 +210,7 @@ export default {
       } else {
         const userID = localStorage.getItem('userID');
         const recipeID = card.id;
-        const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+        const baseURL ="http://80.78.242.57:8082";
 
         axios.post(`${baseURL}/Mtaste/API/user/favourite`, {
           userID: userID,
@@ -293,7 +293,7 @@ export default {
       }
     },
     getRandomCards(card) {
-      const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+      const baseURL ="http://80.78.242.57:8082";
       axios.get(`${baseURL}/Mtaste/API/getRandomRecipe/${card.id}`)
           .then(response => {
             const additionalCardsData = response.data;
@@ -313,7 +313,7 @@ export default {
 
 
     loadMoreCards() {
-      const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+      const baseURL ="http://80.78.242.57:8082";
 
       axios.get(`${baseURL}/Mtaste/API/getRecipeByPage/${this.currentPage}`)
           .then(response => {
@@ -343,7 +343,7 @@ export default {
     },
 
     openIngredientsModal(card) {
-      const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+      const baseURL ="http://80.78.242.57:8082";
 
       axios.get(`${baseURL}/Mtaste/API/getRecipeByID/${card.id}`)
           .then(response => {
@@ -362,7 +362,7 @@ export default {
       this.showIngredientsModal = false;
     },
     openRecipeModal(card) {
-      const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+      const baseURL ="http://80.78.242.57:8082";
 
       axios.get(`${baseURL}/Mtaste/API/getRecipeByID/${card.id}`)
           .then(response => {

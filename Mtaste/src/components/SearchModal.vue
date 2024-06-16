@@ -56,7 +56,7 @@ export default {
       this.$emit('open-ingredients', card);
     },
     searchRecipes(words) {
-      const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+      const baseURL ="http://80.78.242.57:8082";
 
       axios.get(`${baseURL}/Mtaste/API/findRecipe/${words}`)
           .then(response => {

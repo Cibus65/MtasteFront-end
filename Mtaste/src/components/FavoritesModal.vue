@@ -79,7 +79,7 @@ export default {
     },
 
     fetchFavouriteRecipes() {
-      const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:8082';
+      const baseURL ="http://80.78.242.57:8082";
 
       const url = `${baseURL}/Mtaste/API/user/getFavouriteRecipes/${this.userID}`;
 
