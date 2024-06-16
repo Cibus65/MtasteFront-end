@@ -467,7 +467,7 @@ margin-top: 20px;
 }
 @media screen and (max-width:600px){
   .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
-        margin-left: 160px;
+        margin-left: 161px;
     }
 }
 @media screen and (max-width:580px){
