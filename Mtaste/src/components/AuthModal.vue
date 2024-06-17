@@ -256,7 +256,8 @@ input[type="password"] {
   font-size:40px;
 }
 .auth-form {
-  width:50%;
+  padding: 10px;
+  width:80%;
 }
 .modal-content {
   width:350px;
