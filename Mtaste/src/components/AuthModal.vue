@@ -262,5 +262,15 @@ input[type="password"] {
 .modal-content {
   width:350px;
   }
+  
+}
+@media (max-width:340px){
+  .register-link {
+    margin-top: 20px;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 15px;
+    margin-left: 60px;
+}
 }
 </style>
