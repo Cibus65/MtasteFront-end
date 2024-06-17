@@ -144,10 +144,34 @@ label {
   display: flex; /* Используем flexbox для выравнивания элементов */
   align-items: center; /* Выравниваем по вертикали */
 }
-
+@media (max-width:540px){
+  label {
+  font-size: 1.2rem; 
+  padding: 5px;
+  display: flex; 
+  align-items: center; 
+}
+}
+@media (max-width:430px){
+  label {
+  font-size: 1.1rem; 
+  padding: 5px;
+  display: flex; 
+  align-items: center; 
+}
+}
+@media (max-width:414px){
+  label {
+  font-size: 1rem; 
+  padding: 5px;
+  display: flex; 
+  align-items: center; 
+}
+}
 @media (max-width:375px){
   label {
   font-size: 1rem; 
+  padding: 5px;
   display: flex; 
   align-items: center; 
 }

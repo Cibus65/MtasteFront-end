@@ -816,17 +816,17 @@ input:focus {
   .form-control {
     width:33%;
   }
-  .bg-light[data-v-7a7a37b1] {
+  .bg-light {
     margin-left:20%;
   }
 }
 @media (max-width:912px) {
-  .bg-light[data-v-7a7a37b1] {
+  .bg-light {
     margin-left:15%;
   }
 }
 @media (max-width:720px) {
-  .bg-light[data-v-7a7a37b1] {
+  .bg-light {
     margin-left:7%;
   }
 
@@ -884,11 +884,11 @@ input:focus {
   .auth-button {
     width:50%;
   }
-  .auth-form[data-v-c3c6d662] {
+  .auth-form {
     width:50%;
   }
   
-  .modal-title[data-v-c3c6d662] {
+  .modal-title {
     font-size:50px;
   }
   .enter__button {
@@ -924,7 +924,7 @@ input:focus {
     width:50%;
   }
   
-  .modal-title[data-v-c3c6d662] {
+  .modal-title {
     font-size:50px;
   }
   .enter__button {
@@ -949,17 +949,17 @@ input:focus {
   .form-control {
     width:33%;
   }
-  .bg-light[data-v-7a7a37b1] {
+  .bg-light {
     margin-left:20%;
   }
 }
 @media (max-width:912px) {
-  .bg-light[data-v-7a7a37b1] {
+  .bg-light {
     margin-left:15%;
   }
 }
 @media (max-width:720px) {
-  .bg-light[data-v-7a7a37b1] {
+  .bg-light {
     margin-left:7%;
   }
 
@@ -1017,18 +1017,18 @@ input:focus {
   .auth-button {
     width:50%;
   }
-  .auth-form[data-v-c3c6d662] {
+  .auth-form {
     width:50%;
   }
  
-  .modal-title[data-v-c3c6d662] {
+  .modal-title {
     font-size:50px;
   }
   .enter__button {
     margin-left: -60px;
   }
   
-  .search__button[data-v-7a7a37b1] {
+  .search__button {
     width:80px;
     }
 }
@@ -1061,91 +1061,91 @@ input:focus {
     width:50%;
   }
   
-  .modal-title[data-v-c3c6d662] {
+  .modal-title {
     font-size:50px;
   }
   .enter__button {
     margin-left: -40px;
   }
-  input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
+  input[type="text"], input[type="password"] {
     width:25%;
     margin-left: 40px;
   }
-  input[type="text"][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1] {
+  input[type="text"], input[type="password"] {
     width:17%;
   }
-  .search__button[data-v-7a7a37b1] {
+  .search__button {
     width:80px;
     }
 }
 @media screen and (max-width:1280px){
-  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+  input[type="text"], input[type="password"] {
       width: 450px !important;
       margin-left: 85px !important;
     }
 }
 @media screen and (max-width:1024px){
-  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+  input[type="text"], input[type="password"] {
       width: 350px !important;
       margin-left: -45px !important;
     }
 }
 @media screen and (max-width:853px){
-  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+  input[type="text"], input[type="password"] {
       width: 300px !important;
       margin-left: -25px !important;
     }
 }
 @media screen and (max-width:820px){
-  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+  input[type="text"], input[type="password"] {
       width: 300px !important;
       margin-left: -25px !important;
     }
 }
 @media screen and (max-width:768px){
-  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+  input[type="text"], input[type="password"] {
       width: 300px !important;
       margin-left: -35px !important;
     }
 }
 @media screen and (max-width:540px){
-  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+  input[type="text"], input[type="password"] {
       width: 200px !important;
       margin-left: 10px !important;
     }
 }
 @media screen and (max-width:430px){
-  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+  input[type="text"], input[type="password"] {
       width: 200px !important;
       margin-left: -25px !important;
     }
 }
 @media screen and (max-width:414px){
-  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+  input[type="text"], input[type="password"] {
         width: 150px !important;
         margin-left: 0px !important;
     }
 }
 @media screen and (max-width:412px){
-  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+  input[type="text"], input[type="password"] {
         width: 150px !important;
         margin-left: 0px !important;
     }
 }
 @media screen and (max-width:412px){
-  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+  input[type="text"], input[type="password"] {
         width: 150px !important;
         margin-left: 0px !important;
     }
 }
 @media screen and (max-width:375px){
-  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+  input[type="text"], input[type="password"] {
         width: 150px !important;
         margin-left: -5px !important;
     }
 }
 @media screen and (max-width:375px){
-  input[type="text"][data-v-7a7a37b1][data-v-7a7a37b1], input[type="password"][data-v-7a7a37b1][data-v-7a7a37b1] {
+  input[type="text"], input[type="password"] {
         width: 150px !important;
         margin-left: -15px !important;
     }
