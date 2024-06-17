@@ -282,25 +282,30 @@ h2 {
   }
 }
 @media (max-width: 540px){
-  .ingredients-btn[data-v-3adff254] {
+  .ingredients-btn {
         margin-left: 150px;
     }
 }
 @media (max-width: 430px){
-  .ingredients-btn[data-v-3adff254] {
+  .ingredients-btn {
         margin-left: 60px;
     }
 }
+@media (max-width: 414px){
+  .ingredients-btn {
+        margin-left: 50px;
+    }
+}
 @media (max-width: 412px){
-  .ingredients-btn[data-v-3adff254] {
+  .ingredients-btn {
         margin-left: 60px;
     }
 }
 @media (max-width: 360px){
-  .ingredients-btn[data-v-3adff254] {
+  .ingredients-btn {
         margin-left: 30px;
     }
-    .favorite-btn[data-v-3adff254] {
+    .favorite-btn {
     color: #fff;
     background-color: #9f0101;
     max-width: 44px;
@@ -311,10 +316,10 @@ h2 {
 }
 }
 @media (max-width:344px){
-  .ingredients-btn[data-v-3adff254] {
+  .ingredients-btn {
         margin-left: 10px;
     }
-    .favorite-btn[data-v-3adff254] {
+    .favorite-btn {
     color: #fff;
     background-color: #9f0101;
     max-width: 44px;
