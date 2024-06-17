@@ -8,8 +8,8 @@
           <img class="card_img" :src="card.imgwindowurl" alt="Изображение блюда">
           <h3>{{ card.name }}</h3>
           <div class="ingrid_btn">
-            <button class="btn btn-outline-secondary favorite-btn" @click="toggleFavorite(card)" :class="{ favorited: card.isFavorite }">
-              <i class="fas" :class="card.isFavorite ? 'fa-heart' : 'fa-heart-broken'"></i>
+            <button class="btn btn-outline-secondary favorite-btn" @click="toggleFavorite(card)" :class="{ favorited: !card.isFavorite }">
+              <i class="fas" :class="'fa-heart-broken'"></i>
             </button>
             <button class="btn btn-outline-secondary ingredients-btn" @click="openIngredientsModal(card)">
               <i class="fas fa-utensils"></i>
