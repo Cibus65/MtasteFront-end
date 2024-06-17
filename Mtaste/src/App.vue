@@ -411,6 +411,7 @@ export default {
 .dropdown {
   position: relative;
   display: inline-block;
+  
 }
 
 .dropdown-content {
@@ -422,6 +423,7 @@ export default {
   z-index: 1;
   border-radius: 5px;
   overflow: hidden;
+  
 }
 
 .dropdown-content button {
@@ -1149,5 +1151,8 @@ input:focus {
         width: 150px !important;
         margin-left: -15px !important;
     }
+    
 }
+
+
 </style>

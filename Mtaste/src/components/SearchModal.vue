@@ -196,6 +196,7 @@ h2 {
 
 .card button {
   margin-top: auto;
+  
 }
 
 @media screen and (max-width: 600px) {
@@ -234,8 +235,12 @@ input:focus {
   max-height: 40px;
   align-items: center;
   border-color: #dab818;
+  margin-left: 30px;
 }
-
+.ingrid_btn{
+  display: flex;
+  margin-bottom: 10px;
+}
 .favorite-btn.favorited {
   color: #ffffff;
   background-color: rgb(175, 0, 0);
@@ -250,8 +255,8 @@ input:focus {
 
 }
 .ingredients-btn {
-  margin-left:50px;
-  margin-top: 55px;
+ margin-left: 250px;
+  
 }
 .cook-btn {
   text-align: center;
@@ -260,104 +265,94 @@ input:focus {
   width: 150px;
   height: 40px;
   box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
-  margin-top: -110px;
+ 
 }
-@media (max-width:615px) {
-.cook-btn {
-  margin-bottom:0px;
-  margin-left:-30%;
-  margin-top:0px;
-  }
-}
-@media (max-width:830px) {
-.cook-btn {
-  margin-bottom:20px;
-  margin-top:20px;
-  margin-left:1%;
-  }
-}
-
-@media (min-width:830px) {
-.cook-btn{
-margin-bottom:0px;
-margin-left:10px;
-
-  }
-}
-@media (max-width:850px) {
-.cook-btn {
-margin-left: 10px;
-margin-top: 20px;
-}
-}
-@media (min-width:1000px) {
+@media screen and (max-width:1280px){
   .ingredients-btn {
-  margin-left:200px;
-  }
-}
-
-@media (max-width:1220px) {
-.ingredients-btn {
-  margin-left:40px;
-  }
-}
-@media (max-width:600px) {
-.ingredients-btn {
-  margin-left:100px;
-  }
-}
-@media (max-width:780px){
-  .ingredients-btn {
-    margin-left: 5px;
-}
-}
-@media screen and (max-width:1450px){
-  .ingredients-btn {
-    margin-left: 200px;
-  }
-}
-@media screen and (max-width:1420px){
-  .ingredients-btn {
-    margin-left: 200px;
-  }
-}
-@media screen and (max-width:1350px){
-  .ingredients-btn {
-    margin-left: 180px;
-  }
-  .ingrid_btn {
-    display: flex;
-    margin-bottom: 10px;
-  }
-}
-
-@media screen and (max-width:1290px){
-  .ingredients-btn {
-    margin-left: 150px;
-  }
-}
-@media screen and (max-width:1210px){
-  .ingredients-btn {
-    margin-left: 130px;
-  }
-}
-
-@media screen and (max-width:1160px){
-  .ingredients-btn {
-    margin-left: 110px;
-  }
-}
-@media screen and (max-width:1110px){
-  .ingredients-btn {
-    margin-left: 90px;
-  }
-}
-@media screen and (max-width:1055px){
-  .ingredients-btn {
-    margin-left: 70px;
-  }
+    margin-left: 170px;
+    
+    }
 }
 @media screen and (max-width:1024px){
+  .ingredients-btn {
+    margin-left: 70px;
+    
+    }
+}
+@media screen and (max-width:912px){
+  .ingredients-btn {
+    margin-left: 80px;
+    
+    }
+    .cook-btn {
+    width: 100px;
+  }
+}
+@media (max-width: 900px) {
+  .modal-content {
+    width: 90%;
+  }
+
+  .card {
+    width: calc(100% - 20px); /* Одна карточка в ряд */
+  }
+
+  .cook-btn {
+    width: 150px;
+  }
+
+  .ingredients-btn {
+    margin-left: 10px;
+  }
+}
+@media screen and (max-width:853px){
+  .ingredients-btn {
+    margin-left: 380px;
+    
+    }
+}
+@media screen and (max-width:820px){
+  .ingredients-btn {
+    margin-left: 330px;
+    
+    }
+}
+
+@media screen and (max-width:768px){
+  .ingredients-btn {
+    margin-left: 300px;
+    
+    }
+}
+@media screen and (max-width:540px){
+  .ingredients-btn {
+    margin-left: 150px;
+    
+    }
+    .favorite-btn {
+    color: #ffffff;
+    background-color: #ecc301;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #dab818;
+    margin-left: 15px;
+  }
+}
+@media screen and (max-width:430px){
+  .ingredients-btn {
+    margin-left: 100px;
+    
+    }
+    .cook-btn {
+    text-align: center;
+    margin-left: 5px;
+    
+    width: 100px;
+    height: 40px;
+    box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
+  
+  }
   .favorite-btn {
     color: #ffffff;
     background-color: #ecc301;
@@ -365,195 +360,24 @@ margin-top: 20px;
     max-height: 40px;
     align-items: center;
     border-color: #dab818;
-    margin-left: 30px;
-}
-}
-@media screen and (max-width:1010px){
-  .ingredients-btn {
-    margin-left: 50px;
-  }
-}
-@media screen and (max-width:960px){
-  .ingredients-btn {
-    margin-left: 30px;
-  }
-}
-@media screen and (max-width:910px){
-  .ingredients-btn {
-    margin-left: 15px;
-  }
-}
-@media screen and (max-width:920px){
-  .card {
-    padding-bottom: 5px;
-    border: 1px solid #6e6e6e;
-    border-radius: 5px;
-    text-align: center;
-    box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
-    width: calc(100% - 20px);
-    margin: 10px;
-    max-height: 500px;
-}
-.ingredients-btn {
-        margin-left: 330px;
-    }
-    .ingrid_btn{
-        display: flex;
-        margin-bottom: 20px;
-        
-    }
-}
-
-@media screen and (max-width:870px){
-  .ingredients-btn {
-        margin-left: 310px;
-    }
-}
-@media screen and (max-width:840px){
-  .ingredients-btn {
-        margin-left: 290px;
-    }
-}
-@media screen and (max-width:853px){
-  .ingredients-btn {
-        margin-left: 250px;
-    }
-}
-@media screen and (max-width:810px){
-  .ingredients-btn {
-        margin-left: 270px;
-    }
-}
-
-@media screen and (max-width:790px){
-  .ingredients-btn {
-        margin-left: 250px;
-    }
-}
-@media screen and (max-width:760px){
-  .ingredients-btn {
-        margin-left: 230px;
-    }
-}
-@media screen and (max-width:740px){
-  .ingredients-btn {
-        margin-left: 210px;
-    }
-}
-@media screen and (max-width:710px){
-  .ingredients-btn {
-        margin-left: 190px;
-    }
-}
-@media screen and (max-width:690px){
-  .ingredients-btn {
-        margin-left: 170px;
-    }
-}
-@media screen and (max-width:660px){
-  .ingredients-btn {
-        margin-left: 150px;
-    }
-}
-@media screen and (max-width:640px){
-  .ingredients-btn {
-        margin-left: 120px;
-    }
-}
-@media screen and (max-width:610px){
-  .ingredients-btn {
-        margin-left: 110px;
-    }
-}
-@media screen and (max-width:600px){
-  .ingredients-btn {
-        margin-left: 161px;
-    }
-}
-@media screen and (max-width:580px){
-  .ingredients-btn {
-        margin-left: 140px;
-    }
-}
-@media screen and (max-width:560px){
-  .ingredients-btn {
-        margin-left: 120px;
-    }
-}
-@media screen and (max-width:530px){
-  .ingredients-btn {
-        margin-left: 100px;
-    }
-}
-@media screen and (max-width:510px){
-  .ingredients-btn {
-        margin-left: 80px;
-    }
-}
-
-@media screen and (max-width:450px){
-  .card {
-        padding-bottom: 5px;
-        border: 1px solid #6e6e6e;
-        border-radius: 5px;
-        text-align: center;
-        box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
-        max-width: 310px;
-        margin: 10px;
-        max-height: 500px;
-    }
-    .ingredients-btn {
-        margin-left: 35px;
-    }
-    .favorite-btn {
-    color: #ffffff;
-    background-color: #ecc301;
-    max-width: 44px;
-    max-height: 40px;
-    align-items: center;
-    border-color: #dab818;
     margin-left: 20px;
-}
-}
-@media screen and (max-width:430px){
-  .card {
-        padding-bottom: 5px;
-        border: 1px solid #6e6e6e;
-        border-radius: 5px;
-        text-align: center;
-        box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
-        max-width: 350px;
-        margin: 10px;
-        max-height: 500px;
-    }
-    .ingredients-btn {
-        margin-left: 50px;
-    }
-    .favorite-btn {
-    color: #ffffff;
-    background-color: #ecc301;
-    max-width: 44px;
-    max-height: 40px;
-    align-items: center;
-    border-color: #dab818;
-    margin-left: 20px;
-}
+  }
 }
 @media screen and (max-width:414px){
-  .card {
-        padding-bottom: 5px;
-        border: 1px solid #6e6e6e;
-        border-radius: 5px;
-        text-align: center;
-        box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
-        max-width: 350px;
-        margin: 10px;
-        max-height: 500px;
+  .ingredients-btn {
+    margin-left: 70px;
+    
     }
-    .ingredients-btn {
-        margin-left: 30px;
-    }
-    .favorite-btn {
+    .cook-btn {
+    text-align: center;
+    margin-left: 5px;
+    
+    width: 100px;
+    height: 40px;
+    box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
+  
+  }
+  .favorite-btn {
     color: #ffffff;
     background-color: #ecc301;
     max-width: 44px;
@@ -561,22 +385,87 @@ margin-top: 20px;
     align-items: center;
     border-color: #dab818;
     margin-left: 20px;
+  }
 }
+@media screen and (max-width:412px){
+  .ingredients-btn {
+    margin-left: 80px;
+    
+    }
+    .cook-btn {
+    text-align: center;
+    margin-left: 5px;
+    
+    width: 100px;
+    height: 40px;
+    box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
+  
+  }
+  .favorite-btn {
+    color: #ffffff;
+    background-color: #ecc301;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #dab818;
+    margin-left: 20px;
+  }
+}
+@media screen and (max-width:390px){
+  .ingredients-btn {
+    margin-left: 60px;
+    
+    }
+    .cook-btn {
+    text-align: center;
+    margin-left: 5px;
+    
+    width: 100px;
+    height: 40px;
+    box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
+  
+  }
+  .favorite-btn {
+    color: #ffffff;
+    background-color: #ecc301;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #dab818;
+    margin-left: 20px;
+  }
+
 }
 
-@media screen and (max-width:390px){
-  .card {
-        padding-bottom: 5px;
-        border: 1px solid #6e6e6e;
-        border-radius: 5px;
-        text-align: center;
-        box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
-        max-width: 310px;
-        margin: 10px;
-        max-height: 500px;
-    }
-    .ingredients-btn {
-        margin-left: 25px;
+@media screen and (max-width:375px){
+  .ingredients-btn {
+    margin-left: 40px;
+    
+  }
+  .cook-btn {
+  text-align: center;
+  margin-left: 5px;
+  
+  width: 100px;
+  height: 40px;
+  box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
+ 
+}
+.favorite-btn {
+  color: #ffffff;
+  background-color: #ecc301;
+  max-width: 44px;
+  max-height: 40px;
+  align-items: center;
+  border-color: #dab818;
+  margin-left: 20px;
+}
+
+}
+@media screen and (max-width:344px){
+  .ingredients-btn {
+    margin-left: 30px;
+    
     }
     .favorite-btn {
     color: #ffffff;
@@ -586,105 +475,7 @@ margin-top: 20px;
     align-items: center;
     border-color: #dab818;
     margin-left: 15px;
-}
-}
-@media screen and (max-width:375px){
-  .card {
-        padding-bottom: 5px;
-        border: 1px solid #6e6e6e;
-        border-radius: 5px;
-        text-align: center;
-        box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
-        max-width: 350px;
-        margin: 10px;
-        max-height: 500px;
-    }
-    .ingredients-btn {
-        margin-left: 50px;
-    }
-    .favorite-btn {
-    color: #ffffff;
-    background-color: #ecc301;
-    max-width: 44px;
-    max-height: 40px;
-    align-items: center;
-    border-color: #dab818;
-    margin-left: 20px;
-}
-.cook-btn {
-    text-align: center;
-    margin-left: 5px;
-    width: 100px;
-    height: 40px;
-    box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
-    
-}
-}
-
-@media screen and (max-width:360px){
-  .card {
-        padding-bottom: 5px;
-        border: 1px solid #6e6e6e;
-        border-radius: 5px;
-        text-align: center;
-        box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
-        max-width: 350px;
-        margin: 10px;
-        max-height: 500px;
-    }
-    .ingredients-btn {
-        margin-left: 40px;
-    }
-    .favorite-btn {
-    color: #ffffff;
-    background-color: #ecc301;
-    max-width: 44px;
-    max-height: 40px;
-    align-items: center;
-    border-color: #dab818;
-    margin-left: 20px;
-}
-.cook-btn {
-    text-align: center;
-    margin-left: 5px;
-    width: 100px;
-    height: 40px;
-    box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
-    
-}
-}
-
-@media screen and (max-width:344px){
-  .card {
-        padding-bottom: 5px;
-        border: 1px solid #6e6e6e;
-        border-radius: 5px;
-        text-align: center;
-        box-shadow: 5px 5px 5px 1.5px rgb(206, 206, 206);
-        max-width: 350px;
-        margin: 10px;
-        max-height: 500px;
-    }
-    .ingredients-btn {
-        margin-left: 30px;
-    }
-    .favorite-btn {
-    color: #ffffff;
-    background-color: #ecc301;
-    max-width: 44px;
-    max-height: 40px;
-    align-items: center;
-    border-color: #dab818;
-    margin-left: 10px;
-}
-.cook-btn {
-    text-align: center;
-    margin-left: 5px;
-    width: 100px;
-    height: 40px;
-    box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
-    
-}
+  }
 }
 
 </style>
