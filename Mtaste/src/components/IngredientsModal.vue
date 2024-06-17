@@ -145,6 +145,14 @@ label {
   align-items: center; /* Выравниваем по вертикали */
 }
 
+@media (max-width:375px){
+  label {
+  font-size: 1rem; 
+  display: flex; 
+  align-items: center; 
+}
+}
+
 
 .strikethrough {
   text-decoration: line-through;

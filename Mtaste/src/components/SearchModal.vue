@@ -263,14 +263,14 @@ input:focus {
   margin-top: -110px;
 }
 @media (max-width:615px) {
-.cook-btn[data-v-6c566dde] {
+.cook-btn {
   margin-bottom:0px;
   margin-left:-30%;
   margin-top:0px;
   }
 }
 @media (max-width:830px) {
-.cook-btn[data-v-6c566dde] {
+.cook-btn {
   margin-bottom:20px;
   margin-top:20px;
   margin-left:1%;
@@ -278,87 +278,87 @@ input:focus {
 }
 
 @media (min-width:830px) {
-.cook-btn[data-v-6c566dde]{
+.cook-btn{
 margin-bottom:0px;
 margin-left:10px;
 
   }
 }
 @media (max-width:850px) {
-.cook-btn[data-v-6c566dde][data-v-6c566dde] {
+.cook-btn {
 margin-left: 10px;
 margin-top: 20px;
 }
 }
 @media (min-width:1000px) {
-  .ingredients-btn[data-v-6c566dde] {
+  .ingredients-btn {
   margin-left:200px;
   }
 }
 
 @media (max-width:1220px) {
-.ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+.ingredients-btn {
   margin-left:40px;
   }
 }
 @media (max-width:600px) {
-.ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+.ingredients-btn {
   margin-left:100px;
   }
 }
 @media (max-width:780px){
-  .ingredients-btn[data-v-61cd8a52] {
+  .ingredients-btn {
     margin-left: 5px;
 }
 }
 @media screen and (max-width:1450px){
-  .ingredients-btn[data-v-6c566dde] {
+  .ingredients-btn {
     margin-left: 200px;
   }
 }
 @media screen and (max-width:1420px){
-  .ingredients-btn[data-v-6c566dde] {
+  .ingredients-btn {
     margin-left: 200px;
   }
 }
 @media screen and (max-width:1350px){
-  .ingredients-btn[data-v-6c566dde] {
+  .ingredients-btn {
     margin-left: 180px;
   }
-  .ingrid_btn[data-v-6c566dde] {
+  .ingrid_btn {
     display: flex;
     margin-bottom: 10px;
   }
 }
 
 @media screen and (max-width:1290px){
-  .ingredients-btn[data-v-6c566dde] {
+  .ingredients-btn {
     margin-left: 150px;
   }
 }
 @media screen and (max-width:1210px){
-  .ingredients-btn[data-v-6c566dde] {
+  .ingredients-btn {
     margin-left: 130px;
   }
 }
 
 @media screen and (max-width:1160px){
-  .ingredients-btn[data-v-6c566dde] {
+  .ingredients-btn {
     margin-left: 110px;
   }
 }
 @media screen and (max-width:1110px){
-  .ingredients-btn[data-v-6c566dde] {
+  .ingredients-btn {
     margin-left: 90px;
   }
 }
 @media screen and (max-width:1055px){
-  .ingredients-btn[data-v-6c566dde] {
+  .ingredients-btn {
     margin-left: 70px;
   }
 }
 @media screen and (max-width:1024px){
-  .favorite-btn[data-v-6c566dde] {
+  .favorite-btn {
     color: #ffffff;
     background-color: #ecc301;
     max-width: 44px;
@@ -369,22 +369,22 @@ margin-top: 20px;
 }
 }
 @media screen and (max-width:1010px){
-  .ingredients-btn[data-v-6c566dde] {
+  .ingredients-btn {
     margin-left: 50px;
   }
 }
 @media screen and (max-width:960px){
-  .ingredients-btn[data-v-6c566dde] {
+  .ingredients-btn {
     margin-left: 30px;
   }
 }
 @media screen and (max-width:910px){
-  .ingredients-btn[data-v-6c566dde] {
+  .ingredients-btn {
     margin-left: 15px;
   }
 }
 @media screen and (max-width:920px){
-  .card[data-v-6c566dde] {
+  .card {
     padding-bottom: 5px;
     border: 1px solid #6e6e6e;
     border-radius: 5px;
@@ -394,10 +394,10 @@ margin-top: 20px;
     margin: 10px;
     max-height: 500px;
 }
-.ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+.ingredients-btn {
         margin-left: 330px;
     }
-    .ingrid_btn[data-v-6c566dde][data-v-6c566dde] {
+    .ingrid_btn{
         display: flex;
         margin-bottom: 20px;
         
@@ -405,94 +405,94 @@ margin-top: 20px;
 }
 
 @media screen and (max-width:870px){
-  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  .ingredients-btn {
         margin-left: 310px;
     }
 }
 @media screen and (max-width:840px){
-  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  .ingredients-btn {
         margin-left: 290px;
     }
 }
 @media screen and (max-width:853px){
-  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  .ingredients-btn {
         margin-left: 250px;
     }
 }
 @media screen and (max-width:810px){
-  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  .ingredients-btn {
         margin-left: 270px;
     }
 }
 
 @media screen and (max-width:790px){
-  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  .ingredients-btn {
         margin-left: 250px;
     }
 }
 @media screen and (max-width:760px){
-  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  .ingredients-btn {
         margin-left: 230px;
     }
 }
 @media screen and (max-width:740px){
-  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  .ingredients-btn {
         margin-left: 210px;
     }
 }
 @media screen and (max-width:710px){
-  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  .ingredients-btn {
         margin-left: 190px;
     }
 }
 @media screen and (max-width:690px){
-  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  .ingredients-btn {
         margin-left: 170px;
     }
 }
 @media screen and (max-width:660px){
-  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  .ingredients-btn {
         margin-left: 150px;
     }
 }
 @media screen and (max-width:640px){
-  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  .ingredients-btn {
         margin-left: 120px;
     }
 }
 @media screen and (max-width:610px){
-  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  .ingredients-btn {
         margin-left: 110px;
     }
 }
 @media screen and (max-width:600px){
-  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  .ingredients-btn {
         margin-left: 161px;
     }
 }
 @media screen and (max-width:580px){
-  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  .ingredients-btn {
         margin-left: 140px;
     }
 }
 @media screen and (max-width:560px){
-  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  .ingredients-btn {
         margin-left: 120px;
     }
 }
 @media screen and (max-width:530px){
-  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  .ingredients-btn {
         margin-left: 100px;
     }
 }
 @media screen and (max-width:510px){
-  .ingredients-btn[data-v-6c566dde][data-v-6c566dde] {
+  .ingredients-btn {
         margin-left: 80px;
     }
 }
 
 @media screen and (max-width:450px){
-  .card[data-v-6c566dde][data-v-6c566dde] {
+  .card {
         padding-bottom: 5px;
         border: 1px solid #6e6e6e;
         border-radius: 5px;
@@ -502,10 +502,10 @@ margin-top: 20px;
         margin: 10px;
         max-height: 500px;
     }
-    .ingredients-btn[data-v-6c566dde][data-v-6c566dde][data-v-6c566dde] {
+    .ingredients-btn {
         margin-left: 35px;
     }
-    .favorite-btn[data-v-6c566dde] {
+    .favorite-btn {
     color: #ffffff;
     background-color: #ecc301;
     max-width: 44px;
@@ -516,7 +516,7 @@ margin-top: 20px;
 }
 }
 @media screen and (max-width:430px){
-  .card[data-v-6c566dde][data-v-6c566dde] {
+  .card {
         padding-bottom: 5px;
         border: 1px solid #6e6e6e;
         border-radius: 5px;
@@ -526,10 +526,10 @@ margin-top: 20px;
         margin: 10px;
         max-height: 500px;
     }
-    .ingredients-btn[data-v-6c566dde][data-v-6c566dde][data-v-6c566dde] {
+    .ingredients-btn {
         margin-left: 50px;
     }
-    .favorite-btn[data-v-6c566dde] {
+    .favorite-btn {
     color: #ffffff;
     background-color: #ecc301;
     max-width: 44px;
@@ -540,7 +540,7 @@ margin-top: 20px;
 }
 }
 @media screen and (max-width:414px){
-  .card[data-v-6c566dde][data-v-6c566dde] {
+  .card {
         padding-bottom: 5px;
         border: 1px solid #6e6e6e;
         border-radius: 5px;
@@ -550,10 +550,10 @@ margin-top: 20px;
         margin: 10px;
         max-height: 500px;
     }
-    .ingredients-btn[data-v-6c566dde][data-v-6c566dde][data-v-6c566dde] {
+    .ingredients-btn {
         margin-left: 30px;
     }
-    .favorite-btn[data-v-6c566dde] {
+    .favorite-btn {
     color: #ffffff;
     background-color: #ecc301;
     max-width: 44px;
@@ -565,7 +565,7 @@ margin-top: 20px;
 }
 
 @media screen and (max-width:390px){
-  .card[data-v-6c566dde][data-v-6c566dde] {
+  .card {
         padding-bottom: 5px;
         border: 1px solid #6e6e6e;
         border-radius: 5px;
@@ -575,10 +575,10 @@ margin-top: 20px;
         margin: 10px;
         max-height: 500px;
     }
-    .ingredients-btn[data-v-6c566dde][data-v-6c566dde][data-v-6c566dde] {
+    .ingredients-btn {
         margin-left: 25px;
     }
-    .favorite-btn[data-v-6c566dde] {
+    .favorite-btn {
     color: #ffffff;
     background-color: #ecc301;
     max-width: 44px;
@@ -589,7 +589,7 @@ margin-top: 20px;
 }
 }
 @media screen and (max-width:375px){
-  .card[data-v-6c566dde][data-v-6c566dde] {
+  .card {
         padding-bottom: 5px;
         border: 1px solid #6e6e6e;
         border-radius: 5px;
@@ -599,10 +599,10 @@ margin-top: 20px;
         margin: 10px;
         max-height: 500px;
     }
-    .ingredients-btn[data-v-6c566dde][data-v-6c566dde][data-v-6c566dde] {
+    .ingredients-btn {
         margin-left: 50px;
     }
-    .favorite-btn[data-v-6c566dde] {
+    .favorite-btn {
     color: #ffffff;
     background-color: #ecc301;
     max-width: 44px;
@@ -611,7 +611,7 @@ margin-top: 20px;
     border-color: #dab818;
     margin-left: 20px;
 }
-.cook-btn[data-v-6c566dde] {
+.cook-btn {
     text-align: center;
     margin-left: 5px;
     width: 100px;
@@ -622,7 +622,7 @@ margin-top: 20px;
 }
 
 @media screen and (max-width:360px){
-  .card[data-v-6c566dde][data-v-6c566dde] {
+  .card {
         padding-bottom: 5px;
         border: 1px solid #6e6e6e;
         border-radius: 5px;
@@ -632,10 +632,10 @@ margin-top: 20px;
         margin: 10px;
         max-height: 500px;
     }
-    .ingredients-btn[data-v-6c566dde][data-v-6c566dde][data-v-6c566dde] {
+    .ingredients-btn {
         margin-left: 40px;
     }
-    .favorite-btn[data-v-6c566dde] {
+    .favorite-btn {
     color: #ffffff;
     background-color: #ecc301;
     max-width: 44px;
@@ -644,7 +644,7 @@ margin-top: 20px;
     border-color: #dab818;
     margin-left: 20px;
 }
-.cook-btn[data-v-6c566dde] {
+.cook-btn {
     text-align: center;
     margin-left: 5px;
     width: 100px;
@@ -655,7 +655,7 @@ margin-top: 20px;
 }
 
 @media screen and (max-width:344px){
-  .card[data-v-6c566dde][data-v-6c566dde] {
+  .card {
         padding-bottom: 5px;
         border: 1px solid #6e6e6e;
         border-radius: 5px;
@@ -665,10 +665,10 @@ margin-top: 20px;
         margin: 10px;
         max-height: 500px;
     }
-    .ingredients-btn[data-v-6c566dde][data-v-6c566dde][data-v-6c566dde] {
+    .ingredients-btn {
         margin-left: 30px;
     }
-    .favorite-btn[data-v-6c566dde] {
+    .favorite-btn {
     color: #ffffff;
     background-color: #ecc301;
     max-width: 44px;
@@ -677,7 +677,7 @@ margin-top: 20px;
     border-color: #dab818;
     margin-left: 10px;
 }
-.cook-btn[data-v-6c566dde] {
+.cook-btn {
     text-align: center;
     margin-left: 5px;
     width: 100px;
