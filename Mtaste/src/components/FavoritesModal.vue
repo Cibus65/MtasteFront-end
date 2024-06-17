@@ -281,4 +281,47 @@ h2 {
     margin-left: 25px;
   }
 }
+@media (max-width: 540px){
+  .ingredients-btn[data-v-3adff254] {
+        margin-left: 150px;
+    }
+}
+@media (max-width: 430px){
+  .ingredients-btn[data-v-3adff254] {
+        margin-left: 60px;
+    }
+}
+@media (max-width: 412px){
+  .ingredients-btn[data-v-3adff254] {
+        margin-left: 60px;
+    }
+}
+@media (max-width: 360px){
+  .ingredients-btn[data-v-3adff254] {
+        margin-left: 30px;
+    }
+    .favorite-btn[data-v-3adff254] {
+    color: #fff;
+    background-color: #9f0101;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #9f0101;
+    margin-left: 20px;
+}
+}
+@media (max-width:344px){
+  .ingredients-btn[data-v-3adff254] {
+        margin-left: 10px;
+    }
+    .favorite-btn[data-v-3adff254] {
+    color: #fff;
+    background-color: #9f0101;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #9f0101;
+    margin-left: 30px;
+}
+}
 </style>
