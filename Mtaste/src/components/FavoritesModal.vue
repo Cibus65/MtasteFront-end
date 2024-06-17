@@ -212,12 +212,12 @@ h2 {
 }
 
 .favorite-btn.favorited {
-  background-color: rgb(236, 195, 1);
-  border-color: rgb(218, 180, 0);
+  background-color: rgb(175, 0, 0);
+  border-color: rgb(159, 1, 1);
 }
 
 .favorite-btn.favorited:hover {
-  background-color: rgb(236, 195, 1);
+  background-color: rgb(159, 1, 1);
 }
 
 .favorite-btn:hover {
