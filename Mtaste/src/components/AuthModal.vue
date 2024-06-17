@@ -240,25 +240,25 @@ input[type="password"] {
 }
 
 @media (max-width:615px) {
-.modal-title[data-v-c3c6d662] {
+.modal-title {
   font-size:50px;
 }
-.auth-form[data-v-c3c6d662] {
+.auth-form {
   width:70%;
 }
-.modal-content[data-v-c3c6d662] {
+.modal-content {
   width:450px;
   }
 }
 
 @media (max-width:500px) {
-.modal-title[data-v-c3c6d662] {
+.modal-title {
   font-size:40px;
 }
-.auth-form[data-v-c3c6d662] {
+.auth-form {
   width:50%;
 }
-.modal-content[data-v-c3c6d662] {
+.modal-content {
   width:350px;
   }
 }
