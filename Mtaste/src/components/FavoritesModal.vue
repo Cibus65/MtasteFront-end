@@ -276,9 +276,53 @@ h2 {
     margin-left: 30px;
   }
 }
-@media (max-width: 800px) {
+@media (max-width:912px){
+  .ingredients-btn {
+    margin-left: 20px;
+  }
+}
+@media (max-width:853px) {
+    .ingredients-btn {
+        margin-left: 300px;
+    }
+    .cook-btn {
+        width: 150px;
+    }
+    .ingrid_btn {
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width:820px){
+  .ingredients-btn {
+        margin-left: 300px;
+    }
+    .cook-btn {
+        width: 150px;
+    }
+    .ingrid_btn {
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width:800px) {
   .ingredients-btn {
     margin-left: 25px;
+  }
+}
+@media (max-width: 768px){
+  .ingredients-btn {
+        margin-left: 300px;
+    }
+    .cook-btn {
+        width: 150px;
+    }
+    .ingrid_btn {
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 20px;
   }
 }
 @media (max-width: 540px){
@@ -288,18 +332,37 @@ h2 {
 }
 @media (max-width: 430px){
   .ingredients-btn {
-        margin-left: 60px;
+        margin-left: 80px;
     }
 }
 @media (max-width: 414px){
   .ingredients-btn {
-        margin-left: 50px;
+        margin-left: 60px;
     }
 }
 @media (max-width: 412px){
   .ingredients-btn {
-        margin-left: 60px;
+        margin-left: 70px;
     }
+}
+@media (max-width: 390px){
+  .ingredients-btn {
+        margin-left: 50px;
+    }
+}
+@media (max-width: 375px){
+  .ingredients-btn {
+        margin-left: 30px;
+    }
+    .favorite-btn {
+    color: #fff;
+    background-color: #9f0101;
+    max-width: 44px;
+    max-height: 40px;
+    align-items: center;
+    border-color: #9f0101;
+    margin-left: 30px;
+}
 }
 @media (max-width: 360px){
   .ingredients-btn {
