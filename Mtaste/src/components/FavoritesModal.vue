@@ -235,8 +235,25 @@ h2 {
   box-shadow: 5px 5px 5px 1.5px rgb(221, 221, 221);
 }
 
-/* Медиазапросы */
-@media (max-width: 600px) {
+@media (max-width:1420px){
+  .ingredients-btn {
+    margin-left: 140px;
+  }
+}
+
+@media (max-width:1250px){
+  .ingredients-btn {
+    margin-left: 50px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .ingredients-btn {
+    margin-left: 50px;
+  }
+}
+
+@media (max-width: 900px) {
   .modal-content {
     width: 90%;
   }
@@ -254,15 +271,14 @@ h2 {
   }
 }
 
+@media (max-width:960px){
+  .ingredients-btn {
+    margin-left: 30px;
+  }
+}
 @media (max-width: 800px) {
   .ingredients-btn {
     margin-left: 25px;
-  }
-}
-
-@media (max-width: 1000px) {
-  .ingredients-btn {
-    margin-left: 50px;
   }
 }
 </style>
