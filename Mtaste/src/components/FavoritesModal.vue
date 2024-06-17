@@ -181,7 +181,7 @@ h2 {
 
 .ingrid_btn {
   display: flex;
-  justify-content: space-between;
+  
   margin-top: 15px;
   margin-bottom: 15px;
 }
@@ -208,6 +208,7 @@ h2 {
   max-height: 40px;
   align-items: center;
   border-color: #9f0101;
+  margin-left: 50px;
 }
 
 .favorite-btn.favorited {
@@ -224,7 +225,8 @@ h2 {
 }
 
 .ingredients-btn {
-  flex-grow: 1;
+  margin-left: 230px;
+  margin-right: 5px;
 }
 
 .cook-btn {
