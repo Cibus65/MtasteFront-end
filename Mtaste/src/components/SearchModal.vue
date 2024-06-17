@@ -185,8 +185,9 @@ h2 {
 }
 
 .card h3 {
-  margin-top: 15px;
+  margin-top: 10px;
   font-size: 18px;
+  max-width: 600px;
 }
 
 .card img {
