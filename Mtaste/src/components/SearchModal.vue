@@ -112,7 +112,7 @@ export default {
 
 .card_img{
   width: 100%;
-  height: 80%;
+  height: 70%;
   border-bottom: 1px solid;
   border-color:#818181;
   border-top-left-radius: 5px;
@@ -239,7 +239,8 @@ input:focus {
 }
 .ingrid_btn{
   display: flex;
-  margin-bottom: 10px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 .favorite-btn.favorited {
   color: #ffffff;
